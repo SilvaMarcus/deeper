@@ -1,0 +1,6954 @@
+{
+  "source": "https://www.blueletterbible.org/assets-v3/pdf/dbrp/1Yr_ChronologicalPlan.pdf",
+  "sourceTitle": "Blue Letter Bible - 1-Year Chronological Plan",
+  "dayCount": 365,
+  "chapterCount": 1189,
+  "days": [
+    {
+      "day": 1,
+      "reading": "Genesis 1-3",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 1
+        },
+        {
+          "code": "GEN",
+          "chapter": 2
+        },
+        {
+          "code": "GEN",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "reading": "Genesis 4-7",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 4
+        },
+        {
+          "code": "GEN",
+          "chapter": 5
+        },
+        {
+          "code": "GEN",
+          "chapter": 6
+        },
+        {
+          "code": "GEN",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "reading": "Genesis 8-11",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 8
+        },
+        {
+          "code": "GEN",
+          "chapter": 9
+        },
+        {
+          "code": "GEN",
+          "chapter": 10
+        },
+        {
+          "code": "GEN",
+          "chapter": 11
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "reading": "Job 1-5",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 1
+        },
+        {
+          "code": "JOB",
+          "chapter": 2
+        },
+        {
+          "code": "JOB",
+          "chapter": 3
+        },
+        {
+          "code": "JOB",
+          "chapter": 4
+        },
+        {
+          "code": "JOB",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "reading": "Job 6-9",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 6
+        },
+        {
+          "code": "JOB",
+          "chapter": 7
+        },
+        {
+          "code": "JOB",
+          "chapter": 8
+        },
+        {
+          "code": "JOB",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "reading": "Job 10-13",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 10
+        },
+        {
+          "code": "JOB",
+          "chapter": 11
+        },
+        {
+          "code": "JOB",
+          "chapter": 12
+        },
+        {
+          "code": "JOB",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "reading": "Job 14-16",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 14
+        },
+        {
+          "code": "JOB",
+          "chapter": 15
+        },
+        {
+          "code": "JOB",
+          "chapter": 16
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "reading": "Job 17-20",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 17
+        },
+        {
+          "code": "JOB",
+          "chapter": 18
+        },
+        {
+          "code": "JOB",
+          "chapter": 19
+        },
+        {
+          "code": "JOB",
+          "chapter": 20
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "reading": "Job 21-23",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 21
+        },
+        {
+          "code": "JOB",
+          "chapter": 22
+        },
+        {
+          "code": "JOB",
+          "chapter": 23
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "reading": "Job 24-28",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 24
+        },
+        {
+          "code": "JOB",
+          "chapter": 25
+        },
+        {
+          "code": "JOB",
+          "chapter": 26
+        },
+        {
+          "code": "JOB",
+          "chapter": 27
+        },
+        {
+          "code": "JOB",
+          "chapter": 28
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "reading": "Job 29-31",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 29
+        },
+        {
+          "code": "JOB",
+          "chapter": 30
+        },
+        {
+          "code": "JOB",
+          "chapter": 31
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "reading": "Job 32-34",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 32
+        },
+        {
+          "code": "JOB",
+          "chapter": 33
+        },
+        {
+          "code": "JOB",
+          "chapter": 34
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "reading": "Job 35-37",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 35
+        },
+        {
+          "code": "JOB",
+          "chapter": 36
+        },
+        {
+          "code": "JOB",
+          "chapter": 37
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "reading": "Job 38-39",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 38
+        },
+        {
+          "code": "JOB",
+          "chapter": 39
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "reading": "Job 40-42",
+      "chapters": [
+        {
+          "code": "JOB",
+          "chapter": 40
+        },
+        {
+          "code": "JOB",
+          "chapter": 41
+        },
+        {
+          "code": "JOB",
+          "chapter": 42
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "reading": "Genesis 12-15",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 12
+        },
+        {
+          "code": "GEN",
+          "chapter": 13
+        },
+        {
+          "code": "GEN",
+          "chapter": 14
+        },
+        {
+          "code": "GEN",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "reading": "Genesis 16-18",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 16
+        },
+        {
+          "code": "GEN",
+          "chapter": 17
+        },
+        {
+          "code": "GEN",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "reading": "Genesis 19-21",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 19
+        },
+        {
+          "code": "GEN",
+          "chapter": 20
+        },
+        {
+          "code": "GEN",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "reading": "Genesis 22-24",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 22
+        },
+        {
+          "code": "GEN",
+          "chapter": 23
+        },
+        {
+          "code": "GEN",
+          "chapter": 24
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "reading": "Genesis 25-26",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 25
+        },
+        {
+          "code": "GEN",
+          "chapter": 26
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "reading": "Genesis 27-29",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 27
+        },
+        {
+          "code": "GEN",
+          "chapter": 28
+        },
+        {
+          "code": "GEN",
+          "chapter": 29
+        }
+      ]
+    },
+    {
+      "day": 22,
+      "reading": "Genesis 30-31",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 30
+        },
+        {
+          "code": "GEN",
+          "chapter": 31
+        }
+      ]
+    },
+    {
+      "day": 23,
+      "reading": "Genesis 32-34",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 32
+        },
+        {
+          "code": "GEN",
+          "chapter": 33
+        },
+        {
+          "code": "GEN",
+          "chapter": 34
+        }
+      ]
+    },
+    {
+      "day": 24,
+      "reading": "Genesis 35-37",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 35
+        },
+        {
+          "code": "GEN",
+          "chapter": 36
+        },
+        {
+          "code": "GEN",
+          "chapter": 37
+        }
+      ]
+    },
+    {
+      "day": 25,
+      "reading": "Genesis 38-40",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 38
+        },
+        {
+          "code": "GEN",
+          "chapter": 39
+        },
+        {
+          "code": "GEN",
+          "chapter": 40
+        }
+      ]
+    },
+    {
+      "day": 26,
+      "reading": "Genesis 41-42",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 41
+        },
+        {
+          "code": "GEN",
+          "chapter": 42
+        }
+      ]
+    },
+    {
+      "day": 27,
+      "reading": "Genesis 43-45",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 43
+        },
+        {
+          "code": "GEN",
+          "chapter": 44
+        },
+        {
+          "code": "GEN",
+          "chapter": 45
+        }
+      ]
+    },
+    {
+      "day": 28,
+      "reading": "Genesis 46-47",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 46
+        },
+        {
+          "code": "GEN",
+          "chapter": 47
+        }
+      ]
+    },
+    {
+      "day": 29,
+      "reading": "Genesis 48-50",
+      "chapters": [
+        {
+          "code": "GEN",
+          "chapter": 48
+        },
+        {
+          "code": "GEN",
+          "chapter": 49
+        },
+        {
+          "code": "GEN",
+          "chapter": 50
+        }
+      ]
+    },
+    {
+      "day": 30,
+      "reading": "Exodus 1-3",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 1
+        },
+        {
+          "code": "EXO",
+          "chapter": 2
+        },
+        {
+          "code": "EXO",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 31,
+      "reading": "Exodus 4-6",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 4
+        },
+        {
+          "code": "EXO",
+          "chapter": 5
+        },
+        {
+          "code": "EXO",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 32,
+      "reading": "Exodus 7-9",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 7
+        },
+        {
+          "code": "EXO",
+          "chapter": 8
+        },
+        {
+          "code": "EXO",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 33,
+      "reading": "Exodus 10-12",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 10
+        },
+        {
+          "code": "EXO",
+          "chapter": 11
+        },
+        {
+          "code": "EXO",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 34,
+      "reading": "Exodus 13-15",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 13
+        },
+        {
+          "code": "EXO",
+          "chapter": 14
+        },
+        {
+          "code": "EXO",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 35,
+      "reading": "Exodus 16-18",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 16
+        },
+        {
+          "code": "EXO",
+          "chapter": 17
+        },
+        {
+          "code": "EXO",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 36,
+      "reading": "Exodus 19-21",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 19
+        },
+        {
+          "code": "EXO",
+          "chapter": 20
+        },
+        {
+          "code": "EXO",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 37,
+      "reading": "Exodus 22-24",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 22
+        },
+        {
+          "code": "EXO",
+          "chapter": 23
+        },
+        {
+          "code": "EXO",
+          "chapter": 24
+        }
+      ]
+    },
+    {
+      "day": 38,
+      "reading": "Exodus 25-27",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 25
+        },
+        {
+          "code": "EXO",
+          "chapter": 26
+        },
+        {
+          "code": "EXO",
+          "chapter": 27
+        }
+      ]
+    },
+    {
+      "day": 39,
+      "reading": "Exodus 28-29",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 28
+        },
+        {
+          "code": "EXO",
+          "chapter": 29
+        }
+      ]
+    },
+    {
+      "day": 40,
+      "reading": "Exodus 30-32",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 30
+        },
+        {
+          "code": "EXO",
+          "chapter": 31
+        },
+        {
+          "code": "EXO",
+          "chapter": 32
+        }
+      ]
+    },
+    {
+      "day": 41,
+      "reading": "Exodus 33-35",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 33
+        },
+        {
+          "code": "EXO",
+          "chapter": 34
+        },
+        {
+          "code": "EXO",
+          "chapter": 35
+        }
+      ]
+    },
+    {
+      "day": 42,
+      "reading": "Exodus 36-38",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 36
+        },
+        {
+          "code": "EXO",
+          "chapter": 37
+        },
+        {
+          "code": "EXO",
+          "chapter": 38
+        }
+      ]
+    },
+    {
+      "day": 43,
+      "reading": "Exodus 39-40",
+      "chapters": [
+        {
+          "code": "EXO",
+          "chapter": 39
+        },
+        {
+          "code": "EXO",
+          "chapter": 40
+        }
+      ]
+    },
+    {
+      "day": 44,
+      "reading": "Leviticus 1-4",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 1
+        },
+        {
+          "code": "LEV",
+          "chapter": 2
+        },
+        {
+          "code": "LEV",
+          "chapter": 3
+        },
+        {
+          "code": "LEV",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 45,
+      "reading": "Leviticus 5-7",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 5
+        },
+        {
+          "code": "LEV",
+          "chapter": 6
+        },
+        {
+          "code": "LEV",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 46,
+      "reading": "Leviticus 8-10",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 8
+        },
+        {
+          "code": "LEV",
+          "chapter": 9
+        },
+        {
+          "code": "LEV",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 47,
+      "reading": "Leviticus 11-13",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 11
+        },
+        {
+          "code": "LEV",
+          "chapter": 12
+        },
+        {
+          "code": "LEV",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 48,
+      "reading": "Leviticus 14-15",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 14
+        },
+        {
+          "code": "LEV",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 49,
+      "reading": "Leviticus 16-18",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 16
+        },
+        {
+          "code": "LEV",
+          "chapter": 17
+        },
+        {
+          "code": "LEV",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 50,
+      "reading": "Leviticus 19-21",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 19
+        },
+        {
+          "code": "LEV",
+          "chapter": 20
+        },
+        {
+          "code": "LEV",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 51,
+      "reading": "Leviticus 22-23",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 22
+        },
+        {
+          "code": "LEV",
+          "chapter": 23
+        }
+      ]
+    },
+    {
+      "day": 52,
+      "reading": "Leviticus 24-25",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 24
+        },
+        {
+          "code": "LEV",
+          "chapter": 25
+        }
+      ]
+    },
+    {
+      "day": 53,
+      "reading": "Leviticus 26-27",
+      "chapters": [
+        {
+          "code": "LEV",
+          "chapter": 26
+        },
+        {
+          "code": "LEV",
+          "chapter": 27
+        }
+      ]
+    },
+    {
+      "day": 54,
+      "reading": "Numbers 1-2",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 1
+        },
+        {
+          "code": "NUM",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 55,
+      "reading": "Numbers 3-4",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 3
+        },
+        {
+          "code": "NUM",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 56,
+      "reading": "Numbers 5-6",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 5
+        },
+        {
+          "code": "NUM",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 57,
+      "reading": "Numbers 7",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 58,
+      "reading": "Numbers 8-10",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 8
+        },
+        {
+          "code": "NUM",
+          "chapter": 9
+        },
+        {
+          "code": "NUM",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 59,
+      "reading": "Numbers 11-13",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 11
+        },
+        {
+          "code": "NUM",
+          "chapter": 12
+        },
+        {
+          "code": "NUM",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 60,
+      "reading": "Numbers 14-15",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 14
+        },
+        {
+          "code": "NUM",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 61,
+      "reading": "Numbers 16-17",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 16
+        },
+        {
+          "code": "NUM",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 62,
+      "reading": "Numbers 18-20",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 18
+        },
+        {
+          "code": "NUM",
+          "chapter": 19
+        },
+        {
+          "code": "NUM",
+          "chapter": 20
+        }
+      ]
+    },
+    {
+      "day": 63,
+      "reading": "Numbers 21-22",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 21
+        },
+        {
+          "code": "NUM",
+          "chapter": 22
+        }
+      ]
+    },
+    {
+      "day": 64,
+      "reading": "Numbers 23-25",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 23
+        },
+        {
+          "code": "NUM",
+          "chapter": 24
+        },
+        {
+          "code": "NUM",
+          "chapter": 25
+        }
+      ]
+    },
+    {
+      "day": 65,
+      "reading": "Numbers 26-27",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 26
+        },
+        {
+          "code": "NUM",
+          "chapter": 27
+        }
+      ]
+    },
+    {
+      "day": 66,
+      "reading": "Numbers 28-30",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 28
+        },
+        {
+          "code": "NUM",
+          "chapter": 29
+        },
+        {
+          "code": "NUM",
+          "chapter": 30
+        }
+      ]
+    },
+    {
+      "day": 67,
+      "reading": "Numbers 31-32",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 31
+        },
+        {
+          "code": "NUM",
+          "chapter": 32
+        }
+      ]
+    },
+    {
+      "day": 68,
+      "reading": "Numbers 33-34",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 33
+        },
+        {
+          "code": "NUM",
+          "chapter": 34
+        }
+      ]
+    },
+    {
+      "day": 69,
+      "reading": "Numbers 35-36",
+      "chapters": [
+        {
+          "code": "NUM",
+          "chapter": 35
+        },
+        {
+          "code": "NUM",
+          "chapter": 36
+        }
+      ]
+    },
+    {
+      "day": 70,
+      "reading": "Deuteronomy 1-2",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 1
+        },
+        {
+          "code": "DEU",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 71,
+      "reading": "Deuteronomy 3-4",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 3
+        },
+        {
+          "code": "DEU",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 72,
+      "reading": "Deuteronomy 5-7",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 5
+        },
+        {
+          "code": "DEU",
+          "chapter": 6
+        },
+        {
+          "code": "DEU",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 73,
+      "reading": "Deuteronomy 8-10",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 8
+        },
+        {
+          "code": "DEU",
+          "chapter": 9
+        },
+        {
+          "code": "DEU",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 74,
+      "reading": "Deuteronomy 11-13",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 11
+        },
+        {
+          "code": "DEU",
+          "chapter": 12
+        },
+        {
+          "code": "DEU",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 75,
+      "reading": "Deuteronomy 14-16",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 14
+        },
+        {
+          "code": "DEU",
+          "chapter": 15
+        },
+        {
+          "code": "DEU",
+          "chapter": 16
+        }
+      ]
+    },
+    {
+      "day": 76,
+      "reading": "Deuteronomy 17-20",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 17
+        },
+        {
+          "code": "DEU",
+          "chapter": 18
+        },
+        {
+          "code": "DEU",
+          "chapter": 19
+        },
+        {
+          "code": "DEU",
+          "chapter": 20
+        }
+      ]
+    },
+    {
+      "day": 77,
+      "reading": "Deuteronomy 21-23",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 21
+        },
+        {
+          "code": "DEU",
+          "chapter": 22
+        },
+        {
+          "code": "DEU",
+          "chapter": 23
+        }
+      ]
+    },
+    {
+      "day": 78,
+      "reading": "Deuteronomy 24-27",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 24
+        },
+        {
+          "code": "DEU",
+          "chapter": 25
+        },
+        {
+          "code": "DEU",
+          "chapter": 26
+        },
+        {
+          "code": "DEU",
+          "chapter": 27
+        }
+      ]
+    },
+    {
+      "day": 79,
+      "reading": "Deuteronomy 28-29",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 28
+        },
+        {
+          "code": "DEU",
+          "chapter": 29
+        }
+      ]
+    },
+    {
+      "day": 80,
+      "reading": "Deuteronomy 30-31",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 30
+        },
+        {
+          "code": "DEU",
+          "chapter": 31
+        }
+      ]
+    },
+    {
+      "day": 81,
+      "reading": "Deuteronomy 32-34; Psalm 90",
+      "chapters": [
+        {
+          "code": "DEU",
+          "chapter": 32
+        },
+        {
+          "code": "DEU",
+          "chapter": 33
+        },
+        {
+          "code": "DEU",
+          "chapter": 34
+        },
+        {
+          "code": "PSA",
+          "chapter": 90
+        }
+      ]
+    },
+    {
+      "day": 82,
+      "reading": "Joshua 1-4",
+      "chapters": [
+        {
+          "code": "JOS",
+          "chapter": 1
+        },
+        {
+          "code": "JOS",
+          "chapter": 2
+        },
+        {
+          "code": "JOS",
+          "chapter": 3
+        },
+        {
+          "code": "JOS",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 83,
+      "reading": "Joshua 5-8",
+      "chapters": [
+        {
+          "code": "JOS",
+          "chapter": 5
+        },
+        {
+          "code": "JOS",
+          "chapter": 6
+        },
+        {
+          "code": "JOS",
+          "chapter": 7
+        },
+        {
+          "code": "JOS",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 84,
+      "reading": "Joshua 9-11",
+      "chapters": [
+        {
+          "code": "JOS",
+          "chapter": 9
+        },
+        {
+          "code": "JOS",
+          "chapter": 10
+        },
+        {
+          "code": "JOS",
+          "chapter": 11
+        }
+      ]
+    },
+    {
+      "day": 85,
+      "reading": "Joshua 12-15",
+      "chapters": [
+        {
+          "code": "JOS",
+          "chapter": 12
+        },
+        {
+          "code": "JOS",
+          "chapter": 13
+        },
+        {
+          "code": "JOS",
+          "chapter": 14
+        },
+        {
+          "code": "JOS",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 86,
+      "reading": "Joshua 16-18",
+      "chapters": [
+        {
+          "code": "JOS",
+          "chapter": 16
+        },
+        {
+          "code": "JOS",
+          "chapter": 17
+        },
+        {
+          "code": "JOS",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 87,
+      "reading": "Joshua 19-21",
+      "chapters": [
+        {
+          "code": "JOS",
+          "chapter": 19
+        },
+        {
+          "code": "JOS",
+          "chapter": 20
+        },
+        {
+          "code": "JOS",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 88,
+      "reading": "Joshua 22-24",
+      "chapters": [
+        {
+          "code": "JOS",
+          "chapter": 22
+        },
+        {
+          "code": "JOS",
+          "chapter": 23
+        },
+        {
+          "code": "JOS",
+          "chapter": 24
+        }
+      ]
+    },
+    {
+      "day": 89,
+      "reading": "Judges 1-2",
+      "chapters": [
+        {
+          "code": "JDG",
+          "chapter": 1
+        },
+        {
+          "code": "JDG",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 90,
+      "reading": "Judges 3-5",
+      "chapters": [
+        {
+          "code": "JDG",
+          "chapter": 3
+        },
+        {
+          "code": "JDG",
+          "chapter": 4
+        },
+        {
+          "code": "JDG",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 91,
+      "reading": "Judges 6-7",
+      "chapters": [
+        {
+          "code": "JDG",
+          "chapter": 6
+        },
+        {
+          "code": "JDG",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 92,
+      "reading": "Judges 8-9",
+      "chapters": [
+        {
+          "code": "JDG",
+          "chapter": 8
+        },
+        {
+          "code": "JDG",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 93,
+      "reading": "Judges 10-12",
+      "chapters": [
+        {
+          "code": "JDG",
+          "chapter": 10
+        },
+        {
+          "code": "JDG",
+          "chapter": 11
+        },
+        {
+          "code": "JDG",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 94,
+      "reading": "Judges 13-15",
+      "chapters": [
+        {
+          "code": "JDG",
+          "chapter": 13
+        },
+        {
+          "code": "JDG",
+          "chapter": 14
+        },
+        {
+          "code": "JDG",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 95,
+      "reading": "Judges 16-18",
+      "chapters": [
+        {
+          "code": "JDG",
+          "chapter": 16
+        },
+        {
+          "code": "JDG",
+          "chapter": 17
+        },
+        {
+          "code": "JDG",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 96,
+      "reading": "Judges 19-21",
+      "chapters": [
+        {
+          "code": "JDG",
+          "chapter": 19
+        },
+        {
+          "code": "JDG",
+          "chapter": 20
+        },
+        {
+          "code": "JDG",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 97,
+      "reading": "Ruth",
+      "chapters": [
+        {
+          "code": "RUT",
+          "chapter": 1
+        },
+        {
+          "code": "RUT",
+          "chapter": 2
+        },
+        {
+          "code": "RUT",
+          "chapter": 3
+        },
+        {
+          "code": "RUT",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 98,
+      "reading": "1 Samuel 1-3",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 1
+        },
+        {
+          "code": "1SA",
+          "chapter": 2
+        },
+        {
+          "code": "1SA",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 99,
+      "reading": "1 Samuel 4-8",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 4
+        },
+        {
+          "code": "1SA",
+          "chapter": 5
+        },
+        {
+          "code": "1SA",
+          "chapter": 6
+        },
+        {
+          "code": "1SA",
+          "chapter": 7
+        },
+        {
+          "code": "1SA",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 100,
+      "reading": "1 Samuel 9-12",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 9
+        },
+        {
+          "code": "1SA",
+          "chapter": 10
+        },
+        {
+          "code": "1SA",
+          "chapter": 11
+        },
+        {
+          "code": "1SA",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 101,
+      "reading": "1 Samuel 13-14",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 13
+        },
+        {
+          "code": "1SA",
+          "chapter": 14
+        }
+      ]
+    },
+    {
+      "day": 102,
+      "reading": "1 Samuel 15-17",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 15
+        },
+        {
+          "code": "1SA",
+          "chapter": 16
+        },
+        {
+          "code": "1SA",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 103,
+      "reading": "1 Samuel 18-20; Psalms 11, 59",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 18
+        },
+        {
+          "code": "1SA",
+          "chapter": 19
+        },
+        {
+          "code": "1SA",
+          "chapter": 20
+        },
+        {
+          "code": "PSA",
+          "chapter": 11
+        },
+        {
+          "code": "PSA",
+          "chapter": 59
+        }
+      ]
+    },
+    {
+      "day": 104,
+      "reading": "1 Samuel 21-24; Psalm 91",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 21
+        },
+        {
+          "code": "1SA",
+          "chapter": 22
+        },
+        {
+          "code": "1SA",
+          "chapter": 23
+        },
+        {
+          "code": "1SA",
+          "chapter": 24
+        },
+        {
+          "code": "PSA",
+          "chapter": 91
+        }
+      ]
+    },
+    {
+      "day": 105,
+      "reading": "Psalms 7, 27, 31, 34, 52",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 7
+        },
+        {
+          "code": "PSA",
+          "chapter": 27
+        },
+        {
+          "code": "PSA",
+          "chapter": 31
+        },
+        {
+          "code": "PSA",
+          "chapter": 34
+        },
+        {
+          "code": "PSA",
+          "chapter": 52
+        }
+      ]
+    },
+    {
+      "day": 106,
+      "reading": "Psalms 56, 120, 140-142",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 56
+        },
+        {
+          "code": "PSA",
+          "chapter": 120
+        },
+        {
+          "code": "PSA",
+          "chapter": 140
+        },
+        {
+          "code": "PSA",
+          "chapter": 141
+        },
+        {
+          "code": "PSA",
+          "chapter": 142
+        }
+      ]
+    },
+    {
+      "day": 107,
+      "reading": "1 Samuel 25-27",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 25
+        },
+        {
+          "code": "1SA",
+          "chapter": 26
+        },
+        {
+          "code": "1SA",
+          "chapter": 27
+        }
+      ]
+    },
+    {
+      "day": 108,
+      "reading": "Psalms 17, 35, 54, 63",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 17
+        },
+        {
+          "code": "PSA",
+          "chapter": 35
+        },
+        {
+          "code": "PSA",
+          "chapter": 54
+        },
+        {
+          "code": "PSA",
+          "chapter": 63
+        }
+      ]
+    },
+    {
+      "day": 109,
+      "reading": "1 Samuel 28-31; Psalm 18",
+      "chapters": [
+        {
+          "code": "1SA",
+          "chapter": 28
+        },
+        {
+          "code": "1SA",
+          "chapter": 29
+        },
+        {
+          "code": "1SA",
+          "chapter": 30
+        },
+        {
+          "code": "1SA",
+          "chapter": 31
+        },
+        {
+          "code": "PSA",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 110,
+      "reading": "Psalms 121, 123-125, 128-130",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 121
+        },
+        {
+          "code": "PSA",
+          "chapter": 123
+        },
+        {
+          "code": "PSA",
+          "chapter": 124
+        },
+        {
+          "code": "PSA",
+          "chapter": 125
+        },
+        {
+          "code": "PSA",
+          "chapter": 128
+        },
+        {
+          "code": "PSA",
+          "chapter": 129
+        },
+        {
+          "code": "PSA",
+          "chapter": 130
+        }
+      ]
+    },
+    {
+      "day": 111,
+      "reading": "2 Samuel 1-4",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 1
+        },
+        {
+          "code": "2SA",
+          "chapter": 2
+        },
+        {
+          "code": "2SA",
+          "chapter": 3
+        },
+        {
+          "code": "2SA",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 112,
+      "reading": "Psalms 6, 8-10, 14, 16, 19, 21",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 6
+        },
+        {
+          "code": "PSA",
+          "chapter": 8
+        },
+        {
+          "code": "PSA",
+          "chapter": 9
+        },
+        {
+          "code": "PSA",
+          "chapter": 10
+        },
+        {
+          "code": "PSA",
+          "chapter": 14
+        },
+        {
+          "code": "PSA",
+          "chapter": 16
+        },
+        {
+          "code": "PSA",
+          "chapter": 19
+        },
+        {
+          "code": "PSA",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 113,
+      "reading": "1 Chronicles 1-2",
+      "chapters": [
+        {
+          "code": "1CH",
+          "chapter": 1
+        },
+        {
+          "code": "1CH",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 114,
+      "reading": "Psalms 43-45, 49, 84-85, 87",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 43
+        },
+        {
+          "code": "PSA",
+          "chapter": 44
+        },
+        {
+          "code": "PSA",
+          "chapter": 45
+        },
+        {
+          "code": "PSA",
+          "chapter": 49
+        },
+        {
+          "code": "PSA",
+          "chapter": 84
+        },
+        {
+          "code": "PSA",
+          "chapter": 85
+        },
+        {
+          "code": "PSA",
+          "chapter": 87
+        }
+      ]
+    },
+    {
+      "day": 115,
+      "reading": "1 Chronicles 3-5",
+      "chapters": [
+        {
+          "code": "1CH",
+          "chapter": 3
+        },
+        {
+          "code": "1CH",
+          "chapter": 4
+        },
+        {
+          "code": "1CH",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 116,
+      "reading": "Psalms 73, 77-78",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 73
+        },
+        {
+          "code": "PSA",
+          "chapter": 77
+        },
+        {
+          "code": "PSA",
+          "chapter": 78
+        }
+      ]
+    },
+    {
+      "day": 117,
+      "reading": "1 Chronicles 6",
+      "chapters": [
+        {
+          "code": "1CH",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 118,
+      "reading": "Psalms 81, 88, 92-93",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 81
+        },
+        {
+          "code": "PSA",
+          "chapter": 88
+        },
+        {
+          "code": "PSA",
+          "chapter": 92
+        },
+        {
+          "code": "PSA",
+          "chapter": 93
+        }
+      ]
+    },
+    {
+      "day": 119,
+      "reading": "1 Chronicles 7-10",
+      "chapters": [
+        {
+          "code": "1CH",
+          "chapter": 7
+        },
+        {
+          "code": "1CH",
+          "chapter": 8
+        },
+        {
+          "code": "1CH",
+          "chapter": 9
+        },
+        {
+          "code": "1CH",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 120,
+      "reading": "Psalms 102-104",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 102
+        },
+        {
+          "code": "PSA",
+          "chapter": 103
+        },
+        {
+          "code": "PSA",
+          "chapter": 104
+        }
+      ]
+    },
+    {
+      "day": 121,
+      "reading": "2 Samuel 5; 1 Chronicles 11-12",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 5
+        },
+        {
+          "code": "1CH",
+          "chapter": 11
+        },
+        {
+          "code": "1CH",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 122,
+      "reading": "Psalm 133",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 133
+        }
+      ]
+    },
+    {
+      "day": 123,
+      "reading": "Psalms 106-107",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 106
+        },
+        {
+          "code": "PSA",
+          "chapter": 107
+        }
+      ]
+    },
+    {
+      "day": 124,
+      "reading": "1 Chronicles 13-16",
+      "chapters": [
+        {
+          "code": "1CH",
+          "chapter": 13
+        },
+        {
+          "code": "1CH",
+          "chapter": 14
+        },
+        {
+          "code": "1CH",
+          "chapter": 15
+        },
+        {
+          "code": "1CH",
+          "chapter": 16
+        }
+      ]
+    },
+    {
+      "day": 125,
+      "reading": "Psalms 1-2, 15, 22-24, 47, 68",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 1
+        },
+        {
+          "code": "PSA",
+          "chapter": 2
+        },
+        {
+          "code": "PSA",
+          "chapter": 15
+        },
+        {
+          "code": "PSA",
+          "chapter": 22
+        },
+        {
+          "code": "PSA",
+          "chapter": 23
+        },
+        {
+          "code": "PSA",
+          "chapter": 24
+        },
+        {
+          "code": "PSA",
+          "chapter": 47
+        },
+        {
+          "code": "PSA",
+          "chapter": 68
+        }
+      ]
+    },
+    {
+      "day": 126,
+      "reading": "Psalms 89, 96, 100-101, 105, 132",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 89
+        },
+        {
+          "code": "PSA",
+          "chapter": 96
+        },
+        {
+          "code": "PSA",
+          "chapter": 100
+        },
+        {
+          "code": "PSA",
+          "chapter": 101
+        },
+        {
+          "code": "PSA",
+          "chapter": 105
+        },
+        {
+          "code": "PSA",
+          "chapter": 132
+        }
+      ]
+    },
+    {
+      "day": 127,
+      "reading": "2 Samuel 6-7; 1 Chronicles 17",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 6
+        },
+        {
+          "code": "2SA",
+          "chapter": 7
+        },
+        {
+          "code": "1CH",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 128,
+      "reading": "Psalms 25, 29, 33, 36, 39",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 25
+        },
+        {
+          "code": "PSA",
+          "chapter": 29
+        },
+        {
+          "code": "PSA",
+          "chapter": 33
+        },
+        {
+          "code": "PSA",
+          "chapter": 36
+        },
+        {
+          "code": "PSA",
+          "chapter": 39
+        }
+      ]
+    },
+    {
+      "day": 129,
+      "reading": "2 Samuel 8-9; 1 Chronicles 18",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 8
+        },
+        {
+          "code": "2SA",
+          "chapter": 9
+        },
+        {
+          "code": "1CH",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 130,
+      "reading": "Psalms 50, 53, 60, 75",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 50
+        },
+        {
+          "code": "PSA",
+          "chapter": 53
+        },
+        {
+          "code": "PSA",
+          "chapter": 60
+        },
+        {
+          "code": "PSA",
+          "chapter": 75
+        }
+      ]
+    },
+    {
+      "day": 131,
+      "reading": "2 Samuel 10; 1 Chronicles 19; Psalm 20",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 10
+        },
+        {
+          "code": "1CH",
+          "chapter": 19
+        },
+        {
+          "code": "PSA",
+          "chapter": 20
+        }
+      ]
+    },
+    {
+      "day": 132,
+      "reading": "Psalms 65-67, 69-70",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 65
+        },
+        {
+          "code": "PSA",
+          "chapter": 66
+        },
+        {
+          "code": "PSA",
+          "chapter": 67
+        },
+        {
+          "code": "PSA",
+          "chapter": 69
+        },
+        {
+          "code": "PSA",
+          "chapter": 70
+        }
+      ]
+    },
+    {
+      "day": 133,
+      "reading": "2 Samuel 11-12; 1 Chronicles 20",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 11
+        },
+        {
+          "code": "2SA",
+          "chapter": 12
+        },
+        {
+          "code": "1CH",
+          "chapter": 20
+        }
+      ]
+    },
+    {
+      "day": 134,
+      "reading": "Psalms 32, 51, 86, 122",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 32
+        },
+        {
+          "code": "PSA",
+          "chapter": 51
+        },
+        {
+          "code": "PSA",
+          "chapter": 86
+        },
+        {
+          "code": "PSA",
+          "chapter": 122
+        }
+      ]
+    },
+    {
+      "day": 135,
+      "reading": "2 Samuel 13-15",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 13
+        },
+        {
+          "code": "2SA",
+          "chapter": 14
+        },
+        {
+          "code": "2SA",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 136,
+      "reading": "Psalms 3-4, 12-13, 28, 55",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 3
+        },
+        {
+          "code": "PSA",
+          "chapter": 4
+        },
+        {
+          "code": "PSA",
+          "chapter": 12
+        },
+        {
+          "code": "PSA",
+          "chapter": 13
+        },
+        {
+          "code": "PSA",
+          "chapter": 28
+        },
+        {
+          "code": "PSA",
+          "chapter": 55
+        }
+      ]
+    },
+    {
+      "day": 137,
+      "reading": "2 Samuel 16-18",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 16
+        },
+        {
+          "code": "2SA",
+          "chapter": 17
+        },
+        {
+          "code": "2SA",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 138,
+      "reading": "Psalms 26, 40, 58, 61-62, 64",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 26
+        },
+        {
+          "code": "PSA",
+          "chapter": 40
+        },
+        {
+          "code": "PSA",
+          "chapter": 58
+        },
+        {
+          "code": "PSA",
+          "chapter": 61
+        },
+        {
+          "code": "PSA",
+          "chapter": 62
+        },
+        {
+          "code": "PSA",
+          "chapter": 64
+        }
+      ]
+    },
+    {
+      "day": 139,
+      "reading": "2 Samuel 19-21",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 19
+        },
+        {
+          "code": "2SA",
+          "chapter": 20
+        },
+        {
+          "code": "2SA",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 140,
+      "reading": "Psalms 5, 38, 41-42",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 5
+        },
+        {
+          "code": "PSA",
+          "chapter": 38
+        },
+        {
+          "code": "PSA",
+          "chapter": 41
+        },
+        {
+          "code": "PSA",
+          "chapter": 42
+        }
+      ]
+    },
+    {
+      "day": 141,
+      "reading": "2 Samuel 22-23; Psalm 57",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 22
+        },
+        {
+          "code": "2SA",
+          "chapter": 23
+        },
+        {
+          "code": "PSA",
+          "chapter": 57
+        }
+      ]
+    },
+    {
+      "day": 142,
+      "reading": "Psalms 95, 97-99",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 95
+        },
+        {
+          "code": "PSA",
+          "chapter": 97
+        },
+        {
+          "code": "PSA",
+          "chapter": 98
+        },
+        {
+          "code": "PSA",
+          "chapter": 99
+        }
+      ]
+    },
+    {
+      "day": 143,
+      "reading": "2 Samuel 24; 1 Chronicles 21-22; Psalm 30",
+      "chapters": [
+        {
+          "code": "2SA",
+          "chapter": 24
+        },
+        {
+          "code": "1CH",
+          "chapter": 21
+        },
+        {
+          "code": "1CH",
+          "chapter": 22
+        },
+        {
+          "code": "PSA",
+          "chapter": 30
+        }
+      ]
+    },
+    {
+      "day": 144,
+      "reading": "Psalms 108-110",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 108
+        },
+        {
+          "code": "PSA",
+          "chapter": 109
+        },
+        {
+          "code": "PSA",
+          "chapter": 110
+        }
+      ]
+    },
+    {
+      "day": 145,
+      "reading": "1 Chronicles 23-25",
+      "chapters": [
+        {
+          "code": "1CH",
+          "chapter": 23
+        },
+        {
+          "code": "1CH",
+          "chapter": 24
+        },
+        {
+          "code": "1CH",
+          "chapter": 25
+        }
+      ]
+    },
+    {
+      "day": 146,
+      "reading": "Psalms 131, 138-139, 143-145",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 131
+        },
+        {
+          "code": "PSA",
+          "chapter": 138
+        },
+        {
+          "code": "PSA",
+          "chapter": 139
+        },
+        {
+          "code": "PSA",
+          "chapter": 143
+        },
+        {
+          "code": "PSA",
+          "chapter": 144
+        },
+        {
+          "code": "PSA",
+          "chapter": 145
+        }
+      ]
+    },
+    {
+      "day": 147,
+      "reading": "1 Chronicles 26-29; Psalm 127",
+      "chapters": [
+        {
+          "code": "1CH",
+          "chapter": 26
+        },
+        {
+          "code": "1CH",
+          "chapter": 27
+        },
+        {
+          "code": "1CH",
+          "chapter": 28
+        },
+        {
+          "code": "1CH",
+          "chapter": 29
+        },
+        {
+          "code": "PSA",
+          "chapter": 127
+        }
+      ]
+    },
+    {
+      "day": 148,
+      "reading": "Psalms 111-118",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 111
+        },
+        {
+          "code": "PSA",
+          "chapter": 112
+        },
+        {
+          "code": "PSA",
+          "chapter": 113
+        },
+        {
+          "code": "PSA",
+          "chapter": 114
+        },
+        {
+          "code": "PSA",
+          "chapter": 115
+        },
+        {
+          "code": "PSA",
+          "chapter": 116
+        },
+        {
+          "code": "PSA",
+          "chapter": 117
+        },
+        {
+          "code": "PSA",
+          "chapter": 118
+        }
+      ]
+    },
+    {
+      "day": 149,
+      "reading": "1 Kings 1-2; Psalms 37, 71, 94",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 1
+        },
+        {
+          "code": "1KI",
+          "chapter": 2
+        },
+        {
+          "code": "PSA",
+          "chapter": 37
+        },
+        {
+          "code": "PSA",
+          "chapter": 71
+        },
+        {
+          "code": "PSA",
+          "chapter": 94
+        }
+      ]
+    },
+    {
+      "day": 150,
+      "reading": "Psalm 119",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 119
+        }
+      ]
+    },
+    {
+      "day": 151,
+      "reading": "1 Kings 3-4",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 3
+        },
+        {
+          "code": "1KI",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 152,
+      "reading": "2 Chronicles 1; Psalm 72",
+      "chapters": [
+        {
+          "code": "2CH",
+          "chapter": 1
+        },
+        {
+          "code": "PSA",
+          "chapter": 72
+        }
+      ]
+    },
+    {
+      "day": 153,
+      "reading": "Song of Solomon",
+      "chapters": [
+        {
+          "code": "SNG",
+          "chapter": 1
+        },
+        {
+          "code": "SNG",
+          "chapter": 2
+        },
+        {
+          "code": "SNG",
+          "chapter": 3
+        },
+        {
+          "code": "SNG",
+          "chapter": 4
+        },
+        {
+          "code": "SNG",
+          "chapter": 5
+        },
+        {
+          "code": "SNG",
+          "chapter": 6
+        },
+        {
+          "code": "SNG",
+          "chapter": 7
+        },
+        {
+          "code": "SNG",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 154,
+      "reading": "Proverbs 1-3",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 1
+        },
+        {
+          "code": "PRO",
+          "chapter": 2
+        },
+        {
+          "code": "PRO",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 155,
+      "reading": "Proverbs 4-6",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 4
+        },
+        {
+          "code": "PRO",
+          "chapter": 5
+        },
+        {
+          "code": "PRO",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 156,
+      "reading": "Proverbs 7-9",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 7
+        },
+        {
+          "code": "PRO",
+          "chapter": 8
+        },
+        {
+          "code": "PRO",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 157,
+      "reading": "Proverbs 10-12",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 10
+        },
+        {
+          "code": "PRO",
+          "chapter": 11
+        },
+        {
+          "code": "PRO",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 158,
+      "reading": "Proverbs 13-15",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 13
+        },
+        {
+          "code": "PRO",
+          "chapter": 14
+        },
+        {
+          "code": "PRO",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 159,
+      "reading": "Proverbs 16-18",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 16
+        },
+        {
+          "code": "PRO",
+          "chapter": 17
+        },
+        {
+          "code": "PRO",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 160,
+      "reading": "Proverbs 19-21",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 19
+        },
+        {
+          "code": "PRO",
+          "chapter": 20
+        },
+        {
+          "code": "PRO",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 161,
+      "reading": "Proverbs 22-24",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 22
+        },
+        {
+          "code": "PRO",
+          "chapter": 23
+        },
+        {
+          "code": "PRO",
+          "chapter": 24
+        }
+      ]
+    },
+    {
+      "day": 162,
+      "reading": "1 Kings 5-6; 2 Chronicles 2-3",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 5
+        },
+        {
+          "code": "1KI",
+          "chapter": 6
+        },
+        {
+          "code": "2CH",
+          "chapter": 2
+        },
+        {
+          "code": "2CH",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 163,
+      "reading": "1 Kings 7; 2 Chronicles 4",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 7
+        },
+        {
+          "code": "2CH",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 164,
+      "reading": "1 Kings 8; 2 Chronicles 5",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 8
+        },
+        {
+          "code": "2CH",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 165,
+      "reading": "2 Chronicles 6-7; Psalm 136",
+      "chapters": [
+        {
+          "code": "2CH",
+          "chapter": 6
+        },
+        {
+          "code": "2CH",
+          "chapter": 7
+        },
+        {
+          "code": "PSA",
+          "chapter": 136
+        }
+      ]
+    },
+    {
+      "day": 166,
+      "reading": "Psalms 134, 146-150",
+      "chapters": [
+        {
+          "code": "PSA",
+          "chapter": 134
+        },
+        {
+          "code": "PSA",
+          "chapter": 146
+        },
+        {
+          "code": "PSA",
+          "chapter": 147
+        },
+        {
+          "code": "PSA",
+          "chapter": 148
+        },
+        {
+          "code": "PSA",
+          "chapter": 149
+        },
+        {
+          "code": "PSA",
+          "chapter": 150
+        }
+      ]
+    },
+    {
+      "day": 167,
+      "reading": "1 Kings 9; 2 Chronicles 8",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 9
+        },
+        {
+          "code": "2CH",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 168,
+      "reading": "Proverbs 25-26",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 25
+        },
+        {
+          "code": "PRO",
+          "chapter": 26
+        }
+      ]
+    },
+    {
+      "day": 169,
+      "reading": "Proverbs 27-29",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 27
+        },
+        {
+          "code": "PRO",
+          "chapter": 28
+        },
+        {
+          "code": "PRO",
+          "chapter": 29
+        }
+      ]
+    },
+    {
+      "day": 170,
+      "reading": "Ecclesiastes 1-6",
+      "chapters": [
+        {
+          "code": "ECC",
+          "chapter": 1
+        },
+        {
+          "code": "ECC",
+          "chapter": 2
+        },
+        {
+          "code": "ECC",
+          "chapter": 3
+        },
+        {
+          "code": "ECC",
+          "chapter": 4
+        },
+        {
+          "code": "ECC",
+          "chapter": 5
+        },
+        {
+          "code": "ECC",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 171,
+      "reading": "Ecclesiastes 7-12",
+      "chapters": [
+        {
+          "code": "ECC",
+          "chapter": 7
+        },
+        {
+          "code": "ECC",
+          "chapter": 8
+        },
+        {
+          "code": "ECC",
+          "chapter": 9
+        },
+        {
+          "code": "ECC",
+          "chapter": 10
+        },
+        {
+          "code": "ECC",
+          "chapter": 11
+        },
+        {
+          "code": "ECC",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 172,
+      "reading": "1 Kings 10-11; 2 Chronicles 9",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 10
+        },
+        {
+          "code": "1KI",
+          "chapter": 11
+        },
+        {
+          "code": "2CH",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 173,
+      "reading": "Proverbs 30-31",
+      "chapters": [
+        {
+          "code": "PRO",
+          "chapter": 30
+        },
+        {
+          "code": "PRO",
+          "chapter": 31
+        }
+      ]
+    },
+    {
+      "day": 174,
+      "reading": "1 Kings 12-14",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 12
+        },
+        {
+          "code": "1KI",
+          "chapter": 13
+        },
+        {
+          "code": "1KI",
+          "chapter": 14
+        }
+      ]
+    },
+    {
+      "day": 175,
+      "reading": "2 Chronicles 10-12",
+      "chapters": [
+        {
+          "code": "2CH",
+          "chapter": 10
+        },
+        {
+          "code": "2CH",
+          "chapter": 11
+        },
+        {
+          "code": "2CH",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 176,
+      "reading": "1 Kings 15; 2 Chronicles 13-16",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 15
+        },
+        {
+          "code": "2CH",
+          "chapter": 13
+        },
+        {
+          "code": "2CH",
+          "chapter": 14
+        },
+        {
+          "code": "2CH",
+          "chapter": 15
+        },
+        {
+          "code": "2CH",
+          "chapter": 16
+        }
+      ]
+    },
+    {
+      "day": 177,
+      "reading": "1 Kings 16; 2 Chronicles 17",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 16
+        },
+        {
+          "code": "2CH",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 178,
+      "reading": "1 Kings 17-19",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 17
+        },
+        {
+          "code": "1KI",
+          "chapter": 18
+        },
+        {
+          "code": "1KI",
+          "chapter": 19
+        }
+      ]
+    },
+    {
+      "day": 179,
+      "reading": "1 Kings 20-21",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 20
+        },
+        {
+          "code": "1KI",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 180,
+      "reading": "1 Kings 22; 2 Chronicles 18",
+      "chapters": [
+        {
+          "code": "1KI",
+          "chapter": 22
+        },
+        {
+          "code": "2CH",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 181,
+      "reading": "2 Chronicles 19-23",
+      "chapters": [
+        {
+          "code": "2CH",
+          "chapter": 19
+        },
+        {
+          "code": "2CH",
+          "chapter": 20
+        },
+        {
+          "code": "2CH",
+          "chapter": 21
+        },
+        {
+          "code": "2CH",
+          "chapter": 22
+        },
+        {
+          "code": "2CH",
+          "chapter": 23
+        }
+      ]
+    },
+    {
+      "day": 182,
+      "reading": "Obadiah; Psalms 82-83",
+      "chapters": [
+        {
+          "code": "OBA",
+          "chapter": 1
+        },
+        {
+          "code": "PSA",
+          "chapter": 82
+        },
+        {
+          "code": "PSA",
+          "chapter": 83
+        }
+      ]
+    },
+    {
+      "day": 183,
+      "reading": "2 Kings 1-4",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 1
+        },
+        {
+          "code": "2KI",
+          "chapter": 2
+        },
+        {
+          "code": "2KI",
+          "chapter": 3
+        },
+        {
+          "code": "2KI",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 184,
+      "reading": "2 Kings 5-8",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 5
+        },
+        {
+          "code": "2KI",
+          "chapter": 6
+        },
+        {
+          "code": "2KI",
+          "chapter": 7
+        },
+        {
+          "code": "2KI",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 185,
+      "reading": "2 Kings 9-11",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 9
+        },
+        {
+          "code": "2KI",
+          "chapter": 10
+        },
+        {
+          "code": "2KI",
+          "chapter": 11
+        }
+      ]
+    },
+    {
+      "day": 186,
+      "reading": "2 Kings 12-13; 2 Chronicles 24",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 12
+        },
+        {
+          "code": "2KI",
+          "chapter": 13
+        },
+        {
+          "code": "2CH",
+          "chapter": 24
+        }
+      ]
+    },
+    {
+      "day": 187,
+      "reading": "2 Kings 14; 2 Chronicles 25",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 14
+        },
+        {
+          "code": "2CH",
+          "chapter": 25
+        }
+      ]
+    },
+    {
+      "day": 188,
+      "reading": "Jonah",
+      "chapters": [
+        {
+          "code": "JON",
+          "chapter": 1
+        },
+        {
+          "code": "JON",
+          "chapter": 2
+        },
+        {
+          "code": "JON",
+          "chapter": 3
+        },
+        {
+          "code": "JON",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 189,
+      "reading": "2 Kings 15; 2 Chronicles 26",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 15
+        },
+        {
+          "code": "2CH",
+          "chapter": 26
+        }
+      ]
+    },
+    {
+      "day": 190,
+      "reading": "Isaiah 1-4",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 1
+        },
+        {
+          "code": "ISA",
+          "chapter": 2
+        },
+        {
+          "code": "ISA",
+          "chapter": 3
+        },
+        {
+          "code": "ISA",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 191,
+      "reading": "Isaiah 5-8",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 5
+        },
+        {
+          "code": "ISA",
+          "chapter": 6
+        },
+        {
+          "code": "ISA",
+          "chapter": 7
+        },
+        {
+          "code": "ISA",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 192,
+      "reading": "Amos 1-5",
+      "chapters": [
+        {
+          "code": "AMO",
+          "chapter": 1
+        },
+        {
+          "code": "AMO",
+          "chapter": 2
+        },
+        {
+          "code": "AMO",
+          "chapter": 3
+        },
+        {
+          "code": "AMO",
+          "chapter": 4
+        },
+        {
+          "code": "AMO",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 193,
+      "reading": "Amos 6-9",
+      "chapters": [
+        {
+          "code": "AMO",
+          "chapter": 6
+        },
+        {
+          "code": "AMO",
+          "chapter": 7
+        },
+        {
+          "code": "AMO",
+          "chapter": 8
+        },
+        {
+          "code": "AMO",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 194,
+      "reading": "2 Chronicles 27; Isaiah 9-12",
+      "chapters": [
+        {
+          "code": "2CH",
+          "chapter": 27
+        },
+        {
+          "code": "ISA",
+          "chapter": 9
+        },
+        {
+          "code": "ISA",
+          "chapter": 10
+        },
+        {
+          "code": "ISA",
+          "chapter": 11
+        },
+        {
+          "code": "ISA",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 195,
+      "reading": "Micah",
+      "chapters": [
+        {
+          "code": "MIC",
+          "chapter": 1
+        },
+        {
+          "code": "MIC",
+          "chapter": 2
+        },
+        {
+          "code": "MIC",
+          "chapter": 3
+        },
+        {
+          "code": "MIC",
+          "chapter": 4
+        },
+        {
+          "code": "MIC",
+          "chapter": 5
+        },
+        {
+          "code": "MIC",
+          "chapter": 6
+        },
+        {
+          "code": "MIC",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 196,
+      "reading": "2 Chronicles 28; 2 Kings 16-17",
+      "chapters": [
+        {
+          "code": "2CH",
+          "chapter": 28
+        },
+        {
+          "code": "2KI",
+          "chapter": 16
+        },
+        {
+          "code": "2KI",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 197,
+      "reading": "Isaiah 13-17",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 13
+        },
+        {
+          "code": "ISA",
+          "chapter": 14
+        },
+        {
+          "code": "ISA",
+          "chapter": 15
+        },
+        {
+          "code": "ISA",
+          "chapter": 16
+        },
+        {
+          "code": "ISA",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 198,
+      "reading": "Isaiah 18-22",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 18
+        },
+        {
+          "code": "ISA",
+          "chapter": 19
+        },
+        {
+          "code": "ISA",
+          "chapter": 20
+        },
+        {
+          "code": "ISA",
+          "chapter": 21
+        },
+        {
+          "code": "ISA",
+          "chapter": 22
+        }
+      ]
+    },
+    {
+      "day": 199,
+      "reading": "Isaiah 23-27",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 23
+        },
+        {
+          "code": "ISA",
+          "chapter": 24
+        },
+        {
+          "code": "ISA",
+          "chapter": 25
+        },
+        {
+          "code": "ISA",
+          "chapter": 26
+        },
+        {
+          "code": "ISA",
+          "chapter": 27
+        }
+      ]
+    },
+    {
+      "day": 200,
+      "reading": "2 Kings 18; 2 Chronicles 29-31; Psalm 48",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 18
+        },
+        {
+          "code": "2CH",
+          "chapter": 29
+        },
+        {
+          "code": "2CH",
+          "chapter": 30
+        },
+        {
+          "code": "2CH",
+          "chapter": 31
+        },
+        {
+          "code": "PSA",
+          "chapter": 48
+        }
+      ]
+    },
+    {
+      "day": 201,
+      "reading": "Hosea 1-7",
+      "chapters": [
+        {
+          "code": "HOS",
+          "chapter": 1
+        },
+        {
+          "code": "HOS",
+          "chapter": 2
+        },
+        {
+          "code": "HOS",
+          "chapter": 3
+        },
+        {
+          "code": "HOS",
+          "chapter": 4
+        },
+        {
+          "code": "HOS",
+          "chapter": 5
+        },
+        {
+          "code": "HOS",
+          "chapter": 6
+        },
+        {
+          "code": "HOS",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 202,
+      "reading": "Hosea 8-14",
+      "chapters": [
+        {
+          "code": "HOS",
+          "chapter": 8
+        },
+        {
+          "code": "HOS",
+          "chapter": 9
+        },
+        {
+          "code": "HOS",
+          "chapter": 10
+        },
+        {
+          "code": "HOS",
+          "chapter": 11
+        },
+        {
+          "code": "HOS",
+          "chapter": 12
+        },
+        {
+          "code": "HOS",
+          "chapter": 13
+        },
+        {
+          "code": "HOS",
+          "chapter": 14
+        }
+      ]
+    },
+    {
+      "day": 203,
+      "reading": "Isaiah 28-30",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 28
+        },
+        {
+          "code": "ISA",
+          "chapter": 29
+        },
+        {
+          "code": "ISA",
+          "chapter": 30
+        }
+      ]
+    },
+    {
+      "day": 204,
+      "reading": "Isaiah 31-34",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 31
+        },
+        {
+          "code": "ISA",
+          "chapter": 32
+        },
+        {
+          "code": "ISA",
+          "chapter": 33
+        },
+        {
+          "code": "ISA",
+          "chapter": 34
+        }
+      ]
+    },
+    {
+      "day": 205,
+      "reading": "Isaiah 35-36",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 35
+        },
+        {
+          "code": "ISA",
+          "chapter": 36
+        }
+      ]
+    },
+    {
+      "day": 206,
+      "reading": "Isaiah 37-39; Psalm 76",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 37
+        },
+        {
+          "code": "ISA",
+          "chapter": 38
+        },
+        {
+          "code": "ISA",
+          "chapter": 39
+        },
+        {
+          "code": "PSA",
+          "chapter": 76
+        }
+      ]
+    },
+    {
+      "day": 207,
+      "reading": "Isaiah 40-43",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 40
+        },
+        {
+          "code": "ISA",
+          "chapter": 41
+        },
+        {
+          "code": "ISA",
+          "chapter": 42
+        },
+        {
+          "code": "ISA",
+          "chapter": 43
+        }
+      ]
+    },
+    {
+      "day": 208,
+      "reading": "Isaiah 44-48",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 44
+        },
+        {
+          "code": "ISA",
+          "chapter": 45
+        },
+        {
+          "code": "ISA",
+          "chapter": 46
+        },
+        {
+          "code": "ISA",
+          "chapter": 47
+        },
+        {
+          "code": "ISA",
+          "chapter": 48
+        }
+      ]
+    },
+    {
+      "day": 209,
+      "reading": "2 Kings 19; Psalms 46, 80, 135",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 19
+        },
+        {
+          "code": "PSA",
+          "chapter": 46
+        },
+        {
+          "code": "PSA",
+          "chapter": 80
+        },
+        {
+          "code": "PSA",
+          "chapter": 135
+        }
+      ]
+    },
+    {
+      "day": 210,
+      "reading": "Isaiah 49-53",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 49
+        },
+        {
+          "code": "ISA",
+          "chapter": 50
+        },
+        {
+          "code": "ISA",
+          "chapter": 51
+        },
+        {
+          "code": "ISA",
+          "chapter": 52
+        },
+        {
+          "code": "ISA",
+          "chapter": 53
+        }
+      ]
+    },
+    {
+      "day": 211,
+      "reading": "Isaiah 54-58",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 54
+        },
+        {
+          "code": "ISA",
+          "chapter": 55
+        },
+        {
+          "code": "ISA",
+          "chapter": 56
+        },
+        {
+          "code": "ISA",
+          "chapter": 57
+        },
+        {
+          "code": "ISA",
+          "chapter": 58
+        }
+      ]
+    },
+    {
+      "day": 212,
+      "reading": "Isaiah 59-63",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 59
+        },
+        {
+          "code": "ISA",
+          "chapter": 60
+        },
+        {
+          "code": "ISA",
+          "chapter": 61
+        },
+        {
+          "code": "ISA",
+          "chapter": 62
+        },
+        {
+          "code": "ISA",
+          "chapter": 63
+        }
+      ]
+    },
+    {
+      "day": 213,
+      "reading": "Isaiah 64-66",
+      "chapters": [
+        {
+          "code": "ISA",
+          "chapter": 64
+        },
+        {
+          "code": "ISA",
+          "chapter": 65
+        },
+        {
+          "code": "ISA",
+          "chapter": 66
+        }
+      ]
+    },
+    {
+      "day": 214,
+      "reading": "2 Kings 20-21",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 20
+        },
+        {
+          "code": "2KI",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 215,
+      "reading": "2 Chronicles 32-33",
+      "chapters": [
+        {
+          "code": "2CH",
+          "chapter": 32
+        },
+        {
+          "code": "2CH",
+          "chapter": 33
+        }
+      ]
+    },
+    {
+      "day": 216,
+      "reading": "Nahum",
+      "chapters": [
+        {
+          "code": "NAM",
+          "chapter": 1
+        },
+        {
+          "code": "NAM",
+          "chapter": 2
+        },
+        {
+          "code": "NAM",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 217,
+      "reading": "2 Kings 22-23; 2 Chronicles 34-35",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 22
+        },
+        {
+          "code": "2KI",
+          "chapter": 23
+        },
+        {
+          "code": "2CH",
+          "chapter": 34
+        },
+        {
+          "code": "2CH",
+          "chapter": 35
+        }
+      ]
+    },
+    {
+      "day": 218,
+      "reading": "Zephaniah",
+      "chapters": [
+        {
+          "code": "ZEP",
+          "chapter": 1
+        },
+        {
+          "code": "ZEP",
+          "chapter": 2
+        },
+        {
+          "code": "ZEP",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 219,
+      "reading": "Jeremiah 1-3",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 1
+        },
+        {
+          "code": "JER",
+          "chapter": 2
+        },
+        {
+          "code": "JER",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 220,
+      "reading": "Jeremiah 4-6",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 4
+        },
+        {
+          "code": "JER",
+          "chapter": 5
+        },
+        {
+          "code": "JER",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 221,
+      "reading": "Jeremiah 7-9",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 7
+        },
+        {
+          "code": "JER",
+          "chapter": 8
+        },
+        {
+          "code": "JER",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 222,
+      "reading": "Jeremiah 10-13",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 10
+        },
+        {
+          "code": "JER",
+          "chapter": 11
+        },
+        {
+          "code": "JER",
+          "chapter": 12
+        },
+        {
+          "code": "JER",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 223,
+      "reading": "Jeremiah 14-17",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 14
+        },
+        {
+          "code": "JER",
+          "chapter": 15
+        },
+        {
+          "code": "JER",
+          "chapter": 16
+        },
+        {
+          "code": "JER",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 224,
+      "reading": "Jeremiah 18-22",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 18
+        },
+        {
+          "code": "JER",
+          "chapter": 19
+        },
+        {
+          "code": "JER",
+          "chapter": 20
+        },
+        {
+          "code": "JER",
+          "chapter": 21
+        },
+        {
+          "code": "JER",
+          "chapter": 22
+        }
+      ]
+    },
+    {
+      "day": 225,
+      "reading": "Jeremiah 23-25",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 23
+        },
+        {
+          "code": "JER",
+          "chapter": 24
+        },
+        {
+          "code": "JER",
+          "chapter": 25
+        }
+      ]
+    },
+    {
+      "day": 226,
+      "reading": "Jeremiah 26-29",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 26
+        },
+        {
+          "code": "JER",
+          "chapter": 27
+        },
+        {
+          "code": "JER",
+          "chapter": 28
+        },
+        {
+          "code": "JER",
+          "chapter": 29
+        }
+      ]
+    },
+    {
+      "day": 227,
+      "reading": "Jeremiah 30-31",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 30
+        },
+        {
+          "code": "JER",
+          "chapter": 31
+        }
+      ]
+    },
+    {
+      "day": 228,
+      "reading": "Jeremiah 32-34",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 32
+        },
+        {
+          "code": "JER",
+          "chapter": 33
+        },
+        {
+          "code": "JER",
+          "chapter": 34
+        }
+      ]
+    },
+    {
+      "day": 229,
+      "reading": "Jeremiah 35-37",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 35
+        },
+        {
+          "code": "JER",
+          "chapter": 36
+        },
+        {
+          "code": "JER",
+          "chapter": 37
+        }
+      ]
+    },
+    {
+      "day": 230,
+      "reading": "Jeremiah 38-40; Psalms 74, 79",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 38
+        },
+        {
+          "code": "JER",
+          "chapter": 39
+        },
+        {
+          "code": "JER",
+          "chapter": 40
+        },
+        {
+          "code": "PSA",
+          "chapter": 74
+        },
+        {
+          "code": "PSA",
+          "chapter": 79
+        }
+      ]
+    },
+    {
+      "day": 231,
+      "reading": "2 Kings 24-25; 2 Chronicles 36",
+      "chapters": [
+        {
+          "code": "2KI",
+          "chapter": 24
+        },
+        {
+          "code": "2KI",
+          "chapter": 25
+        },
+        {
+          "code": "2CH",
+          "chapter": 36
+        }
+      ]
+    },
+    {
+      "day": 232,
+      "reading": "Habakkuk",
+      "chapters": [
+        {
+          "code": "HAB",
+          "chapter": 1
+        },
+        {
+          "code": "HAB",
+          "chapter": 2
+        },
+        {
+          "code": "HAB",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 233,
+      "reading": "Jeremiah 41-45",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 41
+        },
+        {
+          "code": "JER",
+          "chapter": 42
+        },
+        {
+          "code": "JER",
+          "chapter": 43
+        },
+        {
+          "code": "JER",
+          "chapter": 44
+        },
+        {
+          "code": "JER",
+          "chapter": 45
+        }
+      ]
+    },
+    {
+      "day": 234,
+      "reading": "Jeremiah 46-48",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 46
+        },
+        {
+          "code": "JER",
+          "chapter": 47
+        },
+        {
+          "code": "JER",
+          "chapter": 48
+        }
+      ]
+    },
+    {
+      "day": 235,
+      "reading": "Jeremiah 49-50",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 49
+        },
+        {
+          "code": "JER",
+          "chapter": 50
+        }
+      ]
+    },
+    {
+      "day": 236,
+      "reading": "Jeremiah 51-52",
+      "chapters": [
+        {
+          "code": "JER",
+          "chapter": 51
+        },
+        {
+          "code": "JER",
+          "chapter": 52
+        }
+      ]
+    },
+    {
+      "day": 237,
+      "reading": "Lamentations 1-2",
+      "chapters": [
+        {
+          "code": "LAM",
+          "chapter": 1
+        },
+        {
+          "code": "LAM",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 238,
+      "reading": "Lamentations 3-5",
+      "chapters": [
+        {
+          "code": "LAM",
+          "chapter": 3
+        },
+        {
+          "code": "LAM",
+          "chapter": 4
+        },
+        {
+          "code": "LAM",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 239,
+      "reading": "Ezekiel 1-4",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 1
+        },
+        {
+          "code": "EZK",
+          "chapter": 2
+        },
+        {
+          "code": "EZK",
+          "chapter": 3
+        },
+        {
+          "code": "EZK",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 240,
+      "reading": "Ezekiel 5-8",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 5
+        },
+        {
+          "code": "EZK",
+          "chapter": 6
+        },
+        {
+          "code": "EZK",
+          "chapter": 7
+        },
+        {
+          "code": "EZK",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 241,
+      "reading": "Ezekiel 9-12",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 9
+        },
+        {
+          "code": "EZK",
+          "chapter": 10
+        },
+        {
+          "code": "EZK",
+          "chapter": 11
+        },
+        {
+          "code": "EZK",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 242,
+      "reading": "Ezekiel 13-15",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 13
+        },
+        {
+          "code": "EZK",
+          "chapter": 14
+        },
+        {
+          "code": "EZK",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 243,
+      "reading": "Ezekiel 16-17",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 16
+        },
+        {
+          "code": "EZK",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 244,
+      "reading": "Ezekiel 18-20",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 18
+        },
+        {
+          "code": "EZK",
+          "chapter": 19
+        },
+        {
+          "code": "EZK",
+          "chapter": 20
+        }
+      ]
+    },
+    {
+      "day": 245,
+      "reading": "Ezekiel 21-22",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 21
+        },
+        {
+          "code": "EZK",
+          "chapter": 22
+        }
+      ]
+    },
+    {
+      "day": 246,
+      "reading": "Ezekiel 23-24",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 23
+        },
+        {
+          "code": "EZK",
+          "chapter": 24
+        }
+      ]
+    },
+    {
+      "day": 247,
+      "reading": "Ezekiel 25-27",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 25
+        },
+        {
+          "code": "EZK",
+          "chapter": 26
+        },
+        {
+          "code": "EZK",
+          "chapter": 27
+        }
+      ]
+    },
+    {
+      "day": 248,
+      "reading": "Ezekiel 28-30",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 28
+        },
+        {
+          "code": "EZK",
+          "chapter": 29
+        },
+        {
+          "code": "EZK",
+          "chapter": 30
+        }
+      ]
+    },
+    {
+      "day": 249,
+      "reading": "Ezekiel 31-33",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 31
+        },
+        {
+          "code": "EZK",
+          "chapter": 32
+        },
+        {
+          "code": "EZK",
+          "chapter": 33
+        }
+      ]
+    },
+    {
+      "day": 250,
+      "reading": "Ezekiel 34-36",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 34
+        },
+        {
+          "code": "EZK",
+          "chapter": 35
+        },
+        {
+          "code": "EZK",
+          "chapter": 36
+        }
+      ]
+    },
+    {
+      "day": 251,
+      "reading": "Ezekiel 37-39",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 37
+        },
+        {
+          "code": "EZK",
+          "chapter": 38
+        },
+        {
+          "code": "EZK",
+          "chapter": 39
+        }
+      ]
+    },
+    {
+      "day": 252,
+      "reading": "Ezekiel 40-42",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 40
+        },
+        {
+          "code": "EZK",
+          "chapter": 41
+        },
+        {
+          "code": "EZK",
+          "chapter": 42
+        }
+      ]
+    },
+    {
+      "day": 253,
+      "reading": "Ezekiel 43-45",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 43
+        },
+        {
+          "code": "EZK",
+          "chapter": 44
+        },
+        {
+          "code": "EZK",
+          "chapter": 45
+        }
+      ]
+    },
+    {
+      "day": 254,
+      "reading": "Ezekiel 46-48",
+      "chapters": [
+        {
+          "code": "EZK",
+          "chapter": 46
+        },
+        {
+          "code": "EZK",
+          "chapter": 47
+        },
+        {
+          "code": "EZK",
+          "chapter": 48
+        }
+      ]
+    },
+    {
+      "day": 255,
+      "reading": "Joel",
+      "chapters": [
+        {
+          "code": "JOL",
+          "chapter": 1
+        },
+        {
+          "code": "JOL",
+          "chapter": 2
+        },
+        {
+          "code": "JOL",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 256,
+      "reading": "Daniel 1-3",
+      "chapters": [
+        {
+          "code": "DAN",
+          "chapter": 1
+        },
+        {
+          "code": "DAN",
+          "chapter": 2
+        },
+        {
+          "code": "DAN",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 257,
+      "reading": "Daniel 4-6",
+      "chapters": [
+        {
+          "code": "DAN",
+          "chapter": 4
+        },
+        {
+          "code": "DAN",
+          "chapter": 5
+        },
+        {
+          "code": "DAN",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 258,
+      "reading": "Daniel 7-9",
+      "chapters": [
+        {
+          "code": "DAN",
+          "chapter": 7
+        },
+        {
+          "code": "DAN",
+          "chapter": 8
+        },
+        {
+          "code": "DAN",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 259,
+      "reading": "Daniel 10-12",
+      "chapters": [
+        {
+          "code": "DAN",
+          "chapter": 10
+        },
+        {
+          "code": "DAN",
+          "chapter": 11
+        },
+        {
+          "code": "DAN",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 260,
+      "reading": "Ezra 1-3",
+      "chapters": [
+        {
+          "code": "EZR",
+          "chapter": 1
+        },
+        {
+          "code": "EZR",
+          "chapter": 2
+        },
+        {
+          "code": "EZR",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 261,
+      "reading": "Ezra 4-6; Psalm 137",
+      "chapters": [
+        {
+          "code": "EZR",
+          "chapter": 4
+        },
+        {
+          "code": "EZR",
+          "chapter": 5
+        },
+        {
+          "code": "EZR",
+          "chapter": 6
+        },
+        {
+          "code": "PSA",
+          "chapter": 137
+        }
+      ]
+    },
+    {
+      "day": 262,
+      "reading": "Haggai",
+      "chapters": [
+        {
+          "code": "HAG",
+          "chapter": 1
+        },
+        {
+          "code": "HAG",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 263,
+      "reading": "Zechariah 1-4",
+      "chapters": [
+        {
+          "code": "ZEC",
+          "chapter": 1
+        },
+        {
+          "code": "ZEC",
+          "chapter": 2
+        },
+        {
+          "code": "ZEC",
+          "chapter": 3
+        },
+        {
+          "code": "ZEC",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 264,
+      "reading": "Zechariah 5-9",
+      "chapters": [
+        {
+          "code": "ZEC",
+          "chapter": 5
+        },
+        {
+          "code": "ZEC",
+          "chapter": 6
+        },
+        {
+          "code": "ZEC",
+          "chapter": 7
+        },
+        {
+          "code": "ZEC",
+          "chapter": 8
+        },
+        {
+          "code": "ZEC",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 265,
+      "reading": "Zechariah 10-14",
+      "chapters": [
+        {
+          "code": "ZEC",
+          "chapter": 10
+        },
+        {
+          "code": "ZEC",
+          "chapter": 11
+        },
+        {
+          "code": "ZEC",
+          "chapter": 12
+        },
+        {
+          "code": "ZEC",
+          "chapter": 13
+        },
+        {
+          "code": "ZEC",
+          "chapter": 14
+        }
+      ]
+    },
+    {
+      "day": 266,
+      "reading": "Esther 1-5",
+      "chapters": [
+        {
+          "code": "EST",
+          "chapter": 1
+        },
+        {
+          "code": "EST",
+          "chapter": 2
+        },
+        {
+          "code": "EST",
+          "chapter": 3
+        },
+        {
+          "code": "EST",
+          "chapter": 4
+        },
+        {
+          "code": "EST",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 267,
+      "reading": "Esther 6-10",
+      "chapters": [
+        {
+          "code": "EST",
+          "chapter": 6
+        },
+        {
+          "code": "EST",
+          "chapter": 7
+        },
+        {
+          "code": "EST",
+          "chapter": 8
+        },
+        {
+          "code": "EST",
+          "chapter": 9
+        },
+        {
+          "code": "EST",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 268,
+      "reading": "Ezra 7-10",
+      "chapters": [
+        {
+          "code": "EZR",
+          "chapter": 7
+        },
+        {
+          "code": "EZR",
+          "chapter": 8
+        },
+        {
+          "code": "EZR",
+          "chapter": 9
+        },
+        {
+          "code": "EZR",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 269,
+      "reading": "Nehemiah 1-5",
+      "chapters": [
+        {
+          "code": "NEH",
+          "chapter": 1
+        },
+        {
+          "code": "NEH",
+          "chapter": 2
+        },
+        {
+          "code": "NEH",
+          "chapter": 3
+        },
+        {
+          "code": "NEH",
+          "chapter": 4
+        },
+        {
+          "code": "NEH",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 270,
+      "reading": "Nehemiah 6-7",
+      "chapters": [
+        {
+          "code": "NEH",
+          "chapter": 6
+        },
+        {
+          "code": "NEH",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 271,
+      "reading": "Nehemiah 8-10",
+      "chapters": [
+        {
+          "code": "NEH",
+          "chapter": 8
+        },
+        {
+          "code": "NEH",
+          "chapter": 9
+        },
+        {
+          "code": "NEH",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 272,
+      "reading": "Nehemiah 11-13; Psalm 126",
+      "chapters": [
+        {
+          "code": "NEH",
+          "chapter": 11
+        },
+        {
+          "code": "NEH",
+          "chapter": 12
+        },
+        {
+          "code": "NEH",
+          "chapter": 13
+        },
+        {
+          "code": "PSA",
+          "chapter": 126
+        }
+      ]
+    },
+    {
+      "day": 273,
+      "reading": "Malachi",
+      "chapters": [
+        {
+          "code": "MAL",
+          "chapter": 1
+        },
+        {
+          "code": "MAL",
+          "chapter": 2
+        },
+        {
+          "code": "MAL",
+          "chapter": 3
+        },
+        {
+          "code": "MAL",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 274,
+      "reading": "Luke 1; John 1",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 1
+        },
+        {
+          "code": "JHN",
+          "chapter": 1
+        }
+      ]
+    },
+    {
+      "day": 275,
+      "reading": "Matthew 1; Luke 2",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 1
+        },
+        {
+          "code": "LUK",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 276,
+      "reading": "Matthew 2",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 277,
+      "reading": "Matthew 3; Mark 1; Luke 3",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 3
+        },
+        {
+          "code": "MRK",
+          "chapter": 1
+        },
+        {
+          "code": "LUK",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 278,
+      "reading": "Matthew 4; Luke 4-5",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 4
+        },
+        {
+          "code": "LUK",
+          "chapter": 4
+        },
+        {
+          "code": "LUK",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 279,
+      "reading": "John 2-4",
+      "chapters": [
+        {
+          "code": "JHN",
+          "chapter": 2
+        },
+        {
+          "code": "JHN",
+          "chapter": 3
+        },
+        {
+          "code": "JHN",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 280,
+      "reading": "Matthew 8; Mark 2",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 8
+        },
+        {
+          "code": "MRK",
+          "chapter": 2
+        }
+      ]
+    },
+    {
+      "day": 281,
+      "reading": "John 5",
+      "chapters": [
+        {
+          "code": "JHN",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 282,
+      "reading": "Matthew 12; Mark 3; Luke 6",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 12
+        },
+        {
+          "code": "MRK",
+          "chapter": 3
+        },
+        {
+          "code": "LUK",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 283,
+      "reading": "Matthew 5-7",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 5
+        },
+        {
+          "code": "MAT",
+          "chapter": 6
+        },
+        {
+          "code": "MAT",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 284,
+      "reading": "Matthew 9; Luke 7",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 9
+        },
+        {
+          "code": "LUK",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 285,
+      "reading": "Matthew 11",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 11
+        }
+      ]
+    },
+    {
+      "day": 286,
+      "reading": "Luke 11",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 11
+        }
+      ]
+    },
+    {
+      "day": 287,
+      "reading": "Matthew 13; Luke 8",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 13
+        },
+        {
+          "code": "LUK",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 288,
+      "reading": "Mark 4-5",
+      "chapters": [
+        {
+          "code": "MRK",
+          "chapter": 4
+        },
+        {
+          "code": "MRK",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 289,
+      "reading": "Matthew 10",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 290,
+      "reading": "Matthew 14; Mark 6; Luke 9",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 14
+        },
+        {
+          "code": "MRK",
+          "chapter": 6
+        },
+        {
+          "code": "LUK",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 291,
+      "reading": "John 6",
+      "chapters": [
+        {
+          "code": "JHN",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 292,
+      "reading": "Matthew 15; Mark 7",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 15
+        },
+        {
+          "code": "MRK",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 293,
+      "reading": "Matthew 16; Mark 8",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 16
+        },
+        {
+          "code": "MRK",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 294,
+      "reading": "Matthew 17; Mark 9",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 17
+        },
+        {
+          "code": "MRK",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 295,
+      "reading": "Matthew 18",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 296,
+      "reading": "John 7-8",
+      "chapters": [
+        {
+          "code": "JHN",
+          "chapter": 7
+        },
+        {
+          "code": "JHN",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 297,
+      "reading": "John 9-10",
+      "chapters": [
+        {
+          "code": "JHN",
+          "chapter": 9
+        },
+        {
+          "code": "JHN",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 298,
+      "reading": "Luke 10",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 299,
+      "reading": "Luke 12-13",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 12
+        },
+        {
+          "code": "LUK",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 300,
+      "reading": "Luke 14-15",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 14
+        },
+        {
+          "code": "LUK",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 301,
+      "reading": "Luke 16-17",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 16
+        },
+        {
+          "code": "LUK",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 302,
+      "reading": "John 11",
+      "chapters": [
+        {
+          "code": "JHN",
+          "chapter": 11
+        }
+      ]
+    },
+    {
+      "day": 303,
+      "reading": "Luke 18",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 304,
+      "reading": "Matthew 19; Mark 10",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 19
+        },
+        {
+          "code": "MRK",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 305,
+      "reading": "Matthew 20-21",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 20
+        },
+        {
+          "code": "MAT",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 306,
+      "reading": "Luke 19",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 19
+        }
+      ]
+    },
+    {
+      "day": 307,
+      "reading": "Mark 11; John 12",
+      "chapters": [
+        {
+          "code": "MRK",
+          "chapter": 11
+        },
+        {
+          "code": "JHN",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 308,
+      "reading": "Matthew 22; Mark 12",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 22
+        },
+        {
+          "code": "MRK",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 309,
+      "reading": "Matthew 23; Luke 20-21",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 23
+        },
+        {
+          "code": "LUK",
+          "chapter": 20
+        },
+        {
+          "code": "LUK",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 310,
+      "reading": "Mark 13",
+      "chapters": [
+        {
+          "code": "MRK",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 311,
+      "reading": "Matthew 24",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 24
+        }
+      ]
+    },
+    {
+      "day": 312,
+      "reading": "Matthew 25",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 25
+        }
+      ]
+    },
+    {
+      "day": 313,
+      "reading": "Matthew 26; Mark 14",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 26
+        },
+        {
+          "code": "MRK",
+          "chapter": 14
+        }
+      ]
+    },
+    {
+      "day": 314,
+      "reading": "Luke 22; John 13",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 22
+        },
+        {
+          "code": "JHN",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 315,
+      "reading": "John 14-17",
+      "chapters": [
+        {
+          "code": "JHN",
+          "chapter": 14
+        },
+        {
+          "code": "JHN",
+          "chapter": 15
+        },
+        {
+          "code": "JHN",
+          "chapter": 16
+        },
+        {
+          "code": "JHN",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 316,
+      "reading": "Matthew 27; Mark 15",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 27
+        },
+        {
+          "code": "MRK",
+          "chapter": 15
+        }
+      ]
+    },
+    {
+      "day": 317,
+      "reading": "Luke 23; John 18-19",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 23
+        },
+        {
+          "code": "JHN",
+          "chapter": 18
+        },
+        {
+          "code": "JHN",
+          "chapter": 19
+        }
+      ]
+    },
+    {
+      "day": 318,
+      "reading": "Matthew 28; Mark 16",
+      "chapters": [
+        {
+          "code": "MAT",
+          "chapter": 28
+        },
+        {
+          "code": "MRK",
+          "chapter": 16
+        }
+      ]
+    },
+    {
+      "day": 319,
+      "reading": "Luke 24; John 20-21",
+      "chapters": [
+        {
+          "code": "LUK",
+          "chapter": 24
+        },
+        {
+          "code": "JHN",
+          "chapter": 20
+        },
+        {
+          "code": "JHN",
+          "chapter": 21
+        }
+      ]
+    },
+    {
+      "day": 320,
+      "reading": "Acts 1-3",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 1
+        },
+        {
+          "code": "ACT",
+          "chapter": 2
+        },
+        {
+          "code": "ACT",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 321,
+      "reading": "Acts 4-6",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 4
+        },
+        {
+          "code": "ACT",
+          "chapter": 5
+        },
+        {
+          "code": "ACT",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 322,
+      "reading": "Acts 7-8",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 7
+        },
+        {
+          "code": "ACT",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 323,
+      "reading": "Acts 9-10",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 9
+        },
+        {
+          "code": "ACT",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 324,
+      "reading": "Acts 11-12",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 11
+        },
+        {
+          "code": "ACT",
+          "chapter": 12
+        }
+      ]
+    },
+    {
+      "day": 325,
+      "reading": "Acts 13-14",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 13
+        },
+        {
+          "code": "ACT",
+          "chapter": 14
+        }
+      ]
+    },
+    {
+      "day": 326,
+      "reading": "James",
+      "chapters": [
+        {
+          "code": "JAS",
+          "chapter": 1
+        },
+        {
+          "code": "JAS",
+          "chapter": 2
+        },
+        {
+          "code": "JAS",
+          "chapter": 3
+        },
+        {
+          "code": "JAS",
+          "chapter": 4
+        },
+        {
+          "code": "JAS",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 327,
+      "reading": "Acts 15-16",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 15
+        },
+        {
+          "code": "ACT",
+          "chapter": 16
+        }
+      ]
+    },
+    {
+      "day": 328,
+      "reading": "Galatians 1-3",
+      "chapters": [
+        {
+          "code": "GAL",
+          "chapter": 1
+        },
+        {
+          "code": "GAL",
+          "chapter": 2
+        },
+        {
+          "code": "GAL",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 329,
+      "reading": "Galatians 4-6",
+      "chapters": [
+        {
+          "code": "GAL",
+          "chapter": 4
+        },
+        {
+          "code": "GAL",
+          "chapter": 5
+        },
+        {
+          "code": "GAL",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 330,
+      "reading": "Acts 17",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 17
+        }
+      ]
+    },
+    {
+      "day": 331,
+      "reading": "1 & 2 Thessalonians",
+      "chapters": [
+        {
+          "code": "1TH",
+          "chapter": 1
+        },
+        {
+          "code": "1TH",
+          "chapter": 2
+        },
+        {
+          "code": "1TH",
+          "chapter": 3
+        },
+        {
+          "code": "1TH",
+          "chapter": 4
+        },
+        {
+          "code": "1TH",
+          "chapter": 5
+        },
+        {
+          "code": "2TH",
+          "chapter": 1
+        },
+        {
+          "code": "2TH",
+          "chapter": 2
+        },
+        {
+          "code": "2TH",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 332,
+      "reading": "Acts 18-19",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 18
+        },
+        {
+          "code": "ACT",
+          "chapter": 19
+        }
+      ]
+    },
+    {
+      "day": 333,
+      "reading": "1 Corinthians 1-4",
+      "chapters": [
+        {
+          "code": "1CO",
+          "chapter": 1
+        },
+        {
+          "code": "1CO",
+          "chapter": 2
+        },
+        {
+          "code": "1CO",
+          "chapter": 3
+        },
+        {
+          "code": "1CO",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 334,
+      "reading": "1 Corinthians 5-8",
+      "chapters": [
+        {
+          "code": "1CO",
+          "chapter": 5
+        },
+        {
+          "code": "1CO",
+          "chapter": 6
+        },
+        {
+          "code": "1CO",
+          "chapter": 7
+        },
+        {
+          "code": "1CO",
+          "chapter": 8
+        }
+      ]
+    },
+    {
+      "day": 335,
+      "reading": "1 Corinthians 9-11",
+      "chapters": [
+        {
+          "code": "1CO",
+          "chapter": 9
+        },
+        {
+          "code": "1CO",
+          "chapter": 10
+        },
+        {
+          "code": "1CO",
+          "chapter": 11
+        }
+      ]
+    },
+    {
+      "day": 336,
+      "reading": "1 Corinthians 12-14",
+      "chapters": [
+        {
+          "code": "1CO",
+          "chapter": 12
+        },
+        {
+          "code": "1CO",
+          "chapter": 13
+        },
+        {
+          "code": "1CO",
+          "chapter": 14
+        }
+      ]
+    },
+    {
+      "day": 337,
+      "reading": "1 Corinthians 15-16",
+      "chapters": [
+        {
+          "code": "1CO",
+          "chapter": 15
+        },
+        {
+          "code": "1CO",
+          "chapter": 16
+        }
+      ]
+    },
+    {
+      "day": 338,
+      "reading": "2 Corinthians 1-4",
+      "chapters": [
+        {
+          "code": "2CO",
+          "chapter": 1
+        },
+        {
+          "code": "2CO",
+          "chapter": 2
+        },
+        {
+          "code": "2CO",
+          "chapter": 3
+        },
+        {
+          "code": "2CO",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 339,
+      "reading": "2 Corinthians 5-9",
+      "chapters": [
+        {
+          "code": "2CO",
+          "chapter": 5
+        },
+        {
+          "code": "2CO",
+          "chapter": 6
+        },
+        {
+          "code": "2CO",
+          "chapter": 7
+        },
+        {
+          "code": "2CO",
+          "chapter": 8
+        },
+        {
+          "code": "2CO",
+          "chapter": 9
+        }
+      ]
+    },
+    {
+      "day": 340,
+      "reading": "2 Corinthians 10-13",
+      "chapters": [
+        {
+          "code": "2CO",
+          "chapter": 10
+        },
+        {
+          "code": "2CO",
+          "chapter": 11
+        },
+        {
+          "code": "2CO",
+          "chapter": 12
+        },
+        {
+          "code": "2CO",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 341,
+      "reading": "Romans 1-3",
+      "chapters": [
+        {
+          "code": "ROM",
+          "chapter": 1
+        },
+        {
+          "code": "ROM",
+          "chapter": 2
+        },
+        {
+          "code": "ROM",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 342,
+      "reading": "Romans 4-7",
+      "chapters": [
+        {
+          "code": "ROM",
+          "chapter": 4
+        },
+        {
+          "code": "ROM",
+          "chapter": 5
+        },
+        {
+          "code": "ROM",
+          "chapter": 6
+        },
+        {
+          "code": "ROM",
+          "chapter": 7
+        }
+      ]
+    },
+    {
+      "day": 343,
+      "reading": "Romans 8-10",
+      "chapters": [
+        {
+          "code": "ROM",
+          "chapter": 8
+        },
+        {
+          "code": "ROM",
+          "chapter": 9
+        },
+        {
+          "code": "ROM",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 344,
+      "reading": "Romans 11-13",
+      "chapters": [
+        {
+          "code": "ROM",
+          "chapter": 11
+        },
+        {
+          "code": "ROM",
+          "chapter": 12
+        },
+        {
+          "code": "ROM",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 345,
+      "reading": "Romans 14-16",
+      "chapters": [
+        {
+          "code": "ROM",
+          "chapter": 14
+        },
+        {
+          "code": "ROM",
+          "chapter": 15
+        },
+        {
+          "code": "ROM",
+          "chapter": 16
+        }
+      ]
+    },
+    {
+      "day": 346,
+      "reading": "Acts 20-23",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 20
+        },
+        {
+          "code": "ACT",
+          "chapter": 21
+        },
+        {
+          "code": "ACT",
+          "chapter": 22
+        },
+        {
+          "code": "ACT",
+          "chapter": 23
+        }
+      ]
+    },
+    {
+      "day": 347,
+      "reading": "Acts 24-26",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 24
+        },
+        {
+          "code": "ACT",
+          "chapter": 25
+        },
+        {
+          "code": "ACT",
+          "chapter": 26
+        }
+      ]
+    },
+    {
+      "day": 348,
+      "reading": "Acts 27-28",
+      "chapters": [
+        {
+          "code": "ACT",
+          "chapter": 27
+        },
+        {
+          "code": "ACT",
+          "chapter": 28
+        }
+      ]
+    },
+    {
+      "day": 349,
+      "reading": "Colossians, Philemon",
+      "chapters": [
+        {
+          "code": "COL",
+          "chapter": 1
+        },
+        {
+          "code": "COL",
+          "chapter": 2
+        },
+        {
+          "code": "COL",
+          "chapter": 3
+        },
+        {
+          "code": "COL",
+          "chapter": 4
+        },
+        {
+          "code": "PHM",
+          "chapter": 1
+        }
+      ]
+    },
+    {
+      "day": 350,
+      "reading": "Ephesians",
+      "chapters": [
+        {
+          "code": "EPH",
+          "chapter": 1
+        },
+        {
+          "code": "EPH",
+          "chapter": 2
+        },
+        {
+          "code": "EPH",
+          "chapter": 3
+        },
+        {
+          "code": "EPH",
+          "chapter": 4
+        },
+        {
+          "code": "EPH",
+          "chapter": 5
+        },
+        {
+          "code": "EPH",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 351,
+      "reading": "Philippians",
+      "chapters": [
+        {
+          "code": "PHP",
+          "chapter": 1
+        },
+        {
+          "code": "PHP",
+          "chapter": 2
+        },
+        {
+          "code": "PHP",
+          "chapter": 3
+        },
+        {
+          "code": "PHP",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 352,
+      "reading": "1 Timothy",
+      "chapters": [
+        {
+          "code": "1TI",
+          "chapter": 1
+        },
+        {
+          "code": "1TI",
+          "chapter": 2
+        },
+        {
+          "code": "1TI",
+          "chapter": 3
+        },
+        {
+          "code": "1TI",
+          "chapter": 4
+        },
+        {
+          "code": "1TI",
+          "chapter": 5
+        },
+        {
+          "code": "1TI",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 353,
+      "reading": "Titus",
+      "chapters": [
+        {
+          "code": "TIT",
+          "chapter": 1
+        },
+        {
+          "code": "TIT",
+          "chapter": 2
+        },
+        {
+          "code": "TIT",
+          "chapter": 3
+        }
+      ]
+    },
+    {
+      "day": 354,
+      "reading": "1 Peter",
+      "chapters": [
+        {
+          "code": "1PE",
+          "chapter": 1
+        },
+        {
+          "code": "1PE",
+          "chapter": 2
+        },
+        {
+          "code": "1PE",
+          "chapter": 3
+        },
+        {
+          "code": "1PE",
+          "chapter": 4
+        },
+        {
+          "code": "1PE",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 355,
+      "reading": "Hebrews 1-6",
+      "chapters": [
+        {
+          "code": "HEB",
+          "chapter": 1
+        },
+        {
+          "code": "HEB",
+          "chapter": 2
+        },
+        {
+          "code": "HEB",
+          "chapter": 3
+        },
+        {
+          "code": "HEB",
+          "chapter": 4
+        },
+        {
+          "code": "HEB",
+          "chapter": 5
+        },
+        {
+          "code": "HEB",
+          "chapter": 6
+        }
+      ]
+    },
+    {
+      "day": 356,
+      "reading": "Hebrews 7-10",
+      "chapters": [
+        {
+          "code": "HEB",
+          "chapter": 7
+        },
+        {
+          "code": "HEB",
+          "chapter": 8
+        },
+        {
+          "code": "HEB",
+          "chapter": 9
+        },
+        {
+          "code": "HEB",
+          "chapter": 10
+        }
+      ]
+    },
+    {
+      "day": 357,
+      "reading": "Hebrews 11-13",
+      "chapters": [
+        {
+          "code": "HEB",
+          "chapter": 11
+        },
+        {
+          "code": "HEB",
+          "chapter": 12
+        },
+        {
+          "code": "HEB",
+          "chapter": 13
+        }
+      ]
+    },
+    {
+      "day": 358,
+      "reading": "2 Timothy",
+      "chapters": [
+        {
+          "code": "2TI",
+          "chapter": 1
+        },
+        {
+          "code": "2TI",
+          "chapter": 2
+        },
+        {
+          "code": "2TI",
+          "chapter": 3
+        },
+        {
+          "code": "2TI",
+          "chapter": 4
+        }
+      ]
+    },
+    {
+      "day": 359,
+      "reading": "2 Peter, Jude",
+      "chapters": [
+        {
+          "code": "2PE",
+          "chapter": 1
+        },
+        {
+          "code": "2PE",
+          "chapter": 2
+        },
+        {
+          "code": "2PE",
+          "chapter": 3
+        },
+        {
+          "code": "JUD",
+          "chapter": 1
+        }
+      ]
+    },
+    {
+      "day": 360,
+      "reading": "1 John",
+      "chapters": [
+        {
+          "code": "1JN",
+          "chapter": 1
+        },
+        {
+          "code": "1JN",
+          "chapter": 2
+        },
+        {
+          "code": "1JN",
+          "chapter": 3
+        },
+        {
+          "code": "1JN",
+          "chapter": 4
+        },
+        {
+          "code": "1JN",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 361,
+      "reading": "2, 3 John",
+      "chapters": [
+        {
+          "code": "2JN",
+          "chapter": 1
+        },
+        {
+          "code": "3JN",
+          "chapter": 1
+        }
+      ]
+    },
+    {
+      "day": 362,
+      "reading": "Revelation 1-5",
+      "chapters": [
+        {
+          "code": "REV",
+          "chapter": 1
+        },
+        {
+          "code": "REV",
+          "chapter": 2
+        },
+        {
+          "code": "REV",
+          "chapter": 3
+        },
+        {
+          "code": "REV",
+          "chapter": 4
+        },
+        {
+          "code": "REV",
+          "chapter": 5
+        }
+      ]
+    },
+    {
+      "day": 363,
+      "reading": "Revelation 6-11",
+      "chapters": [
+        {
+          "code": "REV",
+          "chapter": 6
+        },
+        {
+          "code": "REV",
+          "chapter": 7
+        },
+        {
+          "code": "REV",
+          "chapter": 8
+        },
+        {
+          "code": "REV",
+          "chapter": 9
+        },
+        {
+          "code": "REV",
+          "chapter": 10
+        },
+        {
+          "code": "REV",
+          "chapter": 11
+        }
+      ]
+    },
+    {
+      "day": 364,
+      "reading": "Revelation 12-18",
+      "chapters": [
+        {
+          "code": "REV",
+          "chapter": 12
+        },
+        {
+          "code": "REV",
+          "chapter": 13
+        },
+        {
+          "code": "REV",
+          "chapter": 14
+        },
+        {
+          "code": "REV",
+          "chapter": 15
+        },
+        {
+          "code": "REV",
+          "chapter": 16
+        },
+        {
+          "code": "REV",
+          "chapter": 17
+        },
+        {
+          "code": "REV",
+          "chapter": 18
+        }
+      ]
+    },
+    {
+      "day": 365,
+      "reading": "Revelation 19-22",
+      "chapters": [
+        {
+          "code": "REV",
+          "chapter": 19
+        },
+        {
+          "code": "REV",
+          "chapter": 20
+        },
+        {
+          "code": "REV",
+          "chapter": 21
+        },
+        {
+          "code": "REV",
+          "chapter": 22
+        }
+      ]
+    }
+  ]
+}

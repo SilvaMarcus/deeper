@@ -1,0 +1,13 @@
+{
+  "name": "Deeper — Leitura Bíblica",
+  "short_name": "Deeper",
+  "description": "Leitura bíblica, planos personalizados e estudos.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b2e2a",
+  "theme_color": "#0b2e2a",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "assets/logo-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

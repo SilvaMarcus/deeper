@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+node_modules/
+dist/
+private/
+data/sources/
+supabase/import/
+.playwright-cli/
+.wrangler/
+.cloudflare-pages-*/
+tmp/
+preview-*.png

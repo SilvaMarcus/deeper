@@ -1,0 +1,9 @@
+{
+  "name": "deeper-local-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Servidor local da plataforma Deeper.",
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}
