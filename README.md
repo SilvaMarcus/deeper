@@ -56,6 +56,8 @@ O método cronológico usa como referência o [1-Year Chronological Plan da Blue
 
 ## Executar
 
+Versão pública: [silvamarcus.github.io/deeper](https://silvamarcus.github.io/deeper/)
+
 A aplicação não depende de npm:
 
 ```powershell
