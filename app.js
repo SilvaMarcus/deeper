@@ -59,6 +59,8 @@ const defaultState = {
   articleProgress: {},
 };
 
+let activeAccount = null;
+let authTransition = 0;
 let state = hydrate();
 let selectedPlanDay = null;
 let planFormOpen = false;
@@ -186,14 +188,20 @@ async function initializeChronologicalPlan() {
   }
 }
 
-function hydrate() {
+function accountStorageKey(userId) {
+  return `deeper-user-state:${userId}`;
+}
+
+function hydrate(source) {
   try {
     if (localStorage.getItem('sdr-data-version') !== '4') {
       localStorage.removeItem('sdr-state');
       localStorage.removeItem('sdr-installed-bibles');
       localStorage.setItem('sdr-data-version', '4');
     }
-    const stored = JSON.parse(localStorage.getItem('sdr-state'));
+    const stored = source === undefined
+      ? (activeAccount ? JSON.parse(localStorage.getItem(accountStorageKey(activeAccount.id))) : null)
+      : source;
     if (!stored) return structuredClone(defaultState);
     const legacyPlan = { ...defaultState.plan, ...(stored.plan || {}) };
     legacyPlan.duration = String(stored.plan?.duration || stored.plan?.months || defaultState.plan.duration);
@@ -231,7 +239,9 @@ function hydrate() {
 }
 
 function persist() {
-  localStorage.setItem('sdr-state', JSON.stringify(state));
+  if (!activeAccount) return;
+  localStorage.setItem(accountStorageKey(activeAccount.id), JSON.stringify(state));
+  window.deeperAuth?.scheduleStateSave(state);
 }
 
 function openBibleDatabase() {
@@ -424,6 +434,63 @@ function showLanding() {
   document.getElementById('marketing').hidden = false;
   document.getElementById('app').hidden = true;
   document.body.classList.remove('app-open');
+}
+
+function accountDetails() {
+  return activeAccount || { id: '', name: 'Minha conta', email: '', initials: '--' };
+}
+
+function updateAccountChrome() {
+  const account = accountDetails();
+  document.querySelectorAll('[data-account-name]').forEach((element) => { element.textContent = account.name; });
+  document.querySelectorAll('[data-account-email]').forEach((element) => { element.textContent = account.email; });
+  document.querySelectorAll('[data-account-avatar]').forEach((element) => { element.textContent = account.initials; });
+}
+
+function profileFromClerkUser(user) {
+  const email = user.primaryEmailAddress?.emailAddress || user.emailAddresses?.[0]?.emailAddress || '';
+  const name = user.fullName || user.firstName || email.split('@')[0] || 'Minha conta';
+  const initials = name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join('').toUpperCase() || 'EU';
+  return { id: user.id, name, email, initials };
+}
+
+async function activateAccount(user) {
+  if (!user?.id) return;
+  if (activeAccount?.id === user.id && !document.getElementById('app').hidden) return;
+  const transition = ++authTransition;
+  activeAccount = profileFromClerkUser(user);
+  const localState = hydrate();
+  let nextState = localState;
+  let remoteAvailable = false;
+  try {
+    const remote = await window.deeperAuth.loadState();
+    if (transition !== authTransition) return;
+    remoteAvailable = true;
+    if (remote?.state) nextState = hydrate(remote.state);
+  } catch (error) {
+    console.error(error);
+  }
+  if (transition !== authTransition) return;
+  state = nextState;
+  document.documentElement.dataset.theme = state.theme;
+  localStorage.setItem('sdr-theme', state.theme);
+  localStorage.setItem(accountStorageKey(activeAccount.id), JSON.stringify(state));
+  updateAccountChrome();
+  openApp();
+  if (remoteAvailable) window.deeperAuth.scheduleStateSave(state);
+  else toast('Você está usando os dados salvos neste dispositivo.');
+}
+
+function deactivateAccount() {
+  authTransition += 1;
+  activeAccount = null;
+  state = hydrate(null);
+  expandedPlanId = null;
+  selectedPlanDay = null;
+  planFormOpen = false;
+  document.getElementById('account-menu').hidden = true;
+  updateAccountChrome();
+  showLanding();
 }
 
 function pageHead(kicker, title, description, actions = '') {
@@ -1398,7 +1465,8 @@ function renderArticle(article) {
 }
 
 function renderMore() {
-  return `<section class="page more-page">${pageHead('Mais','Mais','')}<div class="more-profile"><span class="avatar">AD</span><span><strong>Administrador</strong><small>Acesso administrativo</small></span></div><div class="more-links"><button data-page="studies">Estudos</button><button data-action="toggle-theme">Aparência <small>${state.theme==='dark'?'Escuro':'Claro'}</small></button></div></section>`;
+  const account = accountDetails();
+  return `<section class="page more-page">${pageHead('Mais','Mais','')}<div class="more-profile"><span class="avatar">${esc(account.initials)}</span><span><strong>${esc(account.name)}</strong><small>${esc(account.email)}</small></span></div><div class="more-links"><button data-page="studies">Estudos</button><button data-action="toggle-theme">Aparência <small>${state.theme==='dark'?'Escuro':'Claro'}</small></button><button data-action="sign-out">Sair da conta</button></div></section>`;
 }
 
 const renderers={home:renderHome,reader:renderReader,'plan-reader':renderReader,plans:renderPlans,studies:renderStudies,more:renderMore};
@@ -1710,8 +1778,17 @@ document.addEventListener('click', e=>{
   if(e.target.matches('[data-comment-backdrop]')){closeCommentComposer();return;}
   if(readerSizeMenuOpen && !e.target.closest('.reader-size-control')){readerSizeMenuOpen=false;updateReaderHeader();}
   const open=e.target.closest('[data-action="open-login"]');
-  if(open){document.getElementById('login-modal').hidden=false;return;}
-  if(e.target.closest('[data-action="close-login"]')){document.getElementById('login-modal').hidden=true;return;}
+  if(open){window.deeperAuth?.open('sign-in');return;}
+  if(e.target.closest('[data-action="open-signup"]')){window.deeperAuth?.open('sign-up');return;}
+  const authView=e.target.closest('[data-auth-view]');
+  if(authView){window.deeperAuth?.switchView(authView.dataset.authView);return;}
+  if(e.target.closest('[data-action="close-login"]')){window.deeperAuth?.close();return;}
+  if(e.target.closest('[data-action="toggle-account-menu"]')){
+    const menu=document.getElementById('account-menu');
+    menu.hidden=!menu.hidden;
+    e.target.closest('[data-action="toggle-account-menu"]').setAttribute('aria-expanded',String(!menu.hidden));
+    return;
+  }
   if(e.target.closest('[data-action="scroll-features"]')){document.getElementById('recursos').scrollIntoView({behavior:'smooth'});return;}
   const pageLink=e.target.closest('[data-page]');
   if(pageLink && !document.getElementById('app').hidden){
@@ -1728,6 +1805,7 @@ document.addEventListener('click', e=>{
     return;
   }
   const action=e.target.closest('[data-action]')?.dataset.action;
+  if(action==='sign-out'){document.getElementById('account-menu').hidden=true;window.deeperAuth?.signOut();return;}
   if(action==='toggle-reader-size-menu'){readerSizeMenuOpen=!readerSizeMenuOpen;updateReaderHeader();return;}
   if(action==='decrease-reader-size'){setReaderTextScale(readerTextScale()-.1,true);return;}
   if(action==='increase-reader-size'){setReaderTextScale(readerTextScale()+.1,true);return;}
@@ -1842,6 +1920,7 @@ document.addEventListener('click', e=>{
   if(articleCard && !articleCard.dataset.action){activeArticleId=articleCard.dataset.articleId;state.articleProgress[activeArticleId]={...(state.articleProgress[activeArticleId]||{}),started:true};persist();renderPage('studies');return;}
   if(action==='close-article'){activeArticleId=null;renderPage('studies');return;}
   if(action==='toggle-article-complete'){const id=e.target.closest('[data-article-id]').dataset.articleId;const current=state.articleProgress[id]||{};state.articleProgress[id]={started:true,complete:!current.complete};persist();renderPage('studies');toast(state.articleProgress[id].complete?'Artigo concluído.':'Artigo reaberto.');return;}
+  if(!e.target.closest('.account-control'))document.getElementById('account-menu').hidden=true;
   if(!e.target.closest('.verse-action-menu'))document.querySelector('.verse-action-menu')?.remove();
 });
 
@@ -1884,21 +1963,17 @@ document.addEventListener('input',e=>{
   }
 });
 
-document.getElementById('login-form').addEventListener('submit',e=>{
-  e.preventDefault();
-  const username=document.getElementById('login-username').value;
-  const password=e.currentTarget.querySelector('input[type="password"]').value;
-  const error=document.getElementById('login-error');
-  if(username!=='admin' || password!=='admin'){
-    error.hidden=false;
-    return;
-  }
-  error.hidden=true;
-  openApp();
-  toast('Bem-vindo, administrador.');
+window.addEventListener('deeper-auth-ready', event=>{
+  if(event.detail.user)activateAccount(event.detail.user);
+  else deactivateAccount();
 });
+window.addEventListener('deeper-auth-change', event=>{
+  if(event.detail.user)activateAccount(event.detail.user);
+  else deactivateAccount();
+});
+window.addEventListener('deeper-sync-error', ()=>toast('Não foi possível sincronizar agora. Seus dados continuam salvos neste dispositivo.'));
 
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('login-modal').hidden=true;document.querySelector('.verse-action-menu')?.remove();searchPanel?.remove();if(readerSizeMenuOpen){readerSizeMenuOpen=false;updateReaderHeader();}if(commentComposerOpen)closeCommentComposer();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){window.deeperAuth?.close();document.getElementById('account-menu').hidden=true;document.querySelector('.verse-action-menu')?.remove();searchPanel?.remove();if(readerSizeMenuOpen){readerSizeMenuOpen=false;updateReaderHeader();}if(commentComposerOpen)closeCommentComposer();}});
 
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
 

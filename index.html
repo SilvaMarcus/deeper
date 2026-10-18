@@ -7,7 +7,7 @@
   <meta name="description" content="Deeper — leitura bíblica, planos personalizados e estudos em uma experiência profunda e leve." />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="assets/deeper-favicon.svg?v=1" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?v=62" />
+  <link rel="stylesheet" href="styles.css?v=72" />
   <title>Deeper — Leitura Bíblica</title>
 </head>
 <body>
@@ -23,7 +23,10 @@
         <a href="#como-funciona">Como funciona</a>
         <a href="#recursos">O que você encontra</a>
       </nav>
-      <button class="button button-ghost-light" data-action="open-login">Entrar</button>
+      <div class="landing-auth-actions">
+        <button class="text-button text-button-light" data-action="open-signup">Criar conta</button>
+        <button class="button button-ghost-light" data-action="open-login">Entrar</button>
+      </div>
     </header>
 
     <div class="landing-hero">
@@ -32,7 +35,8 @@
         <h1>Sua jornada pela Bíblia, mais simples de continuar.</h1>
         <p class="landing-lead">O Deeper organiza sua leitura, acompanha seus planos e reúne estudos confiáveis — sem transformar a fé em uma corrida por metas.</p>
         <div class="landing-actions">
-          <button class="button button-primary-light" data-action="open-login">Entrar no Deeper</button>
+          <button class="button button-primary-light" data-action="open-signup">Começar agora</button>
+          <button class="text-button text-button-light" data-action="open-login">Já tenho uma conta</button>
           <button class="text-button text-button-light" data-action="scroll-features">Entender como funciona</button>
         </div>
         <p class="landing-reassurance">Sem pressão. Sem distrações. Apenas um caminho claro para voltar ao texto.</p>
@@ -73,7 +77,7 @@
 
     <section class="final-cta">
       <div><p class="section-kicker">Comece de onde você está</p><h2>Um próximo capítulo já é um bom começo.</h2><p>Entre e continue sua jornada com calma e direção.</p></div>
-      <button class="button button-primary-light" data-action="open-login">Entrar no Deeper</button>
+      <button class="button button-primary-light" data-action="open-signup">Criar minha conta</button>
     </section>
   </main>
 
@@ -84,15 +88,16 @@
         <img src="assets/logo-mark.svg" alt="" />
         <p class="section-kicker">Deeper</p>
         <h2 id="login-title">Continue sua jornada.</h2>
-        <p>Entre para acessar sua plataforma.</p>
+        <p id="login-description">Entre com Google ou e-mail para acessar sua jornada.</p>
       </div>
-      <form id="login-form" class="login-form">
-        <label>Usuário<input id="login-username" type="text" autocomplete="username" required /></label>
-        <label>Senha<input type="password" autocomplete="current-password" required /></label>
-        <p id="login-error" class="login-error" role="alert" hidden>Usuário ou senha incorretos.</p>
-        <div class="login-row"><label class="check-label"><input type="checkbox" checked /> Permanecer conectado</label><button type="button" class="text-button">Esqueci minha senha</button></div>
-        <button class="button button-dark button-full" type="submit">Entrar</button>
-      </form>
+      <div class="auth-panel">
+        <div class="auth-switch" role="tablist" aria-label="Acesso à conta">
+          <button type="button" role="tab" data-auth-view="sign-in" class="active">Entrar</button>
+          <button type="button" role="tab" data-auth-view="sign-up">Criar conta</button>
+        </div>
+        <div id="auth-status" class="auth-status" role="status">Preparando acesso seguro...</div>
+        <div id="clerk-auth-mount" class="clerk-auth-mount"></div>
+      </div>
     </section>
   </div>
 
@@ -110,7 +115,13 @@
       </nav>
       <div class="sidebar-foot">
         <button class="theme-switch" data-action="toggle-theme"><span>◐</span><span class="theme-copy"><strong>Aparência</strong><small>Alternar claro/escuro</small></span></button>
-        <button class="profile-mini"><span class="avatar">AD</span><span><strong>Administrador</strong><small>Acesso administrativo</small></span><i>···</i></button>
+        <div class="account-control">
+          <button class="profile-mini" data-action="toggle-account-menu" aria-expanded="false"><span class="avatar" data-account-avatar>--</span><span><strong data-account-name>Minha conta</strong><small data-account-email>Carregando...</small></span><i>···</i></button>
+          <div id="account-menu" class="account-menu" hidden>
+            <div><strong data-account-name>Minha conta</strong><small data-account-email></small></div>
+            <button type="button" data-action="sign-out">Sair da conta</button>
+          </div>
+        </div>
       </div>
     </aside>
 
@@ -129,6 +140,7 @@
     </nav>
   </div>
 
-  <script src="app.js?v=66"></script>
+  <script src="assets/auth.js?v=72"></script>
+  <script src="app.js?v=72"></script>
 </body>
 </html>

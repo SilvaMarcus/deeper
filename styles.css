@@ -54,6 +54,7 @@ body.app-open { overflow: hidden; }
 .landing-nav { display: flex; gap: 32px; font-size: 12px; }
 .landing-nav a { color: rgba(255,255,255,.7); transition: color .2s ease; }
 .landing-nav a:hover { color: #fff; }
+.landing-auth-actions { display: flex; align-items: center; gap: 14px; }
 .landing-hero { width: min(1240px, calc(100% - 64px)); height: calc(100% - 94px); margin: auto; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .72fr); align-items: center; gap: clamp(64px, 9vw, 140px); padding: 54px 0 74px; }
 .landing-hero-copy { max-width: 760px; }
 .landing-hero h1 { max-width: 760px; margin: 0; font-family: var(--font-display); font-size: clamp(58px, 6vw, 82px); font-weight: 400; line-height: .98; letter-spacing: -.045em; text-wrap: balance; }
@@ -127,6 +128,13 @@ body.app-open { overflow: hidden; }
 .login-brand h2 { font-family: var(--font-display); font-size: 54px; font-weight: 400; line-height: .98; margin: 0 0 24px; }
 .login-brand p:last-child { opacity: .65; max-width: 360px; }
 .login-form { padding: 90px 65px 60px; display: flex; flex-direction: column; justify-content: center; gap: 23px; }
+.auth-panel { padding: 54px 56px 44px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.auth-switch { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
+.auth-switch button { border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--ink-soft); min-height: 42px; padding: 8px 12px; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; }
+.auth-switch button.active { color: var(--ink); border-bottom-color: var(--ink); }
+.auth-status { color: var(--ink-soft); font-size: 13px; line-height: 1.55; padding: 18px 0; text-align: center; }
+.auth-status[data-kind="error"] { color: var(--red); }
+.clerk-auth-mount { width: 100%; min-height: 350px; }
 .login-form label:not(.check-label), .field { display: grid; gap: 8px; font-size: 12px; color: var(--ink-soft); }
 .login-form input, .field input, .field select, .field textarea, .select-control, .search-input { width: 100%; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); min-height: 45px; padding: 7px 0; outline: 0; }
 .field textarea { min-height: 130px; resize: vertical; }
@@ -150,6 +158,12 @@ body.app-open { overflow: hidden; }
 .theme-copy strong, .profile-mini strong { font-size: 12px; font-weight: 600; }
 .theme-copy small, .profile-mini small { color: var(--ink-soft); font-size: 10px; margin-top: 3px; }
 .profile-mini i { margin-left: auto; color: var(--ink-soft); font-style: normal; }
+.account-control { position: relative; }
+.account-menu { position: absolute; z-index: 20; left: 0; right: 0; bottom: calc(100% + 8px); border: 1px solid var(--line); background: var(--surface); box-shadow: 0 16px 40px rgba(10,35,32,.13); padding: 10px; }
+.account-menu > div { display: grid; gap: 3px; padding: 8px 9px 12px; border-bottom: 1px solid var(--line); overflow: hidden; }
+.account-menu strong { font-size: 12px; }
+.account-menu small { color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; }
+.account-menu button { width: 100%; border: 0; background: transparent; color: var(--red); padding: 11px 9px; text-align: left; cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; }
 .avatar, .header-avatar { width: 34px; height: 34px; border: 0; border-radius: 50%; background: var(--deep); color: #f6efda; display: grid; place-items: center; font-size: 10px; font-weight: 600; }
 .app-header { position: relative; z-index: 50; grid-column: 2; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: flex-end; padding: 0 32px; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(18px); }
 .global-search { display: flex; align-items: center; gap: 10px; width: min(560px, 55%); }
@@ -574,6 +588,7 @@ body.comment-composer-open { overflow: hidden; }
   .login-brand { padding: 45px; min-height: 300px; }
   .login-brand img { margin-bottom: 35px; }
   .login-form { padding: 45px; }
+  .auth-panel { padding: 36px 30px 30px; }
 
   .app { grid-template-columns: 1fr; grid-template-rows: 64px 1fr 67px; }
   .sidebar { display: none; }
