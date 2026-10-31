@@ -1067,9 +1067,12 @@ function updateLiveShare(reference, version, number, copy, isHebrew, additional 
   doc.getElementById('number').textContent = number;
   doc.getElementById('copy').textContent = copy;
   for (const verse of additional) {
+    const line = doc.createElement('span');
+    line.className = 'live-following';
     const label = doc.createElement('sup');
     label.textContent = verse.end > verse.number ? `${verse.number}-${verse.end}` : verse.number;
-    doc.getElementById('copy').append(' ', label, doc.createTextNode(verse.text));
+    line.append(label, doc.createTextNode(verse.text));
+    doc.getElementById('copy').append(line);
   }
   doc.getElementById('verse').dir = isHebrew ? 'rtl' : 'ltr';
 }
@@ -1090,7 +1093,7 @@ function openLiveShareWindow() {
     favicon.href = new URL('assets/deeper-favicon.svg?v=1', document.baseURI).href;
     liveShareWindow.document.head.appendChild(favicon);
     const style = liveShareWindow.document.createElement('style');
-    style.textContent = `@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+4:wght@400;600&display=swap');*{box-sizing:border-box}body{margin:0;padding:6vh 8vw;background:${bg};color:${ink};height:100vh;display:flex;flex-direction:column}header{display:flex;justify-content:space-between;gap:1em;padding-bottom:1em;border-bottom:1px solid currentColor;font-size:16px;font-weight:600}small{font-size:12px}main{flex:1;display:flex;align-items:center;font-size:clamp(28px,4vw,54px);line-height:1.4;overflow:auto}main p{margin:0}sup{color:${gold};font-size:.55em;font-weight:700;margin-inline-end:.4em;vertical-align:super}`;
+    style.textContent = `@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+4:wght@400;600&display=swap');*{box-sizing:border-box}body{margin:0;padding:6vh 8vw;background:${bg};color:${ink};height:100vh;display:flex;flex-direction:column}header{display:flex;justify-content:space-between;gap:1em;padding-bottom:1em;border-bottom:1px solid currentColor;font-size:16px;font-weight:600}small{font-size:12px}main{flex:1;display:flex;align-items:center;font-size:clamp(28px,4vw,54px);line-height:1.4;overflow:auto}main p{margin:0}.live-following{display:block;margin-top:.35em}sup{color:${gold};font-size:.55em;font-weight:700;margin-inline-end:.4em;vertical-align:super}`;
     liveShareWindow.document.head.appendChild(style);
     liveShareWindow.document.body.style.fontFamily = (appearanceFonts.find(font => font.id === document.documentElement.dataset.font) || appearanceFonts[0]).family;
   }
@@ -1149,7 +1152,7 @@ function renderPresentationVerse(index = null) {
   version.textContent = bibleCatalog.find(item => item.id === state.reader.versionId)?.abbreviation || '';
   number.textContent = verseLabel;
   copy.textContent = verse.text;
-  for (const item of shown.slice(1)) { const label = document.createElement('sup'); label.textContent = item.end > item.number ? `${item.number}-${item.end}` : item.number; copy.append(' ', label, document.createTextNode(item.text)); }
+  for (const item of shown.slice(1)) { const line = document.createElement('span'); line.className = 'live-following'; const label = document.createElement('sup'); label.textContent = item.end > item.number ? `${item.number}-${item.end}` : item.number; line.append(label, document.createTextNode(item.text)); copy.append(line); }
   updateLiveShare(reference.textContent, version.textContent, verseLabel, verse.text, currentVersion?.language === 'he', shown.slice(1));
   const textLength = shown.reduce((sum, item) => sum + item.text.length, 0);
   text.dataset.length = textLength > 450 ? 'very-long' : textLength > 260 ? 'long' : 'normal';
