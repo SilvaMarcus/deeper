@@ -2025,22 +2025,22 @@
       ]
     },
     {
-      "id": "wlc",
-      "abbreviation": "WLC",
-      "name": "Hebraico · Códice de Leningrado",
+      "id": "hebmod",
+      "abbreviation": "HEB",
+      "name": "Bíblia Hebraica · 66 livros",
       "language": "he",
-      "completeness": "Antigo Testamento",
-      "license": "Uso livre com atribuição",
-      "licenseUrl": "https://tanach.us/Pages/Tanach.xml#License",
-      "sourceUrl": "https://github.com/midvash/bible-data/tree/9586bd8228a747962df1ee8692730422fb7eb2ec/versions/he/wlc",
-      "attribution": "Westminster Leningrad Codex, Westminster Hebrew Institute. Texto hebraico do Antigo Testamento.",
+      "completeness": "Bíblia completa",
+      "license": "Domínio público",
+      "licenseUrl": "https://ebible.org/Bible/details.php?id=heb",
+      "sourceUrl": "https://ebible.org/Bible/details.php?id=heb",
+      "attribution": "The Holy Bible in Modern Hebrew. Tradução do Novo Testamento por Franz Delitzsch. Fonte: eBible.org.",
       "recommended": false,
-      "description": "Texto hebraico massorético dos 39 livros do Antigo Testamento. Leitura da direita para a esquerda.",
-      "packageFile": "data/bibles/wlc.json.gz",
-      "byteSize": 1051492,
-      "sha256": "8383717a06f1f68fe2a63ae3eb747c0bfa4087f6501279f71f78f8346c1149ea",
-      "verseCount": 23318,
-      "bookCount": 39,
+      "description": "Antigo e Novo Testamento em hebraico, com 66 livros. Leitura da direita para a esquerda.",
+      "packageFile": "data/bibles/hebmod.json.gz",
+      "byteSize": 1037233,
+      "sha256": "91e189aee7ec5bc8ab637fba18e78ace77185480762de2cceded90669691de1c",
+      "verseCount": 31102,
+      "bookCount": 66,
       "books": [
         {
           "code": "GEN",
@@ -2214,7 +2214,7 @@
           "code": "JOE",
           "name": "Joel",
           "order": 29,
-          "chapters": 4
+          "chapters": 3
         },
         {
           "code": "AMO",
@@ -2274,7 +2274,169 @@
           "code": "MAL",
           "name": "Malaquias",
           "order": 39,
+          "chapters": 4
+        },
+        {
+          "code": "MAT",
+          "name": "Mateus",
+          "order": 40,
+          "chapters": 28
+        },
+        {
+          "code": "MAR",
+          "name": "Marcos",
+          "order": 41,
+          "chapters": 16
+        },
+        {
+          "code": "LUK",
+          "name": "Lucas",
+          "order": 42,
+          "chapters": 24
+        },
+        {
+          "code": "JOH",
+          "name": "João",
+          "order": 43,
+          "chapters": 21
+        },
+        {
+          "code": "ACT",
+          "name": "Atos",
+          "order": 44,
+          "chapters": 28
+        },
+        {
+          "code": "ROM",
+          "name": "Romanos",
+          "order": 45,
+          "chapters": 16
+        },
+        {
+          "code": "1CO",
+          "name": "1 Coríntios",
+          "order": 46,
+          "chapters": 16
+        },
+        {
+          "code": "2CO",
+          "name": "2 Coríntios",
+          "order": 47,
+          "chapters": 13
+        },
+        {
+          "code": "GAL",
+          "name": "Gálatas",
+          "order": 48,
+          "chapters": 6
+        },
+        {
+          "code": "EPH",
+          "name": "Efésios",
+          "order": 49,
+          "chapters": 6
+        },
+        {
+          "code": "PHI",
+          "name": "Filipenses",
+          "order": 50,
+          "chapters": 4
+        },
+        {
+          "code": "COL",
+          "name": "Colossenses",
+          "order": 51,
+          "chapters": 4
+        },
+        {
+          "code": "1TH",
+          "name": "1 Tessalonicenses",
+          "order": 52,
+          "chapters": 5
+        },
+        {
+          "code": "2TH",
+          "name": "2 Tessalonicenses",
+          "order": 53,
           "chapters": 3
+        },
+        {
+          "code": "1TI",
+          "name": "1 Timóteo",
+          "order": 54,
+          "chapters": 6
+        },
+        {
+          "code": "2TI",
+          "name": "2 Timóteo",
+          "order": 55,
+          "chapters": 4
+        },
+        {
+          "code": "TIT",
+          "name": "Tito",
+          "order": 56,
+          "chapters": 3
+        },
+        {
+          "code": "PHM",
+          "name": "Filemom",
+          "order": 57,
+          "chapters": 1
+        },
+        {
+          "code": "HEB",
+          "name": "Hebreus",
+          "order": 58,
+          "chapters": 13
+        },
+        {
+          "code": "JAM",
+          "name": "Tiago",
+          "order": 59,
+          "chapters": 5
+        },
+        {
+          "code": "1PE",
+          "name": "1 Pedro",
+          "order": 60,
+          "chapters": 5
+        },
+        {
+          "code": "2PE",
+          "name": "2 Pedro",
+          "order": 61,
+          "chapters": 3
+        },
+        {
+          "code": "1JO",
+          "name": "1 João",
+          "order": 62,
+          "chapters": 5
+        },
+        {
+          "code": "2JO",
+          "name": "2 João",
+          "order": 63,
+          "chapters": 1
+        },
+        {
+          "code": "3JO",
+          "name": "3 João",
+          "order": 64,
+          "chapters": 1
+        },
+        {
+          "code": "JUD",
+          "name": "Judas",
+          "order": 65,
+          "chapters": 1
+        },
+        {
+          "code": "REV",
+          "name": "Apocalipse",
+          "order": 66,
+          "chapters": 22
         }
       ]
     }

@@ -1,6 +1,6 @@
-const CACHE = 'deeper-v79';
-const OFFLINE_PAGE = './index.html?v=79';
-const ASSETS = [OFFLINE_PAGE,'./styles.css?v=79','./assets/auth.js?v=72','./app.js?v=79','./data/bible-stories.json?v=1','./data/chronological-plan.json?v=1','./data/bibles/catalog.json?v=3','./manifest.webmanifest?v=2','./assets/logo-mark.svg','./assets/logo-mark-icon.svg','./assets/logo-mark-180.png?v=1','./assets/logo-mark-192.png','./assets/logo-mark-512.png','./assets/deeper-favicon.svg?v=1','./assets/articles/angeologia.png','./assets/articles/cosmovisao-crista.png','./assets/articles/fio-vermelho.png','./assets/articles/imagem-de-deus.png','./assets/articles/reino-ja-ainda-nao.png'];
+const CACHE = 'deeper-v80';
+const OFFLINE_PAGE = './index.html?v=80';
+const ASSETS = [OFFLINE_PAGE,'./styles.css?v=79','./assets/auth.js?v=72','./app.js?v=80','./data/bible-stories.json?v=1','./data/chronological-plan.json?v=1','./data/bibles/catalog.json?v=4','./manifest.webmanifest?v=2','./assets/logo-mark.svg','./assets/logo-mark-icon.svg','./assets/logo-mark-180.png?v=1','./assets/logo-mark-192.png','./assets/logo-mark-512.png','./assets/deeper-favicon.svg?v=1','./assets/articles/angeologia.png','./assets/articles/cosmovisao-crista.png','./assets/articles/fio-vermelho.png','./assets/articles/imagem-de-deus.png','./assets/articles/reino-ja-ainda-nao.png'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', event => {

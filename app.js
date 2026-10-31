@@ -267,7 +267,7 @@ function openBibleDatabase() {
 
 async function initializeBibleLibrary() {
   try {
-    const response = await fetch('data/bibles/catalog.json?v=3', { cache: 'no-cache' });
+    const response = await fetch('data/bibles/catalog.json?v=4', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Catálogo indisponível');
     bibleCatalog = (await response.json()).versions;
     const onlineBooks = bibleCatalog.find(version => version.id === 'porbr2018').books;
