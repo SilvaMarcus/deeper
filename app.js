@@ -1712,18 +1712,20 @@ function openCommentComposer(number){
   requestAnimationFrame(() => document.getElementById('comment-composer-body')?.focus({ preventScroll: true }));
 }
 
-function clearCommentVerseSelection() {
+function clearReaderVerseSelection() {
   state.reader.verse = '';
   state.selectedVerse = null;
-  document.querySelector('.verse.verse-focused')?.classList.remove('verse-focused');
+  document.querySelectorAll('.verse.verse-focused').forEach(verse => verse.classList.remove('verse-focused'));
+  window.getSelection()?.removeAllRanges();
   const verseSelect = document.getElementById('reader-verse');
   if (verseSelect) verseSelect.value = '';
+  persist();
 }
 
 function closeCommentComposer() {
   commentComposerOpen = false;
   commentComposerVerse = null;
-  clearCommentVerseSelection();
+  clearReaderVerseSelection();
   document.body.classList.remove('comment-composer-open');
   document.querySelector('.comment-composer-backdrop')?.remove();
   persist();
@@ -1991,7 +1993,14 @@ document.addEventListener('click', e=>{
   if(action==='save-comment'){saveCommentComposer();return;}
   if(action==='delete-comment'){deleteCommentComposer();return;}
   const verse=e.target.closest('.verse');
-  if(verse && !e.target.closest('.verse-comment-tip')){state.selectedVerse=Number(verse.dataset.verse);state.reader.verse=String(verse.dataset.verse);persist();updateVerseSelect();showVerseMenu(verse,state.selectedVerse);return;}
+  if(verse && !e.target.closest('.verse-comment-tip')){
+    document.querySelectorAll('.verse.verse-focused').forEach(item => item.classList.remove('verse-focused'));
+    window.getSelection()?.removeAllRanges();
+    state.selectedVerse=Number(verse.dataset.verse);
+    state.reader.verse=String(verse.dataset.verse);
+    verse.classList.add('verse-focused');
+    persist();updateVerseSelect();showVerseMenu(verse,state.selectedVerse);return;
+  }
   const highlight=e.target.closest('[data-highlight]');
   if(highlight){
     const number=highlight.dataset.number,key=currentVerseKey(number),color=highlight.dataset.highlight,isSelected=state.highlights[key]===color;
@@ -2001,6 +2010,7 @@ document.addEventListener('click', e=>{
     const verseElement=document.querySelector(`.verse[data-verse="${number}"]`);
     if(verseElement){verseElement.classList.remove('highlight-yellow','highlight-green','highlight-blue','highlight-rose');if(!remove)verseElement.classList.add(`highlight-${color}`);}
     document.querySelector('.verse-action-menu')?.remove();
+    clearReaderVerseSelection();
     toast(remove?'Grifo removido.':'Versículo grifado.');return;
   }
   const verseAction=e.target.closest('[data-verse-action]');
@@ -2008,6 +2018,7 @@ document.addEventListener('click', e=>{
     if(type==='comment')openCommentComposer(n);
     if(type==='favorite'){const key=currentVerseKey(n);if(!state.favorites.includes(key))state.favorites.push(key);persist();toast('Versículo adicionado aos favoritos.');}
     if(type==='copy'){const verse=activeChapter?.verses.find(item=>item.number===n);navigator.clipboard?.writeText(`${n} ${verse?.text||''}`);toast('Versículo copiado.');}
+    if(type!=='comment'){document.querySelector('.verse-action-menu')?.remove();clearReaderVerseSelection();}
     return;
   }
   const installBible=e.target.closest('[data-install-bible]');
@@ -2068,7 +2079,10 @@ document.addEventListener('click', e=>{
   if(action==='close-article'){activeArticleId=null;renderPage('studies');return;}
   if(action==='toggle-article-complete'){const id=e.target.closest('[data-article-id]').dataset.articleId;const current=state.articleProgress[id]||{};state.articleProgress[id]={started:true,complete:!current.complete};persist();renderPage('studies');toast(state.articleProgress[id].complete?'Artigo concluído.':'Artigo reaberto.');return;}
   if(!e.target.closest('.account-control'))document.getElementById('account-menu').hidden=true;
-  if(!e.target.closest('.verse-action-menu'))document.querySelector('.verse-action-menu')?.remove();
+  if(!e.target.closest('.verse-action-menu')){
+    document.querySelector('.verse-action-menu')?.remove();
+    if (!presentationMode && ['reader','plan-reader'].includes(state.page) && (state.selectedVerse !== null || document.querySelector('.verse.verse-focused'))) clearReaderVerseSelection();
+  }
 });
 
 document.addEventListener('change', e=>{
