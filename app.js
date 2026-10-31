@@ -1001,31 +1001,24 @@ function renderReader() {
 
 let recentReadingTimer = null;
 let recentReadingKey = '';
-let recentReadingSince = 0;
-let recentReadingRecorded = false;
 function trackRecentLocation() {
   const key = ['reader', 'plan-reader'].includes(state.page) && state.reader.versionId ? `${state.reader.bookCode}:${state.reader.chapter}` : '';
   if (key === recentReadingKey) return;
   clearTimeout(recentReadingTimer);
   recentReadingTimer = null;
   recentReadingKey = key;
-  recentReadingSince = Date.now();
-  recentReadingRecorded = false;
-}
-function rememberReading(version, chapter) {
-  trackRecentLocation();
-  if (!recentReadingKey || recentReadingRecorded || recentReadingTimer) return;
-  const key = recentReadingKey;
+  if (!key) return;
   recentReadingTimer = setTimeout(() => {
     recentReadingTimer = null;
     if (key !== recentReadingKey || !['reader', 'plan-reader'].includes(state.page) || `${state.reader.bookCode}:${state.reader.chapter}` !== key) return;
     const currentVersion = bibleCatalog.find(item => item.id === state.reader.versionId);
-    if (!currentVersion || !activeChapter || activeChapter.versionId !== currentVersion.id || activeChapter.bookCode !== state.reader.bookCode || Number(activeChapter.chapter) !== Number(state.reader.chapter)) return;
-    recentReadingRecorded = true;
-    saveRecentReading(currentVersion, activeChapter);
+    const book = currentVersion?.books.find(item => item.code === state.reader.bookCode);
+    const chapter = Number(state.reader.chapter);
+    if (!book || !Number.isInteger(chapter) || chapter < 1 || chapter > book.chapters) return;
+    saveRecentReading(currentVersion, { bookName: book.name, chapter });
     if (presentationMode) renderPresentationRecent();
     if (historyMenuOpen) updateReaderHeader();
-  }, Math.max(0, 5000 - (Date.now() - recentReadingSince)));
+  }, 5000);
 }
 function saveRecentReading(version, chapter) {
   const entry = { versionId: version.id, bookCode: state.reader.bookCode, chapter: chapter.chapter, bookName: chapter.bookName, abbreviation: version.abbreviation };
@@ -1221,7 +1214,6 @@ async function loadCurrentChapter() {
       return;
     }
     const version = bibleCatalog.find(item => item.id === state.reader.versionId);
-    rememberReading(version, activeChapter);
     canvas.classList.toggle('hebrew-reading', version.language === 'he');
     canvas.innerHTML = `<h1>${esc(activeChapter.bookName)} ${activeChapter.chapter}</h1>
       ${activeChapter.verses.map(verse => {
