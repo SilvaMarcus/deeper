@@ -1023,13 +1023,19 @@ function adjacentReaderChapter(direction) {
   return nextBook ? { bookCode: nextBook.code, chapter: direction > 0 ? 1 : nextBook.chapters } : null;
 }
 
-function updateLiveShare(reference, version, number, copy, isHebrew) {
+let presentationVerseCount = [1, 2, 3, 4, 5].includes(Number(localStorage.getItem('deeper-live-verse-count'))) ? Number(localStorage.getItem('deeper-live-verse-count')) : 1;
+function updateLiveShare(reference, version, number, copy, isHebrew, additional = []) {
   if (!liveShareWindow || liveShareWindow.closed) return;
   const doc = liveShareWindow.document;
   doc.getElementById('reference').textContent = reference;
   doc.getElementById('version').textContent = version;
   doc.getElementById('number').textContent = number;
   doc.getElementById('copy').textContent = copy;
+  for (const verse of additional) {
+    const label = doc.createElement('sup');
+    label.textContent = verse.end > verse.number ? `${verse.number}-${verse.end}` : verse.number;
+    doc.getElementById('copy').append(' ', label, doc.createTextNode(verse.text));
+  }
   doc.getElementById('verse').dir = isHebrew ? 'rtl' : 'ltr';
 }
 function openLiveShareWindow() {
@@ -1064,6 +1070,7 @@ function renderPresentationVerse(index = null) {
   const selectedBook = selectedVersion?.books.find(item => item.code === state.reader.bookCode);
   const loadedForPicker = activeChapter && activeChapter.versionId === state.reader.versionId && activeChapter.bookCode === state.reader.bookCode && Number(activeChapter.chapter) === Number(state.reader.chapter);
   if (selectedVersion && selectedBook) picker.innerHTML = `<label>Versão<select id="live-version">${bibleCatalog.filter(bibleAvailable).map(item => `<option value="${esc(item.id)}" ${item.id === selectedVersion.id ? 'selected' : ''}>${esc(item.abbreviation)}</option>`).join('')}</select></label><label>Livro<select id="live-book">${selectedVersion.books.map(item => `<option value="${esc(item.code)}" ${item.code === selectedBook.code ? 'selected' : ''}>${esc(item.name)}</option>`).join('')}</select></label><label>Capítulo<select id="live-chapter">${Array.from({length:selectedBook.chapters}, (_, i) => `<option value="${i+1}" ${i+1 === Number(state.reader.chapter) ? 'selected' : ''}>${i+1}</option>`).join('')}</select></label><label>Versículo<select id="live-verse" ${loadedForPicker ? '' : 'disabled'}>${loadedForPicker ? activeChapter.verses.map(item => `<option value="${item.number}" ${String(item.number) === String(state.reader.verse || activeChapter.verses[0].number) ? 'selected' : ''}>${item.number}</option>`).join('') : '<option>...</option>'}</select></label>`;
+  if (selectedVersion && selectedBook) picker.insertAdjacentHTML('beforeend', `<label>Versículos por tela<select id="live-count">${[1,2,3,4,5].map(count => `<option value="${count}" ${count === presentationVerseCount ? 'selected' : ''}>${count} ${count === 1 ? 'versículo' : 'versículos'}</option>`).join('')}</select></label>`);
   const reference = document.getElementById('presentation-reference');
   const version = document.getElementById('presentation-version');
   const text = document.getElementById('presentation-verse-text');
@@ -1088,24 +1095,29 @@ function renderPresentationVerse(index = null) {
     return;
   }
   if (index === null) {
-    if (presentationPendingEdge === 'last') index = activeChapter.verses.length - 1;
+    if (presentationPendingEdge === 'last') index = Math.floor((activeChapter.verses.length - 1) / presentationVerseCount) * presentationVerseCount;
     else if (presentationPendingEdge === 'first') index = 0;
     else index = Math.max(0, activeChapter.verses.findIndex(item => String(item.number) === String(state.reader.verse)));
   }
   presentationPendingEdge = null;
   presentationVerseIndex = Math.max(0, Math.min(index, activeChapter.verses.length - 1));
   const verse = activeChapter.verses[presentationVerseIndex];
+  const shown = activeChapter.verses.slice(presentationVerseIndex, presentationVerseIndex + presentationVerseCount);
+  const lastVerse = shown[shown.length - 1];
   const verseLabel = verse.end > verse.number ? `${verse.number}-${verse.end}` : verse.number;
-  reference.textContent = `${activeChapter.bookName} ${activeChapter.chapter}:${verseLabel}`;
+  const lastNumber = lastVerse.end > lastVerse.number ? lastVerse.end : lastVerse.number;
+  reference.textContent = `${activeChapter.bookName} ${activeChapter.chapter}:${verse.number}${lastNumber !== verse.number ? `-${lastNumber}` : ''}`;
   version.textContent = bibleCatalog.find(item => item.id === state.reader.versionId)?.abbreviation || '';
   number.textContent = verseLabel;
   copy.textContent = verse.text;
-  updateLiveShare(reference.textContent, version.textContent, verseLabel, verse.text, currentVersion?.language === 'he');
-  text.dataset.length = verse.text.length > 450 ? 'very-long' : verse.text.length > 260 ? 'long' : 'normal';
+  for (const item of shown.slice(1)) { const label = document.createElement('sup'); label.textContent = item.end > item.number ? `${item.number}-${item.end}` : item.number; copy.append(' ', label, document.createTextNode(item.text)); }
+  updateLiveShare(reference.textContent, version.textContent, verseLabel, verse.text, currentVersion?.language === 'he', shown.slice(1));
+  const textLength = shown.reduce((sum, item) => sum + item.text.length, 0);
+  text.dataset.length = textLength > 450 ? 'very-long' : textLength > 260 ? 'long' : 'normal';
   text.scrollTop = 0;
-  progress.textContent = `${presentationVerseIndex + 1} de ${activeChapter.verses.length}`;
+  progress.textContent = `${presentationVerseIndex + 1}${shown.length > 1 ? `–${presentationVerseIndex + shown.length}` : ''} de ${activeChapter.verses.length}`;
   previous.disabled = presentationVerseIndex === 0 && !adjacentReaderChapter(-1);
-  next.disabled = presentationVerseIndex === activeChapter.verses.length - 1 && !adjacentReaderChapter(1);
+  next.disabled = presentationVerseIndex + shown.length >= activeChapter.verses.length && !adjacentReaderChapter(1);
   state.reader.verse = String(verse.number);
   const versePicker = document.getElementById('live-verse');
   if (versePicker) versePicker.value = String(verse.number);
@@ -1114,7 +1126,8 @@ function renderPresentationVerse(index = null) {
 
 function stepPresentationVerse(direction) {
   if (!presentationMode || !activeChapter?.verses?.length) return;
-  const index = presentationVerseIndex + direction;
+  const index = presentationVerseIndex + direction * presentationVerseCount;
+  if (direction < 0 && presentationVerseIndex > 0 && index < 0) { renderPresentationVerse(0); return; }
   if (index >= 0 && index < activeChapter.verses.length) { renderPresentationVerse(index); return; }
   const adjacent = adjacentReaderChapter(direction);
   if (!adjacent) return;
@@ -2176,6 +2189,7 @@ document.addEventListener('click', e=>{
 document.addEventListener('change', e=>{
   if (presentationMode && e.target.id.startsWith('live-')) {
     const id = e.target.id;
+    if (id === 'live-count') { presentationVerseCount = Number(e.target.value); localStorage.setItem('deeper-live-verse-count', String(presentationVerseCount)); renderPresentationVerse(presentationVerseIndex); return; }
     if (id === 'live-verse') { const index = activeChapter?.verses.findIndex(item => String(item.number) === e.target.value); if (index >= 0) renderPresentationVerse(index); return; }
     if (id === 'live-version') { const version = bibleCatalog.find(item => item.id === e.target.value && bibleAvailable(item)); if (!version) return; const book = version.books.find(item => item.code === state.reader.bookCode) || version.books[0]; state.reader.versionId = version.id; state.reader.bookCode = book.code; state.reader.chapter = Math.min(Number(state.reader.chapter) || 1, book.chapters); }
     if (id === 'live-book') { state.reader.bookCode = e.target.value; state.reader.chapter = 1; }
