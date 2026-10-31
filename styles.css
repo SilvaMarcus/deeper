@@ -1031,6 +1031,13 @@ body.presentation-mode .sidebar, body.presentation-mode .app-header, body.presen
 .presentation-recent button:hover { background: var(--surface-2); }
 .presentation-recent small { color: var(--ink-soft); }
 .presentation-recent p { color: var(--ink-soft); font-size: 12px; }
+.recent-row { display: flex; align-items: center; min-width: 0; }
+.reader-history-list .recent-row { border-bottom: 1px solid var(--line); }
+.reader-history-list .recent-row:last-child { border-bottom: 0; }
+.reader-history-list .recent-row .recent-open, .presentation-recent .recent-row .recent-open { flex: 1; min-width: 0; width: auto; border-bottom: 0; }
+.reader-history-list .recent-row .recent-remove, .presentation-recent .recent-row .recent-remove { flex: 0 0 36px; width: 36px; min-height: 36px; justify-content: center; align-items: center; padding: 0; border: 0; color: var(--ink-soft); background: transparent; font-size: 22px; opacity: 0; cursor: pointer; }
+.recent-row:hover .recent-remove, .recent-row:focus-within .recent-remove { opacity: 1 !important; }
+@media (hover: none) { .reader-history-list .recent-row .recent-remove, .presentation-recent .recent-row .recent-remove { opacity: 1; } }
 body.presentation-mode .presentation-stage { width: min(1100px, 100%); height: 100svh; margin: 0 auto; padding: clamp(64px, 9vh, 110px) clamp(32px, 7vw, 100px) max(32px, env(safe-area-inset-bottom)); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 30px; }
 @media (min-width: 900px) { body.presentation-mode .presentation-stage { width: 100%; max-width: 1440px; padding-left: 360px; } }
 .presentation-reference { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-family: var(--font-ui); font-size: 14px; }

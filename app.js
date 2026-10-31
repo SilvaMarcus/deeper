@@ -1023,14 +1023,14 @@ function trackRecentLocation() {
 function saveRecentReading(version, chapter) {
   const entry = { versionId: version.id, bookCode: state.reader.bookCode, chapter: chapter.chapter, bookName: chapter.bookName, abbreviation: version.abbreviation };
   const previous = state.recentReadings || [];
-  if (previous[0]?.versionId === entry.versionId && previous[0]?.bookCode === entry.bookCode && previous[0]?.chapter === entry.chapter && previous.filter(item => item.bookCode === entry.bookCode && item.chapter === entry.chapter).length === 1) return;
-  state.recentReadings = [entry, ...previous.filter(item => item.bookCode !== entry.bookCode || item.chapter !== entry.chapter)].slice(0, 12);
+  if (previous.some(item => item.bookCode === entry.bookCode && item.chapter === entry.chapter)) return;
+  state.recentReadings = [entry, ...previous].slice(0, 12);
   persist();
 }
 
 function renderRecentReadings() {
   const readings = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
-  return `<section class="reader-history-menu" role="dialog" aria-label="Leituras recentes"><div class="reader-history-head"><strong>Leituras recentes</strong>${readings.length ? '<button data-action="clear-recent-readings">Limpar</button>' : ''}</div>${readings.length ? `<div class="reader-history-list">${readings.map((item, index) => `<button data-recent-index="${index}"><span>${esc(item.bookName)} ${item.chapter}</span><small>${esc(item.abbreviation)}</small></button>`).join('')}</div>` : '<p>Nenhum capítulo lido ainda.</p>'}</section>`;
+  return `<section class="reader-history-menu" role="dialog" aria-label="Leituras recentes"><div class="reader-history-head"><strong>Leituras recentes</strong>${readings.length ? '<button data-action="clear-recent-readings">Limpar</button>' : ''}</div>${readings.length ? `<div class="reader-history-list">${readings.map((item, index) => `<div class="recent-row"><button type="button" class="recent-open" data-recent-index="${index}"><span>${esc(item.bookName)} ${item.chapter}</span><small>${esc(item.abbreviation)}</small></button><button type="button" class="recent-remove" data-remove-recent-index="${index}" aria-label="Excluir ${esc(item.bookName)} ${item.chapter} das leituras recentes" title="Excluir leitura">×</button></div>`).join('')}</div>` : '<p>Nenhum capítulo lido ainda.</p>'}</section>`;
 }
 
 function adjacentReaderChapter(direction) {
@@ -1141,7 +1141,7 @@ function openLiveShareWindow() {
 }
 function renderPresentationRecent() {
   const recent = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
-  document.getElementById('presentation-recent').innerHTML = `<strong>Leituras recentes</strong>${recent.length ? recent.map((item, index) => `<button type="button" data-live-recent-index="${index}"><span>${esc(item.bookName)} ${item.chapter}</span><small>${esc(item.abbreviation)}</small></button>`).join('') : '<p>Suas leituras aparecerão aqui.</p>'}`;
+  document.getElementById('presentation-recent').innerHTML = `<strong>Leituras recentes</strong>${recent.length ? recent.map((item, index) => `<div class="recent-row"><button type="button" class="recent-open" data-live-recent-index="${index}"><span>${esc(item.bookName)} ${item.chapter}</span><small>${esc(item.abbreviation)}</small></button><button type="button" class="recent-remove" data-remove-recent-index="${index}" aria-label="Excluir ${esc(item.bookName)} ${item.chapter} das leituras recentes" title="Excluir leitura">×</button></div>`).join('') : '<p>Suas leituras aparecerão aqui.</p>'}`;
 }
 function renderPresentationVerse(index = null) {
   if (!presentationMode) return;
@@ -2084,6 +2084,19 @@ function armPlanDeletion(button) {
 }
 
 document.addEventListener('click', e=>{
+  const removeRecent = e.target.closest('[data-remove-recent-index]');
+  if (removeRecent) {
+    const readings = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
+    const chosen = readings[Number(removeRecent.dataset.removeRecentIndex)];
+    if (chosen) {
+      state.recentReadings = state.recentReadings.filter(item => item.bookCode !== chosen.bookCode || item.chapter !== chosen.chapter);
+      if (recentReadingKey === `${chosen.bookCode}:${chosen.chapter}`) { clearTimeout(recentReadingTimer); recentReadingTimer = null; }
+      persist();
+      if (presentationMode) renderPresentationRecent();
+      if (historyMenuOpen) updateReaderHeader();
+    }
+    return;
+  }
   const liveRecent = e.target.closest('[data-live-recent-index]');
   if (liveRecent && presentationMode) {
     const readings = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
