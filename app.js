@@ -314,9 +314,9 @@ function currentVerseKey(number) {
   return `${state.reader.versionId}:${state.reader.bookCode}:${state.reader.chapter}:${number}`;
 }
 
-async function readOfflineChapter() {
-  if (!state.reader.versionId) return null;
-  const { versionId, bookCode, chapter } = state.reader;
+async function readOfflineChapter(reader = state.reader) {
+  if (!reader.versionId) return null;
+  const { versionId, bookCode, chapter } = reader;
   if (bibleCatalog.find(version => version.id === versionId)?.online) {
     if (!navigator.onLine) throw new Error('Esta versão exige internet. Selecione uma das Bíblias offline para continuar.');
     const bookIndex = bibleCatalog.find(version => version.id === versionId)?.books.findIndex(book => book.code === bookCode) ?? -1;
@@ -1045,12 +1045,58 @@ function adjacentReaderChapter(direction) {
 }
 
 let presentationVerseCount = [1, 2, 3, 4, 5].includes(Number(localStorage.getItem('deeper-live-verse-count'))) ? Number(localStorage.getItem('deeper-live-verse-count')) : 1;
-function setPresentationVerseCount(value) {
-  const count = Number(value);
-  if (![1, 2, 3, 4, 5].includes(count) || count === presentationVerseCount) return;
-  presentationVerseCount = count;
-  localStorage.setItem('deeper-live-verse-count', String(count));
-  renderPresentationVerse(presentationVerseIndex);
+let presentationDraft = null;
+let presentationDraftChapter = null;
+let presentationDraftRequest = 0;
+let presentationDraftError = '';
+let presentationDraftDirty = false;
+function resetPresentationDraft() {
+  presentationDraft = { ...state.reader, count: presentationVerseCount };
+  presentationDraftChapter = activeChapter && activeChapter.versionId === state.reader.versionId && activeChapter.bookCode === state.reader.bookCode && Number(activeChapter.chapter) === Number(state.reader.chapter) ? activeChapter : null;
+  presentationDraftError = '';
+  presentationDraftDirty = false;
+  presentationDraftRequest++;
+}
+async function preparePresentationDraft() {
+  const request = ++presentationDraftRequest;
+  const selection = { ...presentationDraft };
+  presentationDraftChapter = null;
+  presentationDraftError = '';
+  renderPresentationPicker();
+  try {
+    const chapter = await readOfflineChapter(selection);
+    if (request !== presentationDraftRequest || !presentationMode) return;
+    if (!chapter?.verses?.length) throw new Error('Capítulo indisponível.');
+    presentationDraftChapter = chapter;
+    if (!chapter.verses.some(verse => String(verse.number) === String(presentationDraft.verse))) presentationDraft.verse = String(chapter.verses[0].number);
+  } catch (error) {
+    if (request !== presentationDraftRequest || !presentationMode) return;
+    presentationDraftError = error.message || 'Não foi possível carregar a passagem.';
+  }
+  renderPresentationPicker();
+}
+function renderPresentationPicker() {
+  if (!presentationMode || !presentationDraft) return;
+  const picker = document.getElementById('presentation-picker-controls');
+  const version = bibleCatalog.find(item => item.id === presentationDraft.versionId);
+  const book = version?.books.find(item => item.code === presentationDraft.bookCode);
+  if (!version || !book) return;
+  const verses = presentationDraftChapter?.verses || [];
+  picker.innerHTML = `<label>Versão<select id="live-version">${bibleCatalog.filter(bibleAvailable).map(item => `<option value="${esc(item.id)}" ${item.id === version.id ? 'selected' : ''}>${esc(item.abbreviation)}</option>`).join('')}</select></label><label>Livro<select id="live-book">${version.books.map(item => `<option value="${esc(item.code)}" ${item.code === book.code ? 'selected' : ''}>${esc(item.name)}</option>`).join('')}</select></label><label>Capítulo<select id="live-chapter">${Array.from({length:book.chapters}, (_, i) => `<option value="${i+1}" ${i+1 === Number(presentationDraft.chapter) ? 'selected' : ''}>${i+1}</option>`).join('')}</select></label><label>Versículo<select id="live-verse" ${verses.length ? '' : 'disabled'}>${verses.length ? verses.map(item => `<option value="${item.number}" ${String(item.number) === String(presentationDraft.verse || verses[0].number) ? 'selected' : ''}>${item.number}</option>`).join('') : '<option>Carregando…</option>'}</select></label><label>Versículos por tela<select id="live-count">${[1,2,3,4,5].map(count => `<option value="${count}" ${count === presentationDraft.count ? 'selected' : ''}>${count} ${count === 1 ? 'versículo' : 'versículos'}</option>`).join('')}</select></label><button type="button" class="presentation-confirm" data-action="confirm-live-selection" ${verses.length ? '' : 'disabled'}>Apresentar passagem</button>${presentationDraftError ? `<p class="presentation-draft-error" role="alert">${esc(presentationDraftError)}</p>` : ''}`;
+}
+function confirmPresentationDraft() {
+  if (!presentationDraftChapter?.verses?.length) return;
+  const draft = { ...presentationDraft };
+  presentationVerseCount = draft.count;
+  localStorage.setItem('deeper-live-verse-count', String(draft.count));
+  state.reader = { versionId: draft.versionId, bookCode: draft.bookCode, chapter: draft.chapter, verse: draft.verse };
+  state.selectedVerse = null;
+  activeChapter = presentationDraftChapter;
+  presentationPendingEdge = null;
+  presentationDraftDirty = false;
+  persist();
+  renderPresentationVerse();
+  renderPage(state.page);
 }
 function updateLiveShare(reference, version, number, copy, isHebrew, additional = []) {
   if (!liveShareWindow || liveShareWindow.closed) return;
@@ -1100,12 +1146,8 @@ function renderPresentationRecent() {
 function renderPresentationVerse(index = null) {
   if (!presentationMode) return;
   renderPresentationRecent();
-  const picker = document.getElementById('presentation-picker-controls');
-  const selectedVersion = bibleCatalog.find(item => item.id === state.reader.versionId);
-  const selectedBook = selectedVersion?.books.find(item => item.code === state.reader.bookCode);
-  const loadedForPicker = activeChapter && activeChapter.versionId === state.reader.versionId && activeChapter.bookCode === state.reader.bookCode && Number(activeChapter.chapter) === Number(state.reader.chapter);
-  if (selectedVersion && selectedBook) picker.innerHTML = `<label>Versão<select id="live-version">${bibleCatalog.filter(bibleAvailable).map(item => `<option value="${esc(item.id)}" ${item.id === selectedVersion.id ? 'selected' : ''}>${esc(item.abbreviation)}</option>`).join('')}</select></label><label>Livro<select id="live-book">${selectedVersion.books.map(item => `<option value="${esc(item.code)}" ${item.code === selectedBook.code ? 'selected' : ''}>${esc(item.name)}</option>`).join('')}</select></label><label>Capítulo<select id="live-chapter">${Array.from({length:selectedBook.chapters}, (_, i) => `<option value="${i+1}" ${i+1 === Number(state.reader.chapter) ? 'selected' : ''}>${i+1}</option>`).join('')}</select></label><label>Versículo<select id="live-verse" ${loadedForPicker ? '' : 'disabled'}>${loadedForPicker ? activeChapter.verses.map(item => `<option value="${item.number}" ${String(item.number) === String(state.reader.verse || activeChapter.verses[0].number) ? 'selected' : ''}>${item.number}</option>`).join('') : '<option>...</option>'}</select></label>`;
-  if (selectedVersion && selectedBook) picker.insertAdjacentHTML('beforeend', `<label>Versículos por tela<select id="live-count">${[1,2,3,4,5].map(count => `<option value="${count}" ${count === presentationVerseCount ? 'selected' : ''}>${count} ${count === 1 ? 'versículo' : 'versículos'}</option>`).join('')}</select></label>`);
+  if (!presentationDraftDirty) resetPresentationDraft();
+  renderPresentationPicker();
   const reference = document.getElementById('presentation-reference');
   const version = document.getElementById('presentation-version');
   const text = document.getElementById('presentation-verse-text');
@@ -1155,7 +1197,7 @@ function renderPresentationVerse(index = null) {
   next.disabled = presentationVerseIndex + shown.length >= activeChapter.verses.length && !adjacentReaderChapter(1);
   state.reader.verse = String(verse.number);
   const versePicker = document.getElementById('live-verse');
-  if (versePicker) versePicker.value = String(verse.number);
+  if (versePicker && !presentationDraftDirty) versePicker.value = String(verse.number);
   persist();
 }
 
@@ -1186,12 +1228,16 @@ function setPresentationMode(enabled) {
   if (enabled) {
     historyMenuOpen = false;
     updateReaderHeader();
+    resetPresentationDraft();
     stage.style.setProperty('--reader-text-scale', readerTextScale());
     renderPresentationVerse();
   } else if (document.fullscreenElement) {
     document.exitFullscreen?.().catch(() => {});
   }
   if (!enabled) {
+    presentationDraftRequest++;
+    presentationDraft = null;
+    presentationDraftDirty = false;
     presentationPendingEdge = null;
     document.querySelectorAll('.verse.verse-focused').forEach(verse => verse.classList.remove('verse-focused'));
     document.querySelector(`.verse[data-verse="${state.reader.verse}"]`)?.classList.add('verse-focused');
@@ -2042,7 +2088,7 @@ document.addEventListener('click', e=>{
   if (liveRecent && presentationMode) {
     const readings = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
     const chosen = readings[Number(liveRecent.dataset.liveRecentIndex)];
-    if (chosen) { state.reader = { versionId: chosen.versionId, bookCode: chosen.bookCode, chapter: chosen.chapter, verse: '' }; state.selectedVerse = null; activeChapter = null; presentationPendingEdge = null; persist(); renderPresentationVerse(); renderPage(state.page); }
+    if (chosen) { presentationDraft = { versionId: chosen.versionId, bookCode: chosen.bookCode, chapter: chosen.chapter, verse: '', count: presentationDraft?.count || presentationVerseCount }; presentationDraftDirty = true; preparePresentationDraft(); }
     return;
   }
   if(e.target.matches('[data-comment-backdrop]')){closeCommentComposer();return;}
@@ -2090,6 +2136,7 @@ document.addEventListener('click', e=>{
   if(action==='enter-presentation'){setPresentationMode(true);return;}
   if(action==='exit-presentation'){setPresentationMode(false);return;}
   if(action==='open-live-window'){openLiveShareWindow();return;}
+  if(action==='confirm-live-selection'){confirmPresentationDraft();return;}
   if(action==='previous-presentation-verse'){stepPresentationVerse(-1);return;}
   if(action==='next-presentation-verse'){stepPresentationVerse(1);return;}
   if(action==='decrease-reader-size'){setReaderTextScale(readerTextScale()-.1,true);return;}
@@ -2224,12 +2271,14 @@ document.addEventListener('click', e=>{
 document.addEventListener('change', e=>{
   if (presentationMode && e.target.id.startsWith('live-')) {
     const id = e.target.id;
-    if (id === 'live-count') { setPresentationVerseCount(e.target.value); return; }
-    if (id === 'live-verse') { const index = activeChapter?.verses.findIndex(item => String(item.number) === e.target.value); if (index >= 0) renderPresentationVerse(index); return; }
-    if (id === 'live-version') { const version = bibleCatalog.find(item => item.id === e.target.value && bibleAvailable(item)); if (!version) return; const book = version.books.find(item => item.code === state.reader.bookCode) || version.books[0]; state.reader.versionId = version.id; state.reader.bookCode = book.code; state.reader.chapter = Math.min(Number(state.reader.chapter) || 1, book.chapters); }
-    if (id === 'live-book') { state.reader.bookCode = e.target.value; state.reader.chapter = 1; }
-    if (id === 'live-chapter') state.reader.chapter = Number(e.target.value);
-    state.reader.verse = ''; state.selectedVerse = null; activeChapter = null; presentationPendingEdge = null; persist(); renderPresentationVerse(); renderPage(state.page); return;
+    if (!presentationDraft) return;
+    presentationDraftDirty = true;
+    if (id === 'live-count') { presentationDraft.count = Number(e.target.value); return; }
+    if (id === 'live-verse') { presentationDraft.verse = e.target.value; return; }
+    if (id === 'live-version') { const version = bibleCatalog.find(item => item.id === e.target.value && bibleAvailable(item)); if (!version) return; const book = version.books.find(item => item.code === presentationDraft.bookCode) || version.books[0]; presentationDraft.versionId = version.id; presentationDraft.bookCode = book.code; presentationDraft.chapter = Math.min(Number(presentationDraft.chapter) || 1, book.chapters); }
+    if (id === 'live-book') { presentationDraft.bookCode = e.target.value; presentationDraft.chapter = 1; }
+    if (id === 'live-chapter') presentationDraft.chapter = Number(e.target.value);
+    presentationDraft.verse = ''; preparePresentationDraft(); return;
   }
   const daySelect=e.target.closest('[data-plan-day-select]');
   if(daySelect){if(daySelect.value!=='')openPlanDay(daySelect.dataset.planId,Number(daySelect.value));return;}
@@ -2261,7 +2310,6 @@ document.addEventListener('change', e=>{
 });
 
 document.addEventListener('input',e=>{
-  if (presentationMode && e.target.id === 'live-count') { setPresentationVerseCount(e.target.value); return; }
   if(e.target.id==='reader-text-size'){setReaderTextScale(Number(e.target.value)/100);return;}
   if(e.target.id==='plan-title'){state.plan.title=e.target.value;persist();}
   if(e.target.id==='comment-composer-body'){

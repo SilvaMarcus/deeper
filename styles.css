@@ -1021,6 +1021,9 @@ body.presentation-mode .sidebar, body.presentation-mode .app-header, body.presen
 .presentation-picker-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 14px 0; }
 .presentation-picker-controls label { display: grid; gap: 5px; color: var(--ink-soft); }
 .presentation-picker-controls select { width: 100%; min-width: 0; min-height: 46px; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); font-size: 14px; }
+.presentation-confirm { grid-column: 1 / -1; min-height: 46px; padding: 10px 14px; border: 0; border-radius: 8px; background: var(--deep); color: #fff; font-weight: 600; cursor: pointer; }
+.presentation-confirm:disabled { opacity: .5; cursor: wait; }
+.presentation-draft-error { grid-column: 1 / -1; margin: 0; color: var(--ink); font-size: 12px; }
 .presentation-share-window { width: 100%; min-height: 40px; margin-top: 5px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); cursor: pointer; }
 .presentation-recent { display: grid; gap: 5px; border-top: 1px solid var(--line); padding-top: 12px; }
 .presentation-recent strong { margin-bottom: 5px; }
