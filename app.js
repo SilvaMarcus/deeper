@@ -996,6 +996,8 @@ function renderPresentationVerse(index = null) {
   const reference = document.getElementById('presentation-reference');
   const version = document.getElementById('presentation-version');
   const text = document.getElementById('presentation-verse-text');
+  const number = document.getElementById('presentation-verse-number');
+  const copy = document.getElementById('presentation-verse-copy');
   const progress = document.getElementById('presentation-progress');
   const previous = document.querySelector('[data-action="previous-presentation-verse"]');
   const next = document.querySelector('[data-action="next-presentation-verse"]');
@@ -1003,7 +1005,8 @@ function renderPresentationVerse(index = null) {
   if (!loaded || !activeChapter.verses?.length) {
     reference.textContent = 'Carregando capítulo...';
     version.textContent = '';
-    text.textContent = '';
+    number.textContent = '';
+    copy.textContent = '';
     progress.textContent = '';
     previous.disabled = next.disabled = true;
     return;
@@ -1019,7 +1022,8 @@ function renderPresentationVerse(index = null) {
   const verseLabel = verse.end > verse.number ? `${verse.number}-${verse.end}` : verse.number;
   reference.textContent = `${activeChapter.bookName} ${activeChapter.chapter}:${verseLabel}`;
   version.textContent = bibleCatalog.find(item => item.id === state.reader.versionId)?.abbreviation || '';
-  text.textContent = verse.text;
+  number.textContent = verseLabel;
+  copy.textContent = verse.text;
   text.dataset.length = verse.text.length > 450 ? 'very-long' : verse.text.length > 260 ? 'long' : 'normal';
   text.scrollTop = 0;
   progress.textContent = `${presentationVerseIndex + 1} de ${activeChapter.verses.length}`;
@@ -1080,7 +1084,7 @@ async function loadCurrentChapter() {
     activeChapter = loadedChapter;
     if (!activeChapter) {
       canvas.innerHTML = '<p class="reader-loading">Este capítulo não está disponível offline. Reinstale a versão.</p>';
-      if (presentationMode) document.getElementById('presentation-verse-text').textContent = 'Este capítulo não está disponível. Selecione outra versão.';
+      if (presentationMode) { document.getElementById('presentation-verse-number').textContent = ''; document.getElementById('presentation-verse-copy').textContent = 'Este capítulo não está disponível. Selecione outra versão.'; }
       return;
     }
     const version = bibleCatalog.find(item => item.id === state.reader.versionId);
@@ -1104,7 +1108,8 @@ async function loadCurrentChapter() {
     canvas.innerHTML = `<p class="reader-loading">${esc(error.message || 'Não foi possível abrir este capítulo.')}</p>`;
     if (presentationMode) {
       document.getElementById('presentation-reference').textContent = 'Leitura indisponível';
-      document.getElementById('presentation-verse-text').textContent = error.message || 'Não foi possível abrir este capítulo.';
+      document.getElementById('presentation-verse-number').textContent = '';
+      document.getElementById('presentation-verse-copy').textContent = error.message || 'Não foi possível abrir este capítulo.';
     }
   }
 }
