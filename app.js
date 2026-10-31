@@ -1052,6 +1052,8 @@ function openLiveShareWindow() {
 }
 function renderPresentationVerse(index = null) {
   if (!presentationMode) return;
+  const recent = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
+  document.getElementById('presentation-recent').innerHTML = `<strong>Leituras recentes</strong>${recent.length ? recent.map((item, index) => `<button type="button" data-live-recent-index="${index}"><span>${esc(item.bookName)} ${item.chapter}</span><small>${esc(item.abbreviation)}</small></button>`).join('') : '<p>Suas leituras aparecerão aqui.</p>'}`;
   const picker = document.getElementById('presentation-picker-controls');
   const selectedVersion = bibleCatalog.find(item => item.id === state.reader.versionId);
   const selectedBook = selectedVersion?.books.find(item => item.code === state.reader.bookCode);
@@ -1133,7 +1135,6 @@ function setPresentationMode(enabled) {
     updateReaderHeader();
     stage.style.setProperty('--reader-text-scale', readerTextScale());
     renderPresentationVerse();
-    document.getElementById('app')?.requestFullscreen?.().catch(() => {});
   } else if (document.fullscreenElement) {
     document.exitFullscreen?.().catch(() => {});
   }
@@ -1984,6 +1985,13 @@ function armPlanDeletion(button) {
 }
 
 document.addEventListener('click', e=>{
+  const liveRecent = e.target.closest('[data-live-recent-index]');
+  if (liveRecent && presentationMode) {
+    const readings = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
+    const chosen = readings[Number(liveRecent.dataset.liveRecentIndex)];
+    if (chosen) { state.reader = { versionId: chosen.versionId, bookCode: chosen.bookCode, chapter: chosen.chapter, verse: '' }; state.selectedVerse = null; activeChapter = null; presentationPendingEdge = null; persist(); renderPresentationVerse(); renderPage(state.page); }
+    return;
+  }
   if(e.target.matches('[data-comment-backdrop]')){closeCommentComposer();return;}
   if(readerSizeMenuOpen && !e.target.closest('.reader-size-control')){readerSizeMenuOpen=false;updateReaderHeader();}
   if(historyMenuOpen && !e.target.closest('.reader-history-control')){historyMenuOpen=false;updateReaderHeader();}
