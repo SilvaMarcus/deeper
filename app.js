@@ -267,7 +267,7 @@ function openBibleDatabase() {
 
 async function initializeBibleLibrary() {
   try {
-    const response = await fetch('data/bibles/catalog.json?v=2', { cache: 'no-cache' });
+    const response = await fetch('data/bibles/catalog.json?v=3', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Catálogo indisponível');
     bibleCatalog = (await response.json()).versions;
     const onlineBooks = bibleCatalog.find(version => version.id === 'porbr2018').books;
@@ -378,14 +378,14 @@ async function installBibleVersion(versionId, button, { background = false } = {
       persist();
       return true;
     }
-    const planContext = planReadingContext();
+    const planContext = version.bookCount === 66 ? planReadingContext() : null;
     state.reader = planContext
       ? { versionId, bookCode: planContext.chapter.code, chapter: planContext.chapter.chapter, verse: '' }
       : { versionId, bookCode: biblePackage.books[0].code, chapter: 1, verse: '' };
-    state.plan.version = version.name;
+    if (version.bookCount === 66) state.plan.version = version.name;
     bibleLibraryOpen = false;
     persist();
-    renderPage(state.page === 'plan-reader' ? 'plan-reader' : 'reader');
+    renderPage(state.page === 'plan-reader' && version.bookCount === 66 ? 'plan-reader' : 'reader');
     toast(`${version.abbreviation} instalada para leitura offline.`);
     return true;
   } catch (error) {
@@ -671,7 +671,7 @@ function readerIsAtPlanPosition(context = planReadingContext()) {
 }
 
 function installedVersionForPlan(plan) {
-  const installed = bibleCatalog.filter(bibleAvailable);
+  const installed = bibleCatalog.filter(version => bibleAvailable(version) && version.bookCount === 66);
   return installed.find(version => version.name === plan.version || version.abbreviation === plan.version) || installed[0];
 }
 
@@ -998,6 +998,10 @@ function renderPresentationVerse(index = null) {
   const text = document.getElementById('presentation-verse-text');
   const number = document.getElementById('presentation-verse-number');
   const copy = document.getElementById('presentation-verse-copy');
+  const currentVersion = bibleCatalog.find(item => item.id === state.reader.versionId);
+  text.classList.toggle('hebrew-reading', currentVersion?.language === 'he');
+  copy.dir = currentVersion?.language === 'he' ? 'rtl' : 'ltr';
+  copy.lang = currentVersion?.language === 'he' ? 'he' : 'pt-BR';
   const progress = document.getElementById('presentation-progress');
   const previous = document.querySelector('[data-action="previous-presentation-verse"]');
   const next = document.querySelector('[data-action="next-presentation-verse"]');
@@ -1089,11 +1093,12 @@ async function loadCurrentChapter() {
     }
     const version = bibleCatalog.find(item => item.id === state.reader.versionId);
     rememberReading(version, activeChapter);
-    canvas.innerHTML = `<p class="chapter-overline">${esc(version.abbreviation)} · ${esc(version.license)}</p><h1>${esc(activeChapter.bookName)} ${activeChapter.chapter}</h1>
+    canvas.classList.toggle('hebrew-reading', version.language === 'he');
+    canvas.innerHTML = `<h1>${esc(activeChapter.bookName)} ${activeChapter.chapter}</h1>
       ${activeChapter.verses.map(verse => {
         const key = currentVerseKey(verse.number), highlight = state.highlights[key], comment = state.comments[key];
         const number = verse.end !== verse.number ? `${verse.number}-${verse.end}` : verse.number;
-        return `<span class="verse ${highlight?`highlight-${highlight}`:''} ${comment?'has-comment':''} ${String(state.reader.verse)===String(verse.number)?'verse-focused':''}" data-verse="${verse.number}"><sup>${number}</sup><span class="verse-copy">${esc(verse.text)}</span>${comment?`<span class="verse-comment-tip" hidden>${esc(comment)}</span>`:''}</span>`;
+        return `<span class="verse ${highlight?`highlight-${highlight}`:''} ${comment?'has-comment':''} ${String(state.reader.verse)===String(verse.number)?'verse-focused':''}" data-verse="${verse.number}"><sup>${number}</sup><span class="verse-copy" ${version.language === 'he' ? 'dir="rtl" lang="he"' : ''}>${esc(verse.text)}</span>${comment?`<span class="verse-comment-tip" hidden>${esc(comment)}</span>`:''}</span>`;
       }).join('')}
       ${state.page==='plan-reader'?renderPlanReadingFooter():''}
       <footer class="bible-attribution">${esc(version.attribution)} <a href="${esc(version.licenseUrl)}" target="_blank" rel="noreferrer">Licença</a></footer>`;
@@ -1537,7 +1542,7 @@ function renderPlanForm() {
       <label class="field">Método<div class="segmented" data-plan-field="method"><button data-value="canonical" class="${state.plan.method==='canonical'?'active':''}">Canônico</button><button data-value="chronological" class="${state.plan.method==='chronological'?'active':''}">Cronológico</button></div><small id="plan-method-description" class="field-help">${state.plan.method==='chronological'?'Ordem dos acontecimentos definida para a leitura cronológica.':'Ordem tradicional dos livros da Bíblia.'}</small></label>
       <label class="field">Conteúdo<select id="plan-scope"><option value="all" ${state.plan.scope==='all'?'selected':''}>Bíblia completa</option><option value="AT" ${state.plan.scope==='AT'?'selected':''}>Somente Antigo Testamento</option><option value="NT" ${state.plan.scope==='NT'?'selected':''}>Somente Novo Testamento</option></select></label>
       <label class="field" id="plan-duration-field" ${state.plan.checklist==='book'?'hidden':''}>Tempo para concluir<select id="plan-duration">${durations.map(duration=>`<option value="${duration}" ${state.plan.duration===duration?'selected':''}>${planDurationLabel(duration)}</option>`).join('')}</select></label>
-      <label class="field">Versão<select id="plan-version">${bibleCatalog.filter(bibleAvailable).map(version=>`<option value="${esc(version.name)}" ${state.plan.version===version.name?'selected':''}>${esc(version.name)}${version.online?' · Online':''}</option>`).join('') || '<option value="">Instale uma versão no leitor</option>'}</select></label>
+      <label class="field">Versão<select id="plan-version">${bibleCatalog.filter(version => bibleAvailable(version) && version.bookCount === 66).map(version=>`<option value="${esc(version.name)}" ${state.plan.version===version.name?'selected':''}>${esc(version.name)}${version.online?' · Online':''}</option>`).join('') || '<option value="">Instale uma versão no leitor</option>'}</select></label>
       <label class="field">Marcar progresso por<select id="plan-checklist"><option value="story" ${state.plan.checklist==='story'?'selected':''}>Modo História</option><option value="daily" ${state.plan.checklist==='daily'?'selected':''}>Bloco diário</option><option value="book" ${state.plan.checklist==='book'?'selected':''}>Por livro</option></select><small id="plan-checklist-description" class="field-help">${planChecklistDescription(state.plan.checklist)}</small></label>
       <label class="field" id="plan-book-mode-field" ${state.plan.checklist==='book'?'':'hidden'}>Tipo de marcação<select id="plan-book-mode"><option value="book" ${state.plan.bookCheckMode==='book'?'selected':''}>Um check por livro</option><option value="category" ${state.plan.bookCheckMode==='category'?'selected':''}>Um check por tipo de livro</option></select></label>
       <button class="button button-dark button-full" data-action="generate-plan">${editing?'Salvar alterações':'Criar plano'}</button>

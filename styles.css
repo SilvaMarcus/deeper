@@ -317,8 +317,12 @@ body.app-open { overflow: hidden; }
 .version-actions { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
 .version-actions a { color: var(--ink-soft); font-size: 11px; }
 .version-actions .button { min-width: 96px; }
-.chapter-overline { text-align: center; color: var(--ink-soft); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
 .reader-canvas h1 { text-align: center; font-family: var(--font-display); font-size: calc(64px * var(--reader-text-scale)); font-weight: 400; letter-spacing: -.04em; margin: 10px 0 52px; }
+.reader-canvas.hebrew-reading .verse { direction: rtl; text-align: right; font-family: "Noto Serif Hebrew", "SBL Hebrew", "Times New Roman", serif; }
+.reader-canvas.hebrew-reading .verse sup { margin-right: 0; margin-left: 8px; unicode-bidi: isolate; }
+.reader-canvas.hebrew-reading .verse.has-comment::after { right: auto; left: 0; }
+.presentation-verse-text.hebrew-reading { direction: rtl; text-align: right; font-family: "Noto Serif Hebrew", "SBL Hebrew", "Times New Roman", serif; }
+.presentation-verse-text.hebrew-reading sup { margin-right: 0; margin-left: .35em; unicode-bidi: isolate; }
 .verse { display: block; font-family: var(--font-display); font-size: calc(23px * var(--reader-text-scale)); line-height: 1.78; margin: 0 0 17px; padding: 3px 4px; cursor: pointer; position: relative; transition: background .15s ease, font-size .15s ease; }
 .verse:hover { background: color-mix(in srgb, var(--gold) 9%, transparent); }
 .verse.verse-focused { background: color-mix(in srgb, var(--gold) 12%, transparent); }

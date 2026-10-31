@@ -2023,6 +2023,260 @@
           "chapters": 22
         }
       ]
+    },
+    {
+      "id": "wlc",
+      "abbreviation": "WLC",
+      "name": "Hebraico · Códice de Leningrado",
+      "language": "he",
+      "completeness": "Antigo Testamento",
+      "license": "Uso livre com atribuição",
+      "licenseUrl": "https://tanach.us/Pages/Tanach.xml#License",
+      "sourceUrl": "https://github.com/midvash/bible-data/tree/9586bd8228a747962df1ee8692730422fb7eb2ec/versions/he/wlc",
+      "attribution": "Westminster Leningrad Codex, Westminster Hebrew Institute. Texto hebraico do Antigo Testamento.",
+      "recommended": false,
+      "description": "Texto hebraico massorético dos 39 livros do Antigo Testamento. Leitura da direita para a esquerda.",
+      "packageFile": "data/bibles/wlc.json.gz",
+      "byteSize": 1051492,
+      "sha256": "8383717a06f1f68fe2a63ae3eb747c0bfa4087f6501279f71f78f8346c1149ea",
+      "verseCount": 23318,
+      "bookCount": 39,
+      "books": [
+        {
+          "code": "GEN",
+          "name": "Gênesis",
+          "order": 1,
+          "chapters": 50
+        },
+        {
+          "code": "EXO",
+          "name": "Êxodo",
+          "order": 2,
+          "chapters": 40
+        },
+        {
+          "code": "LEV",
+          "name": "Levítico",
+          "order": 3,
+          "chapters": 27
+        },
+        {
+          "code": "NUM",
+          "name": "Números",
+          "order": 4,
+          "chapters": 36
+        },
+        {
+          "code": "DEU",
+          "name": "Deuteronômio",
+          "order": 5,
+          "chapters": 34
+        },
+        {
+          "code": "JOS",
+          "name": "Josué",
+          "order": 6,
+          "chapters": 24
+        },
+        {
+          "code": "JDG",
+          "name": "Juízes",
+          "order": 7,
+          "chapters": 21
+        },
+        {
+          "code": "RUT",
+          "name": "Rute",
+          "order": 8,
+          "chapters": 4
+        },
+        {
+          "code": "1SA",
+          "name": "1 Samuel",
+          "order": 9,
+          "chapters": 31
+        },
+        {
+          "code": "2SA",
+          "name": "2 Samuel",
+          "order": 10,
+          "chapters": 24
+        },
+        {
+          "code": "1KI",
+          "name": "1 Reis",
+          "order": 11,
+          "chapters": 22
+        },
+        {
+          "code": "2KI",
+          "name": "2 Reis",
+          "order": 12,
+          "chapters": 25
+        },
+        {
+          "code": "1CH",
+          "name": "1 Crônicas",
+          "order": 13,
+          "chapters": 29
+        },
+        {
+          "code": "2CH",
+          "name": "2 Crônicas",
+          "order": 14,
+          "chapters": 36
+        },
+        {
+          "code": "EZR",
+          "name": "Esdras",
+          "order": 15,
+          "chapters": 10
+        },
+        {
+          "code": "NEH",
+          "name": "Neemias",
+          "order": 16,
+          "chapters": 13
+        },
+        {
+          "code": "EST",
+          "name": "Ester",
+          "order": 17,
+          "chapters": 10
+        },
+        {
+          "code": "JOB",
+          "name": "Jó",
+          "order": 18,
+          "chapters": 42
+        },
+        {
+          "code": "PSA",
+          "name": "Salmos",
+          "order": 19,
+          "chapters": 150
+        },
+        {
+          "code": "PRO",
+          "name": "Provérbios",
+          "order": 20,
+          "chapters": 31
+        },
+        {
+          "code": "ECC",
+          "name": "Eclesiastes",
+          "order": 21,
+          "chapters": 12
+        },
+        {
+          "code": "SOL",
+          "name": "Cântico dos Cânticos",
+          "order": 22,
+          "chapters": 8
+        },
+        {
+          "code": "ISA",
+          "name": "Isaías",
+          "order": 23,
+          "chapters": 66
+        },
+        {
+          "code": "JER",
+          "name": "Jeremias",
+          "order": 24,
+          "chapters": 52
+        },
+        {
+          "code": "LAM",
+          "name": "Lamentações",
+          "order": 25,
+          "chapters": 5
+        },
+        {
+          "code": "EZE",
+          "name": "Ezequiel",
+          "order": 26,
+          "chapters": 48
+        },
+        {
+          "code": "DAN",
+          "name": "Daniel",
+          "order": 27,
+          "chapters": 12
+        },
+        {
+          "code": "HOS",
+          "name": "Oseias",
+          "order": 28,
+          "chapters": 14
+        },
+        {
+          "code": "JOE",
+          "name": "Joel",
+          "order": 29,
+          "chapters": 4
+        },
+        {
+          "code": "AMO",
+          "name": "Amós",
+          "order": 30,
+          "chapters": 9
+        },
+        {
+          "code": "OBA",
+          "name": "Obadias",
+          "order": 31,
+          "chapters": 1
+        },
+        {
+          "code": "JON",
+          "name": "Jonas",
+          "order": 32,
+          "chapters": 4
+        },
+        {
+          "code": "MIC",
+          "name": "Miqueias",
+          "order": 33,
+          "chapters": 7
+        },
+        {
+          "code": "NAH",
+          "name": "Naum",
+          "order": 34,
+          "chapters": 3
+        },
+        {
+          "code": "HAB",
+          "name": "Habacuque",
+          "order": 35,
+          "chapters": 3
+        },
+        {
+          "code": "ZEP",
+          "name": "Sofonias",
+          "order": 36,
+          "chapters": 3
+        },
+        {
+          "code": "HAG",
+          "name": "Ageu",
+          "order": 37,
+          "chapters": 2
+        },
+        {
+          "code": "ZEC",
+          "name": "Zacarias",
+          "order": 38,
+          "chapters": 14
+        },
+        {
+          "code": "MAL",
+          "name": "Malaquias",
+          "order": 39,
+          "chapters": 3
+        }
+      ]
     }
   ]
 }
