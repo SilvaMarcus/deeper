@@ -1052,6 +1052,13 @@ function adjacentReaderChapter(direction) {
 }
 
 let presentationVerseCount = [1, 2, 3, 4, 5].includes(Number(localStorage.getItem('deeper-live-verse-count'))) ? Number(localStorage.getItem('deeper-live-verse-count')) : 1;
+function setPresentationVerseCount(value) {
+  const count = Number(value);
+  if (![1, 2, 3, 4, 5].includes(count) || count === presentationVerseCount) return;
+  presentationVerseCount = count;
+  localStorage.setItem('deeper-live-verse-count', String(count));
+  renderPresentationVerse(presentationVerseIndex);
+}
 function updateLiveShare(reference, version, number, copy, isHebrew, additional = []) {
   if (!liveShareWindow || liveShareWindow.closed) return;
   const doc = liveShareWindow.document;
@@ -2222,7 +2229,7 @@ document.addEventListener('click', e=>{
 document.addEventListener('change', e=>{
   if (presentationMode && e.target.id.startsWith('live-')) {
     const id = e.target.id;
-    if (id === 'live-count') { presentationVerseCount = Number(e.target.value); localStorage.setItem('deeper-live-verse-count', String(presentationVerseCount)); renderPresentationVerse(presentationVerseIndex); return; }
+    if (id === 'live-count') { setPresentationVerseCount(e.target.value); return; }
     if (id === 'live-verse') { const index = activeChapter?.verses.findIndex(item => String(item.number) === e.target.value); if (index >= 0) renderPresentationVerse(index); return; }
     if (id === 'live-version') { const version = bibleCatalog.find(item => item.id === e.target.value && bibleAvailable(item)); if (!version) return; const book = version.books.find(item => item.code === state.reader.bookCode) || version.books[0]; state.reader.versionId = version.id; state.reader.bookCode = book.code; state.reader.chapter = Math.min(Number(state.reader.chapter) || 1, book.chapters); }
     if (id === 'live-book') { state.reader.bookCode = e.target.value; state.reader.chapter = 1; }
@@ -2259,6 +2266,7 @@ document.addEventListener('change', e=>{
 });
 
 document.addEventListener('input',e=>{
+  if (presentationMode && e.target.id === 'live-count') { setPresentationVerseCount(e.target.value); return; }
   if(e.target.id==='reader-text-size'){setReaderTextScale(Number(e.target.value)/100);return;}
   if(e.target.id==='plan-title'){state.plan.title=e.target.value;persist();}
   if(e.target.id==='comment-composer-body'){
