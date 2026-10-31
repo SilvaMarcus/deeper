@@ -1073,6 +1073,7 @@ function openLiveShareWindow() {
     const colors = getComputedStyle(document.documentElement);
     const bg = colors.getPropertyValue('--paper').trim() || '#f4efe4';
     const ink = colors.getPropertyValue('--ink').trim() || '#25352c';
+    const gold = colors.getPropertyValue('--gold').trim() || '#a76e3f';
     liveShareWindow.document.open();
     liveShareWindow.document.write('<!doctype html><html lang="pt-BR"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deeper — Apresentação</title></head><body><header><span id="reference"></span><small id="version"></small></header><main><p id="verse"><sup id="number"></sup><span id="copy"></span></p></main></body></html>');
     liveShareWindow.document.close();
@@ -1082,7 +1083,7 @@ function openLiveShareWindow() {
     favicon.href = new URL('assets/deeper-favicon.svg?v=1', document.baseURI).href;
     liveShareWindow.document.head.appendChild(favicon);
     const style = liveShareWindow.document.createElement('style');
-    style.textContent = `@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+4:wght@400;600&display=swap');*{box-sizing:border-box}body{margin:0;padding:6vh 8vw;background:${bg};color:${ink};height:100vh;display:flex;flex-direction:column}header{display:flex;justify-content:space-between;gap:1em;padding-bottom:1em;border-bottom:1px solid currentColor;font-size:16px;font-weight:600}small{font-size:12px}main{flex:1;display:flex;align-items:center;font-size:clamp(28px,4vw,54px);line-height:1.4;overflow:auto}main p{margin:0}sup{font-size:.55em;font-weight:700;margin-inline-end:.4em;vertical-align:super}`;
+    style.textContent = `@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+4:wght@400;600&display=swap');*{box-sizing:border-box}body{margin:0;padding:6vh 8vw;background:${bg};color:${ink};height:100vh;display:flex;flex-direction:column}header{display:flex;justify-content:space-between;gap:1em;padding-bottom:1em;border-bottom:1px solid currentColor;font-size:16px;font-weight:600}small{font-size:12px}main{flex:1;display:flex;align-items:center;font-size:clamp(28px,4vw,54px);line-height:1.4;overflow:auto}main p{margin:0}sup{color:${gold};font-size:.55em;font-weight:700;margin-inline-end:.4em;vertical-align:super}`;
     liveShareWindow.document.head.appendChild(style);
     liveShareWindow.document.body.style.fontFamily = (appearanceFonts.find(font => font.id === document.documentElement.dataset.font) || appearanceFonts[0]).family;
   }
