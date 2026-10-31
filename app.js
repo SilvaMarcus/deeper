@@ -991,6 +991,33 @@ function adjacentReaderChapter(direction) {
   return nextBook ? { bookCode: nextBook.code, chapter: direction > 0 ? 1 : nextBook.chapters } : null;
 }
 
+let liveShareWindow = null;
+function updateLiveShare(reference, version, number, copy, isHebrew) {
+  if (!liveShareWindow || liveShareWindow.closed) return;
+  const doc = liveShareWindow.document;
+  doc.getElementById('reference').textContent = reference;
+  doc.getElementById('version').textContent = version;
+  doc.getElementById('number').textContent = number;
+  doc.getElementById('copy').textContent = copy;
+  doc.getElementById('verse').dir = isHebrew ? 'rtl' : 'ltr';
+}
+function openLiveShareWindow() {
+  if (!liveShareWindow || liveShareWindow.closed) {
+    liveShareWindow = window.open('', 'deeper-live-share', 'popup,width=1000,height=700');
+    if (!liveShareWindow) { toast('Permita janelas pop-up para abrir a apresentação.'); return; }
+    const colors = getComputedStyle(document.documentElement);
+    const bg = colors.getPropertyValue('--paper').trim() || '#f4efe4';
+    const ink = colors.getPropertyValue('--ink').trim() || '#25352c';
+    liveShareWindow.document.open();
+    liveShareWindow.document.write('<!doctype html><html lang="pt-BR"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deeper — Apresentação</title></head><body><header><span id="reference"></span><small id="version"></small></header><main id="verse"><sup id="number"></sup><span id="copy"></span></main></body></html>');
+    liveShareWindow.document.close();
+    const style = liveShareWindow.document.createElement('style');
+    style.textContent = `*{box-sizing:border-box}body{margin:0;padding:6vh 8vw;background:${bg};color:${ink};font-family:Georgia,serif;height:100vh;display:flex;flex-direction:column}header{display:flex;justify-content:space-between;gap:1em;padding-bottom:1em;border-bottom:1px solid currentColor;font:600 16px Arial,sans-serif}small{font-size:12px}main{flex:1;display:flex;align-items:center;justify-content:center;gap:.35em;font-size:clamp(28px,4vw,54px);line-height:1.4}sup{font:600 .4em Arial,sans-serif;align-self:center}`;
+    liveShareWindow.document.head.appendChild(style);
+  }
+  renderPresentationVerse(presentationVerseIndex);
+  liveShareWindow.focus();
+}
 function renderPresentationVerse(index = null) {
   if (!presentationMode) return;
   const picker = document.getElementById('presentation-picker-controls');
@@ -1018,6 +1045,7 @@ function renderPresentationVerse(index = null) {
     copy.textContent = '';
     progress.textContent = '';
     previous.disabled = next.disabled = true;
+    updateLiveShare('Carregando capítulo...', '', '', '', false);
     return;
   }
   if (index === null) {
@@ -1033,6 +1061,7 @@ function renderPresentationVerse(index = null) {
   version.textContent = bibleCatalog.find(item => item.id === state.reader.versionId)?.abbreviation || '';
   number.textContent = verseLabel;
   copy.textContent = verse.text;
+  updateLiveShare(reference.textContent, version.textContent, verseLabel, verse.text, currentVersion?.language === 'he');
   text.dataset.length = verse.text.length > 450 ? 'very-long' : verse.text.length > 260 ? 'long' : 'normal';
   text.scrollTop = 0;
   progress.textContent = `${presentationVerseIndex + 1} de ${activeChapter.verses.length}`;
@@ -1122,6 +1151,7 @@ async function loadCurrentChapter() {
       document.getElementById('presentation-reference').textContent = 'Leitura indisponível';
       document.getElementById('presentation-verse-number').textContent = '';
       document.getElementById('presentation-verse-copy').textContent = error.message || 'Não foi possível abrir este capítulo.';
+      updateLiveShare('Leitura indisponível', '', '', error.message || 'Não foi possível abrir este capítulo.', false);
     }
   }
 }
@@ -1966,6 +1996,7 @@ document.addEventListener('click', e=>{
   if(action==='clear-recent-readings'){state.recentReadings=[];persist();updateReaderHeader();return;}
   if(action==='enter-presentation'){setPresentationMode(true);return;}
   if(action==='exit-presentation'){setPresentationMode(false);return;}
+  if(action==='open-live-window'){openLiveShareWindow();return;}
   if(action==='previous-presentation-verse'){stepPresentationVerse(-1);return;}
   if(action==='next-presentation-verse'){stepPresentationVerse(1);return;}
   if(action==='decrease-reader-size'){setReaderTextScale(readerTextScale()-.1,true);return;}
