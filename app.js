@@ -240,7 +240,7 @@ function hydrate(source) {
       })),
       plan: legacyPlan,
       reader: { ...defaultState.reader, ...(stored.reader || {}) },
-      recentReadings: Array.isArray(stored.recentReadings) ? stored.recentReadings.filter(item => item && typeof item.versionId === 'string' && typeof item.bookCode === 'string' && Number.isInteger(item.chapter) && item.chapter > 0).slice(0, 12) : [],
+      recentReadings: Array.isArray(stored.recentReadings) ? stored.recentReadings.filter(item => item && typeof item.versionId === 'string' && typeof item.bookCode === 'string' && Number.isInteger(item.chapter) && item.chapter > 0).filter((item, index, items) => items.findIndex(other => other.bookCode === item.bookCode && other.chapter === item.chapter) === index).slice(0, 12) : [],
       planReading: stored.planReading || null
     };
   } catch { return structuredClone(defaultState); }
@@ -999,11 +999,39 @@ function renderReader() {
   </section>`;
 }
 
+let recentReadingTimer = null;
+let recentReadingKey = '';
+let recentReadingSince = 0;
+let recentReadingRecorded = false;
+function trackRecentLocation() {
+  const key = ['reader', 'plan-reader'].includes(state.page) && state.reader.versionId ? `${state.reader.bookCode}:${state.reader.chapter}` : '';
+  if (key === recentReadingKey) return;
+  clearTimeout(recentReadingTimer);
+  recentReadingTimer = null;
+  recentReadingKey = key;
+  recentReadingSince = Date.now();
+  recentReadingRecorded = false;
+}
 function rememberReading(version, chapter) {
+  trackRecentLocation();
+  if (!recentReadingKey || recentReadingRecorded || recentReadingTimer) return;
+  const key = recentReadingKey;
+  recentReadingTimer = setTimeout(() => {
+    recentReadingTimer = null;
+    if (key !== recentReadingKey || !['reader', 'plan-reader'].includes(state.page) || `${state.reader.bookCode}:${state.reader.chapter}` !== key) return;
+    const currentVersion = bibleCatalog.find(item => item.id === state.reader.versionId);
+    if (!currentVersion || !activeChapter || activeChapter.versionId !== currentVersion.id || activeChapter.bookCode !== state.reader.bookCode || Number(activeChapter.chapter) !== Number(state.reader.chapter)) return;
+    recentReadingRecorded = true;
+    saveRecentReading(currentVersion, activeChapter);
+    if (presentationMode) renderPresentationRecent();
+    if (historyMenuOpen) updateReaderHeader();
+  }, Math.max(0, 5000 - (Date.now() - recentReadingSince)));
+}
+function saveRecentReading(version, chapter) {
   const entry = { versionId: version.id, bookCode: state.reader.bookCode, chapter: chapter.chapter, bookName: chapter.bookName, abbreviation: version.abbreviation };
   const previous = state.recentReadings || [];
-  if (previous[0]?.versionId === entry.versionId && previous[0]?.bookCode === entry.bookCode && previous[0]?.chapter === entry.chapter) return;
-  state.recentReadings = [entry, ...previous.filter(item => item.versionId !== entry.versionId || item.bookCode !== entry.bookCode || item.chapter !== entry.chapter)].slice(0, 12);
+  if (previous[0]?.versionId === entry.versionId && previous[0]?.bookCode === entry.bookCode && previous[0]?.chapter === entry.chapter && previous.filter(item => item.bookCode === entry.bookCode && item.chapter === entry.chapter).length === 1) return;
+  state.recentReadings = [entry, ...previous.filter(item => item.bookCode !== entry.bookCode || item.chapter !== entry.chapter)].slice(0, 12);
   persist();
 }
 
@@ -1061,10 +1089,13 @@ function openLiveShareWindow() {
   renderPresentationVerse(presentationVerseIndex);
   liveShareWindow.focus();
 }
-function renderPresentationVerse(index = null) {
-  if (!presentationMode) return;
+function renderPresentationRecent() {
   const recent = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
   document.getElementById('presentation-recent').innerHTML = `<strong>Leituras recentes</strong>${recent.length ? recent.map((item, index) => `<button type="button" data-live-recent-index="${index}"><span>${esc(item.bookName)} ${item.chapter}</span><small>${esc(item.abbreviation)}</small></button>`).join('') : '<p>Suas leituras aparecerão aqui.</p>'}`;
+}
+function renderPresentationVerse(index = null) {
+  if (!presentationMode) return;
+  renderPresentationRecent();
   const picker = document.getElementById('presentation-picker-controls');
   const selectedVersion = bibleCatalog.find(item => item.id === state.reader.versionId);
   const selectedBook = selectedVersion?.books.find(item => item.code === state.reader.bookCode);
@@ -1740,6 +1771,7 @@ function renderPage(page) {
   persist();
   const content=document.getElementById('app-content');
   content.innerHTML=(renderers[page]||renderHome)();
+  trackRecentLocation();
   updateReaderHeader();
   content.scrollTop=0;
   const activeNavigationPage = page === 'plan-reader' ? 'plans' : page;
