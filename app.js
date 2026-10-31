@@ -77,6 +77,9 @@ let commentComposerVerse = null;
 let readerSizeMenuOpen = false;
 let historyMenuOpen = false;
 let presentationMode = false;
+let presentationVerseIndex = 0;
+let presentationPendingEdge = null;
+let presentationTouchStart = null;
 let activeArticleId = null;
 let installedBibleIds = JSON.parse(localStorage.getItem('sdr-installed-bibles') || '[]');
 
@@ -977,18 +980,93 @@ function renderRecentReadings() {
   return `<section class="reader-history-menu" role="dialog" aria-label="Leituras recentes"><div class="reader-history-head"><strong>Leituras recentes</strong>${readings.length ? '<button data-action="clear-recent-readings">Limpar</button>' : ''}</div>${readings.length ? `<div class="reader-history-list">${readings.map((item, index) => `<button data-recent-index="${index}"><span>${esc(item.bookName)} ${item.chapter}</span><small>${esc(item.abbreviation)}</small></button>`).join('')}</div>` : '<p>Nenhum capítulo lido ainda.</p>'}</section>`;
 }
 
+function adjacentReaderChapter(direction) {
+  const version = bibleCatalog.find(item => item.id === state.reader.versionId);
+  const index = version?.books.findIndex(item => item.code === state.reader.bookCode) ?? -1;
+  if (index < 0) return null;
+  const current = version.books[index];
+  const nextChapter = Number(state.reader.chapter) + direction;
+  if (nextChapter >= 1 && nextChapter <= current.chapters) return { bookCode: current.code, chapter: nextChapter };
+  const nextBook = version.books[index + direction];
+  return nextBook ? { bookCode: nextBook.code, chapter: direction > 0 ? 1 : nextBook.chapters } : null;
+}
+
+function renderPresentationVerse(index = null) {
+  if (!presentationMode) return;
+  const reference = document.getElementById('presentation-reference');
+  const version = document.getElementById('presentation-version');
+  const text = document.getElementById('presentation-verse-text');
+  const progress = document.getElementById('presentation-progress');
+  const previous = document.querySelector('[data-action="previous-presentation-verse"]');
+  const next = document.querySelector('[data-action="next-presentation-verse"]');
+  const loaded = activeChapter && activeChapter.versionId === state.reader.versionId && activeChapter.bookCode === state.reader.bookCode && Number(activeChapter.chapter) === Number(state.reader.chapter);
+  if (!loaded || !activeChapter.verses?.length) {
+    reference.textContent = 'Carregando capítulo...';
+    version.textContent = '';
+    text.textContent = '';
+    progress.textContent = '';
+    previous.disabled = next.disabled = true;
+    return;
+  }
+  if (index === null) {
+    if (presentationPendingEdge === 'last') index = activeChapter.verses.length - 1;
+    else if (presentationPendingEdge === 'first') index = 0;
+    else index = Math.max(0, activeChapter.verses.findIndex(item => String(item.number) === String(state.reader.verse)));
+  }
+  presentationPendingEdge = null;
+  presentationVerseIndex = Math.max(0, Math.min(index, activeChapter.verses.length - 1));
+  const verse = activeChapter.verses[presentationVerseIndex];
+  const verseLabel = verse.end > verse.number ? `${verse.number}-${verse.end}` : verse.number;
+  reference.textContent = `${activeChapter.bookName} ${activeChapter.chapter}:${verseLabel}`;
+  version.textContent = bibleCatalog.find(item => item.id === state.reader.versionId)?.abbreviation || '';
+  text.textContent = verse.text;
+  text.dataset.length = verse.text.length > 450 ? 'very-long' : verse.text.length > 260 ? 'long' : 'normal';
+  text.scrollTop = 0;
+  progress.textContent = `${presentationVerseIndex + 1} de ${activeChapter.verses.length}`;
+  previous.disabled = presentationVerseIndex === 0 && !adjacentReaderChapter(-1);
+  next.disabled = presentationVerseIndex === activeChapter.verses.length - 1 && !adjacentReaderChapter(1);
+  state.reader.verse = String(verse.number);
+  persist();
+}
+
+function stepPresentationVerse(direction) {
+  if (!presentationMode || !activeChapter?.verses?.length) return;
+  const index = presentationVerseIndex + direction;
+  if (index >= 0 && index < activeChapter.verses.length) { renderPresentationVerse(index); return; }
+  const adjacent = adjacentReaderChapter(direction);
+  if (!adjacent) return;
+  presentationPendingEdge = direction < 0 ? 'last' : 'first';
+  state.reader = { ...state.reader, ...adjacent, verse: '' };
+  state.selectedVerse = null;
+  activeChapter = null;
+  persist();
+  renderPresentationVerse();
+  renderPage(state.page);
+}
+
 function setPresentationMode(enabled) {
   if (enabled && (document.getElementById('app').hidden || !['reader', 'plan-reader'].includes(state.page))) return;
   presentationMode = enabled;
   document.body.classList.toggle('presentation-mode', enabled);
   const exit = document.getElementById('presentation-exit');
+  const stage = document.getElementById('presentation-stage');
   if (exit) exit.hidden = !enabled;
+  if (stage) stage.hidden = !enabled;
   if (enabled) {
     historyMenuOpen = false;
     updateReaderHeader();
+    stage.style.setProperty('--reader-text-scale', readerTextScale());
+    renderPresentationVerse();
     document.getElementById('app')?.requestFullscreen?.().catch(() => {});
   } else if (document.fullscreenElement) {
     document.exitFullscreen?.().catch(() => {});
+  }
+  if (!enabled) {
+    presentationPendingEdge = null;
+    document.querySelectorAll('.verse.verse-focused').forEach(verse => verse.classList.remove('verse-focused'));
+    document.querySelector(`.verse[data-verse="${state.reader.verse}"]`)?.classList.add('verse-focused');
+    updateVerseSelect();
+    focusSelectedVerse();
   }
 }
 
@@ -1002,6 +1080,7 @@ async function loadCurrentChapter() {
     activeChapter = loadedChapter;
     if (!activeChapter) {
       canvas.innerHTML = '<p class="reader-loading">Este capítulo não está disponível offline. Reinstale a versão.</p>';
+      if (presentationMode) document.getElementById('presentation-verse-text').textContent = 'Este capítulo não está disponível. Selecione outra versão.';
       return;
     }
     const version = bibleCatalog.find(item => item.id === state.reader.versionId);
@@ -1015,6 +1094,7 @@ async function loadCurrentChapter() {
       ${state.page==='plan-reader'?renderPlanReadingFooter():''}
       <footer class="bible-attribution">${esc(version.attribution)} <a href="${esc(version.licenseUrl)}" target="_blank" rel="noreferrer">Licença</a></footer>`;
     updateVerseSelect();
+    renderPresentationVerse();
     focusSelectedVerse();
     attachVerseHover();
   } catch (error) {
@@ -1022,6 +1102,10 @@ async function loadCurrentChapter() {
     activeChapter = null;
     console.error(error);
     canvas.innerHTML = `<p class="reader-loading">${esc(error.message || 'Não foi possível abrir este capítulo.')}</p>`;
+    if (presentationMode) {
+      document.getElementById('presentation-reference').textContent = 'Leitura indisponível';
+      document.getElementById('presentation-verse-text').textContent = error.message || 'Não foi possível abrir este capítulo.';
+    }
   }
 }
 
@@ -1863,6 +1947,8 @@ document.addEventListener('click', e=>{
   if(action==='clear-recent-readings'){state.recentReadings=[];persist();updateReaderHeader();return;}
   if(action==='enter-presentation'){setPresentationMode(true);return;}
   if(action==='exit-presentation'){setPresentationMode(false);return;}
+  if(action==='previous-presentation-verse'){stepPresentationVerse(-1);return;}
+  if(action==='next-presentation-verse'){stepPresentationVerse(1);return;}
   if(action==='decrease-reader-size'){setReaderTextScale(readerTextScale()-.1,true);return;}
   if(action==='increase-reader-size'){setReaderTextScale(readerTextScale()+.1,true);return;}
   if(action==='reset-reader-size'){setReaderTextScale(1,true);return;}
@@ -2032,9 +2118,23 @@ window.addEventListener('deeper-sync-error', ()=>toast('Não foi possível sincr
 document.addEventListener('keydown',e=>{
   if (e.key === 'F1' && !document.getElementById('app').hidden && ['reader', 'plan-reader'].includes(state.page)) { e.preventDefault(); setPresentationMode(true); return; }
   if (e.key === 'F2' && !document.getElementById('app').hidden) { e.preventDefault(); setPresentationMode(false); return; }
+  if (presentationMode && ['ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown'].includes(e.key)) { e.preventDefault(); if (!e.repeat) stepPresentationVerse(['ArrowRight', 'PageDown'].includes(e.key) ? 1 : -1); return; }
   if(e.key==='Escape'){setPresentationMode(false);window.deeperAuth?.close();document.getElementById('account-menu').hidden=true;document.querySelector('.verse-action-menu')?.remove();searchPanel?.remove();if(readerSizeMenuOpen){readerSizeMenuOpen=false;updateReaderHeader();}if(historyMenuOpen){historyMenuOpen=false;updateReaderHeader();}if(commentComposerOpen)closeCommentComposer();}
 });
 document.addEventListener('fullscreenchange', () => { if (presentationMode && !document.fullscreenElement) setPresentationMode(false); });
+document.getElementById('presentation-stage').addEventListener('touchstart', event => {
+  if (event.touches.length !== 1 || event.target.closest('button')) return;
+  const touch = event.touches[0];
+  presentationTouchStart = touch.clientX > 25 && touch.clientX < window.innerWidth - 25 ? { x: touch.clientX, y: touch.clientY } : null;
+}, { passive: true });
+document.getElementById('presentation-stage').addEventListener('touchend', event => {
+  if (!presentationTouchStart || event.changedTouches.length !== 1) return;
+  const touch = event.changedTouches[0];
+  const dx = touch.clientX - presentationTouchStart.x;
+  const dy = touch.clientY - presentationTouchStart.y;
+  presentationTouchStart = null;
+  if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.3) stepPresentationVerse(dx < 0 ? 1 : -1);
+}, { passive: true });
 
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
 
