@@ -1027,7 +1027,7 @@ body.presentation-mode .presentation-stage { width: min(1100px, 100%); height: 1
 .presentation-reference span { color: var(--ink); font-weight: 600; }
 .presentation-reference small { font-size: 11px; letter-spacing: .08em; }
 .presentation-verse-text { width: 100%; max-height: 100%; align-self: center; margin: 0; overflow-y: auto; overscroll-behavior: contain; color: var(--ink); font-family: var(--font-display); font-size: calc(clamp(30px, 3.3vw, 48px) * var(--reader-text-scale)); line-height: 1.38; text-wrap: pretty; }
-.presentation-verse-text sup { margin-right: .35em; color: var(--gold); font-family: var(--font-ui); font-size: .42em; font-weight: 600; vertical-align: super; font-variant-numeric: tabular-nums; }
+.presentation-verse-text sup { margin-right: .35em; color: var(--ink); font-family: var(--font-ui); font-size: .55em; font-weight: 700; vertical-align: super; font-variant-numeric: tabular-nums; }
 .presentation-verse-text[data-length="long"] { font-size: calc(clamp(27px, 2.8vw, 38px) * var(--reader-text-scale)); }
 .presentation-verse-text[data-length="very-long"] { font-size: calc(clamp(23px, 2.3vw, 32px) * var(--reader-text-scale)); }
 .presentation-navigation { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid var(--line); }
