@@ -437,6 +437,38 @@ function setTheme(theme) {
   persist();
 }
 setTheme(state.theme);
+let liveShareWindow = null;
+const appearanceFonts = [
+  { id: 'default', name: 'Atual · Fraunces', family: "'Fraunces', Georgia, serif" },
+  { id: 'lora', name: 'Lora', family: "'Lora', Georgia, serif" },
+  { id: 'source', name: 'Source Serif 4', family: "'Source Serif 4', Georgia, serif" },
+  { id: 'merriweather', name: 'Merriweather', family: "'Merriweather', Georgia, serif" },
+  { id: 'libre', name: 'Libre Baskerville', family: "'Libre Baskerville', Georgia, serif" },
+];
+function setAppearanceFont(id) {
+  const font = appearanceFonts.find(item => item.id === id) || appearanceFonts[0];
+  document.documentElement.dataset.font = font.id;
+  localStorage.setItem('sdr-font', font.id);
+  if (typeof liveShareWindow !== 'undefined' && liveShareWindow && !liveShareWindow.closed) liveShareWindow.document.body.style.fontFamily = font.family;
+}
+setAppearanceFont(localStorage.getItem('sdr-font'));
+function openAppearance() {
+  let dialog = document.getElementById('appearance-dialog');
+  if (!dialog) {
+    dialog = document.createElement('dialog');
+    dialog.id = 'appearance-dialog';
+    dialog.className = 'appearance-dialog';
+    document.body.appendChild(dialog);
+    dialog.addEventListener('click', event => { if (event.target === dialog || event.target.closest('[data-close-appearance]')) dialog.close(); });
+    dialog.addEventListener('change', event => {
+      if (event.target.name === 'appearance-theme') setTheme(event.target.value);
+      if (event.target.name === 'appearance-font') setAppearanceFont(event.target.value);
+    });
+  }
+  const currentFont = document.documentElement.dataset.font;
+  dialog.innerHTML = `<header><h2>Aparência</h2><button type="button" class="appearance-close" data-close-appearance aria-label="Fechar">×</button></header><fieldset><legend>Modo</legend><div class="appearance-options"><label><input type="radio" name="appearance-theme" value="light" ${state.theme === 'light' ? 'checked' : ''}> Claro</label><label><input type="radio" name="appearance-theme" value="dark" ${state.theme === 'dark' ? 'checked' : ''}> Escuro</label></div></fieldset><fieldset><legend>Fonte</legend><div class="appearance-options">${appearanceFonts.map(font => `<label style="font-family:${font.family}"><input type="radio" name="appearance-font" value="${font.id}" ${currentFont === font.id ? 'checked' : ''}><span class="appearance-font-name">${font.name}</span><span aria-hidden="true">Aa</span></label>`).join('')}</div></fieldset>`;
+  dialog.showModal();
+}
 
 function openApp() {
   document.getElementById('landing').hidden = true;
@@ -991,7 +1023,6 @@ function adjacentReaderChapter(direction) {
   return nextBook ? { bookCode: nextBook.code, chapter: direction > 0 ? 1 : nextBook.chapters } : null;
 }
 
-let liveShareWindow = null;
 function updateLiveShare(reference, version, number, copy, isHebrew) {
   if (!liveShareWindow || liveShareWindow.closed) return;
   const doc = liveShareWindow.document;
@@ -1012,8 +1043,9 @@ function openLiveShareWindow() {
     liveShareWindow.document.write('<!doctype html><html lang="pt-BR"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deeper — Apresentação</title></head><body><header><span id="reference"></span><small id="version"></small></header><main id="verse"><sup id="number"></sup><span id="copy"></span></main></body></html>');
     liveShareWindow.document.close();
     const style = liveShareWindow.document.createElement('style');
-    style.textContent = `*{box-sizing:border-box}body{margin:0;padding:6vh 8vw;background:${bg};color:${ink};font-family:Georgia,serif;height:100vh;display:flex;flex-direction:column}header{display:flex;justify-content:space-between;gap:1em;padding-bottom:1em;border-bottom:1px solid currentColor;font:600 16px Arial,sans-serif}small{font-size:12px}main{flex:1;display:flex;align-items:center;justify-content:center;gap:.35em;font-size:clamp(28px,4vw,54px);line-height:1.4}sup{font:600 .4em Arial,sans-serif;align-self:center}`;
+    style.textContent = `@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+4:wght@400;600&display=swap');*{box-sizing:border-box}body{margin:0;padding:6vh 8vw;background:${bg};color:${ink};height:100vh;display:flex;flex-direction:column}header{display:flex;justify-content:space-between;gap:1em;padding-bottom:1em;border-bottom:1px solid currentColor;font-size:16px;font-weight:600}small{font-size:12px}main{flex:1;display:flex;align-items:center;justify-content:center;gap:.35em;font-size:clamp(28px,4vw,54px);line-height:1.4}sup{font-size:.4em;font-weight:600;align-self:center}`;
     liveShareWindow.document.head.appendChild(style);
+    liveShareWindow.document.body.style.fontFamily = (appearanceFonts.find(font => font.id === document.documentElement.dataset.font) || appearanceFonts[0]).family;
   }
   renderPresentationVerse(presentationVerseIndex);
   liveShareWindow.focus();
@@ -2002,7 +2034,7 @@ document.addEventListener('click', e=>{
   if(action==='decrease-reader-size'){setReaderTextScale(readerTextScale()-.1,true);return;}
   if(action==='increase-reader-size'){setReaderTextScale(readerTextScale()+.1,true);return;}
   if(action==='reset-reader-size'){setReaderTextScale(1,true);return;}
-  if(action==='toggle-theme'){setTheme(state.theme==='light'?'dark':'light');toast(`Modo ${state.theme==='dark'?'escuro':'claro'} ativado.`);return;}
+  if(action==='toggle-theme'){openAppearance();return;}
   if(action==='open-bible-library'){bibleLibraryOpen=true;renderPage(state.page==='plan-reader'?'plan-reader':'reader');return;}
   if(action==='close-bible-library'){bibleLibraryOpen=false;renderPage(state.page==='plan-reader'?'plan-reader':'reader');return;}
   if(action==='previous-reader-chapter' || action==='next-reader-chapter'){

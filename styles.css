@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Source+Serif+4:wght@400;500;600;700&display=swap');
 
 :root {
   --ink: #27382c;
@@ -40,6 +40,23 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; touch-action: pan-y; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-ui); line-height: 1.5; }
+[data-font="lora"] { --font-display: 'Lora', Georgia, serif; --font-ui: 'Lora', Georgia, serif; }
+[data-font="source"] { --font-display: 'Source Serif 4', Georgia, serif; --font-ui: 'Source Serif 4', Georgia, serif; }
+[data-font="merriweather"] { --font-display: 'Merriweather', Georgia, serif; --font-ui: 'Merriweather', Georgia, serif; }
+[data-font="libre"] { --font-display: 'Libre Baskerville', Georgia, serif; --font-ui: 'Libre Baskerville', Georgia, serif; }
+.appearance-dialog { width: min(480px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; padding: 26px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink); box-shadow: 0 20px 70px rgba(0,0,0,.3); }
+.appearance-dialog::backdrop { background: rgba(0,0,0,.5); }
+.appearance-dialog header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.appearance-dialog h2 { font-family: var(--font-display); font-size: 30px; font-weight: 400; margin: 0; }
+.appearance-dialog button { cursor: pointer; }
+.appearance-dialog .appearance-close { border: 0; background: transparent; color: var(--ink); font-size: 26px; }
+.appearance-dialog fieldset { border: 0; padding: 0; margin: 24px 0 0; }
+.appearance-dialog legend { font-weight: 600; margin-bottom: 10px; }
+.appearance-options { display: grid; gap: 8px; }
+.appearance-options label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+.appearance-options label:has(input:checked) { border-color: var(--gold); background: var(--surface-2); }
+.appearance-options input { accent-color: var(--gold); }
+.appearance-font-name { flex: 1; }
 button, input, select, textarea { font: inherit; }
 button { color: inherit; }
 a { color: inherit; text-decoration: none; }
