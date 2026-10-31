@@ -993,6 +993,11 @@ function adjacentReaderChapter(direction) {
 
 function renderPresentationVerse(index = null) {
   if (!presentationMode) return;
+  const picker = document.getElementById('presentation-picker-controls');
+  const selectedVersion = bibleCatalog.find(item => item.id === state.reader.versionId);
+  const selectedBook = selectedVersion?.books.find(item => item.code === state.reader.bookCode);
+  const loadedForPicker = activeChapter && activeChapter.versionId === state.reader.versionId && activeChapter.bookCode === state.reader.bookCode && Number(activeChapter.chapter) === Number(state.reader.chapter);
+  if (selectedVersion && selectedBook) picker.innerHTML = `<label>Versão<select id="live-version">${bibleCatalog.filter(bibleAvailable).map(item => `<option value="${esc(item.id)}" ${item.id === selectedVersion.id ? 'selected' : ''}>${esc(item.abbreviation)}</option>`).join('')}</select></label><label>Livro<select id="live-book">${selectedVersion.books.map(item => `<option value="${esc(item.code)}" ${item.code === selectedBook.code ? 'selected' : ''}>${esc(item.name)}</option>`).join('')}</select></label><label>Capítulo<select id="live-chapter">${Array.from({length:selectedBook.chapters}, (_, i) => `<option value="${i+1}" ${i+1 === Number(state.reader.chapter) ? 'selected' : ''}>${i+1}</option>`).join('')}</select></label><label>Versículo<select id="live-verse" ${loadedForPicker ? '' : 'disabled'}>${loadedForPicker ? activeChapter.verses.map(item => `<option value="${item.number}" ${String(item.number) === String(state.reader.verse || activeChapter.verses[0].number) ? 'selected' : ''}>${item.number}</option>`).join('') : '<option>...</option>'}</select></label>`;
   const reference = document.getElementById('presentation-reference');
   const version = document.getElementById('presentation-version');
   const text = document.getElementById('presentation-verse-text');
@@ -1034,6 +1039,8 @@ function renderPresentationVerse(index = null) {
   previous.disabled = presentationVerseIndex === 0 && !adjacentReaderChapter(-1);
   next.disabled = presentationVerseIndex === activeChapter.verses.length - 1 && !adjacentReaderChapter(1);
   state.reader.verse = String(verse.number);
+  const versePicker = document.getElementById('live-verse');
+  if (versePicker) versePicker.value = String(verse.number);
   persist();
 }
 
@@ -2091,6 +2098,14 @@ document.addEventListener('click', e=>{
 });
 
 document.addEventListener('change', e=>{
+  if (presentationMode && e.target.id.startsWith('live-')) {
+    const id = e.target.id;
+    if (id === 'live-verse') { const index = activeChapter?.verses.findIndex(item => String(item.number) === e.target.value); if (index >= 0) renderPresentationVerse(index); return; }
+    if (id === 'live-version') { const version = bibleCatalog.find(item => item.id === e.target.value && bibleAvailable(item)); if (!version) return; const book = version.books.find(item => item.code === state.reader.bookCode) || version.books[0]; state.reader.versionId = version.id; state.reader.bookCode = book.code; state.reader.chapter = Math.min(Number(state.reader.chapter) || 1, book.chapters); }
+    if (id === 'live-book') { state.reader.bookCode = e.target.value; state.reader.chapter = 1; }
+    if (id === 'live-chapter') state.reader.chapter = Number(e.target.value);
+    state.reader.verse = ''; state.selectedVerse = null; activeChapter = null; presentationPendingEdge = null; persist(); renderPresentationVerse(); renderPage(state.page); return;
+  }
   const daySelect=e.target.closest('[data-plan-day-select]');
   if(daySelect){if(daySelect.value!=='')openPlanDay(daySelect.dataset.planId,Number(daySelect.value));return;}
   if(['plan-scope','plan-duration','plan-version','plan-checklist','plan-book-mode'].includes(e.target.id)){
@@ -2142,12 +2157,12 @@ window.addEventListener('deeper-sync-error', ()=>toast('Não foi possível sincr
 document.addEventListener('keydown',e=>{
   if (e.key === 'F1' && !document.getElementById('app').hidden && ['reader', 'plan-reader'].includes(state.page)) { e.preventDefault(); setPresentationMode(true); return; }
   if (e.key === 'F2' && !document.getElementById('app').hidden) { e.preventDefault(); setPresentationMode(false); return; }
-  if (presentationMode && ['ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown'].includes(e.key)) { e.preventDefault(); if (!e.repeat) stepPresentationVerse(['ArrowRight', 'PageDown'].includes(e.key) ? 1 : -1); return; }
+  if (presentationMode && !e.target.closest('select, input, textarea') && ['ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown'].includes(e.key)) { e.preventDefault(); if (!e.repeat) stepPresentationVerse(['ArrowRight', 'PageDown'].includes(e.key) ? 1 : -1); return; }
   if(e.key==='Escape'){setPresentationMode(false);window.deeperAuth?.close();document.getElementById('account-menu').hidden=true;document.querySelector('.verse-action-menu')?.remove();searchPanel?.remove();if(readerSizeMenuOpen){readerSizeMenuOpen=false;updateReaderHeader();}if(historyMenuOpen){historyMenuOpen=false;updateReaderHeader();}if(commentComposerOpen)closeCommentComposer();}
 });
 document.addEventListener('fullscreenchange', () => { if (presentationMode && !document.fullscreenElement) setPresentationMode(false); });
 document.getElementById('presentation-stage').addEventListener('touchstart', event => {
-  if (event.touches.length !== 1 || event.target.closest('button')) return;
+  if (event.touches.length !== 1 || event.target.closest('button, select, summary, .presentation-picker')) return;
   const touch = event.touches[0];
   presentationTouchStart = touch.clientX > 25 && touch.clientX < window.innerWidth - 25 ? { x: touch.clientX, y: touch.clientY } : null;
 }, { passive: true });
