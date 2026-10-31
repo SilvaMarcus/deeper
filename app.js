@@ -1,6 +1,7 @@
 const canonicalBookCodes = [
   'GEN','EXO','LEV','NUM','DEU','JOS','JDG','RUT','1SA','2SA','1KI','2KI','1CH','2CH','EZR','NEH','EST','JOB','PSA','PRO','ECC','SNG','ISA','JER','LAM','EZK','DAN','HOS','JOL','AMO','OBA','JON','MIC','NAM','HAB','ZEP','HAG','ZEC','MAL','MAT','MRK','LUK','JHN','ACT','ROM','1CO','2CO','GAL','EPH','PHP','COL','1TH','2TH','1TI','2TI','TIT','PHM','HEB','JAS','1PE','2PE','1JN','2JN','3JN','JUD','REV'
 ];
+const onlineBookAbbrevs = 'gn ex lv nm dt js jz rt 1sm 2sm 1rs 2rs 1cr 2cr ed ne et job sl pv ec ct is jr lm ez dn os jl am ob jn mq na hc sf ag zc ml mt mc lc jo at rm 1co 2co gl ef fp cl 1ts 2ts 1tm 2tm tt fm hb tg 1pe 2pe 1jo 2jo 3jo jd ap'.split(' ');
 
 const bibleBooks = [
   ['Gênesis',50,'AT','Lei'],['Êxodo',40,'AT','Lei'],['Levítico',27,'AT','Lei'],['Números',36,'AT','Lei'],['Deuteronômio',34,'AT','Lei'],
@@ -54,6 +55,7 @@ const defaultState = {
     days: []
   },
   reader: { versionId: '', bookCode: 'GEN', chapter: 1, verse: '' },
+  recentReadings: [],
   planReading: null,
   studyTab: 'courses',
   articleProgress: {},
@@ -73,6 +75,8 @@ let activeChapter = null;
 let commentComposerOpen = false;
 let commentComposerVerse = null;
 let readerSizeMenuOpen = false;
+let historyMenuOpen = false;
+let presentationMode = false;
 let activeArticleId = null;
 let installedBibleIds = JSON.parse(localStorage.getItem('sdr-installed-bibles') || '[]');
 
@@ -233,6 +237,7 @@ function hydrate(source) {
       })),
       plan: legacyPlan,
       reader: { ...defaultState.reader, ...(stored.reader || {}) },
+      recentReadings: Array.isArray(stored.recentReadings) ? stored.recentReadings.filter(item => item && typeof item.versionId === 'string' && typeof item.bookCode === 'string' && Number.isInteger(item.chapter) && item.chapter > 0).slice(0, 12) : [],
       planReading: stored.planReading || null
     };
   } catch { return structuredClone(defaultState); }
@@ -311,9 +316,18 @@ async function readOfflineChapter() {
   const { versionId, bookCode, chapter } = state.reader;
   if (bibleCatalog.find(version => version.id === versionId)?.online) {
     if (!navigator.onLine) throw new Error('Esta versão exige internet. Selecione uma das Bíblias offline para continuar.');
-    const response = await fetch(`/api/bible/${versionId}/${bookCode}/${chapter}`, {cache:'no-store', signal:AbortSignal.timeout(20000)});
+    const bookIndex = bibleCatalog.find(version => version.id === versionId)?.books.findIndex(book => book.code === bookCode) ?? -1;
+    if (bookIndex < 0) throw new Error('Livro não encontrado nesta versão.');
+    let response;
+    try {
+      response = await fetch(`https://abibliadigital.api.br/api/verses/${versionId}/${onlineBookAbbrevs[bookIndex]}/${chapter}`, { signal: AbortSignal.timeout(20000) });
+    } catch {
+      throw new Error('Não foi possível conectar à fonte online. Verifique a internet ou escolha uma Bíblia offline.');
+    }
     if (!response.ok) throw new Error('A fonte online está indisponível. Tente novamente ou selecione uma Bíblia offline.');
-    return response.json();
+    const result = await response.json();
+    if (result.book?.version !== versionId || Number(result.chapter?.number) !== Number(chapter) || !Array.isArray(result.verses) || !result.verses.length) throw new Error('O capítulo recebido não corresponde à versão solicitada.');
+    return { versionId, bookCode, bookName: result.book.name, chapter: Number(result.chapter.number), verses: result.verses.map(verse => ({ number: Number(verse.number), end: Number(verse.number), text: String(verse.text || '') })) };
   }
   const db = await openBibleDatabase();
   return new Promise((resolve, reject) => {
@@ -415,6 +429,7 @@ function toast(message) {
 function setTheme(theme) {
   state.theme = theme;
   document.documentElement.dataset.theme = theme;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#171a1b' : '#394a37');
   localStorage.setItem('sdr-theme', theme);
   persist();
 }
@@ -949,6 +964,34 @@ function renderReader() {
   </section>`;
 }
 
+function rememberReading(version, chapter) {
+  const entry = { versionId: version.id, bookCode: state.reader.bookCode, chapter: chapter.chapter, bookName: chapter.bookName, abbreviation: version.abbreviation };
+  const previous = state.recentReadings || [];
+  if (previous[0]?.versionId === entry.versionId && previous[0]?.bookCode === entry.bookCode && previous[0]?.chapter === entry.chapter) return;
+  state.recentReadings = [entry, ...previous.filter(item => item.versionId !== entry.versionId || item.bookCode !== entry.bookCode || item.chapter !== entry.chapter)].slice(0, 12);
+  persist();
+}
+
+function renderRecentReadings() {
+  const readings = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
+  return `<section class="reader-history-menu" role="dialog" aria-label="Leituras recentes"><div class="reader-history-head"><strong>Leituras recentes</strong>${readings.length ? '<button data-action="clear-recent-readings">Limpar</button>' : ''}</div>${readings.length ? `<div class="reader-history-list">${readings.map((item, index) => `<button data-recent-index="${index}"><span>${esc(item.bookName)} ${item.chapter}</span><small>${esc(item.abbreviation)}</small></button>`).join('')}</div>` : '<p>Nenhum capítulo lido ainda.</p>'}</section>`;
+}
+
+function setPresentationMode(enabled) {
+  if (enabled && (document.getElementById('app').hidden || !['reader', 'plan-reader'].includes(state.page))) return;
+  presentationMode = enabled;
+  document.body.classList.toggle('presentation-mode', enabled);
+  const exit = document.getElementById('presentation-exit');
+  if (exit) exit.hidden = !enabled;
+  if (enabled) {
+    historyMenuOpen = false;
+    updateReaderHeader();
+    document.getElementById('app')?.requestFullscreen?.().catch(() => {});
+  } else if (document.fullscreenElement) {
+    document.exitFullscreen?.().catch(() => {});
+  }
+}
+
 async function loadCurrentChapter() {
   const canvas = document.getElementById('reader-canvas');
   if (!canvas || !state.reader.versionId) return;
@@ -962,6 +1005,7 @@ async function loadCurrentChapter() {
       return;
     }
     const version = bibleCatalog.find(item => item.id === state.reader.versionId);
+    rememberReading(version, activeChapter);
     canvas.innerHTML = `<p class="chapter-overline">${esc(version.abbreviation)} · ${esc(version.license)}</p><h1>${esc(activeChapter.bookName)} ${activeChapter.chapter}</h1>
       ${activeChapter.verses.map(verse => {
         const key = currentVerseKey(verse.number), highlight = state.highlights[key], comment = state.comments[key];
@@ -1498,13 +1542,13 @@ function updateReaderHeader() {
   if(!controls)return;
   const readerActive=['reader','plan-reader'].includes(state.page);
   document.body.classList.toggle('reader-open',readerActive);
-  if(!readerActive){readerSizeMenuOpen=false;controls.hidden=true;controls.innerHTML='';return;}
+  if(!readerActive){readerSizeMenuOpen=false;historyMenuOpen=false;setPresentationMode(false);controls.hidden=true;controls.innerHTML='';return;}
   const installedVersions=bibleCatalog.filter(bibleAvailable);
   const currentVersion=installedVersions.find(version=>version.id===state.reader.versionId);
   const scale=readerTextScale();
   const percentage=Math.round(scale*100);
   controls.hidden=false;
-  controls.innerHTML=`${currentVersion?`<select id="reader-version" class="reader-version-select" aria-label="Versão da Bíblia" title="Versão da Bíblia">${installedVersions.map(item=>`<option value="${item.id}" ${item.id===currentVersion.id?'selected':''}>${esc(item.abbreviation)}</option>`).join('')}</select>`:''}<button class="icon-button reader-library-button" data-action="open-bible-library" aria-label="Gerenciar versões" title="Gerenciar versões"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4v16H5zM10 4h4v16h-4zM15 5l3.5-1 4 15-3.5 1z"/></svg></button><div class="reader-size-control"><button class="icon-button ${scale!==1?'active':''}" data-action="toggle-reader-size-menu" aria-label="Tamanho do texto: ${percentage}%" title="Tamanho do texto" aria-expanded="${readerSizeMenuOpen}">Aa</button>${readerSizeMenuOpen?`<section class="reader-size-popover" role="dialog" aria-label="Tamanho do texto"><header><strong>Tamanho do texto</strong><output id="reader-text-size-value" for="reader-text-size">${percentage}%</output></header><div class="reader-size-adjust"><button data-action="decrease-reader-size" aria-label="Diminuir texto" title="Diminuir">A−</button><input id="reader-text-size" type="range" min="70" max="160" step="10" value="${percentage}" aria-label="Tamanho do texto em porcentagem" /><button data-action="increase-reader-size" aria-label="Aumentar texto" title="Aumentar">A+</button></div><button class="reader-size-reset" data-action="reset-reader-size" ${scale===1?'disabled':''}>Padrão</button></section>`:''}</div>`;
+  controls.innerHTML=`${currentVersion?`<select id="reader-version" class="reader-version-select" aria-label="Versão da Bíblia" title="Versão da Bíblia">${installedVersions.map(item=>`<option value="${item.id}" ${item.id===currentVersion.id?'selected':''}>${esc(item.abbreviation)}</option>`).join('')}</select>`:''}<button class="icon-button reader-library-button" data-action="open-bible-library" aria-label="Gerenciar versões" title="Gerenciar versões"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4v16H5zM10 4h4v16h-4zM15 5l3.5-1 4 15-3.5 1z"/></svg></button><div class="reader-history-control"><button class="icon-button" data-action="toggle-recent-readings" aria-label="Leituras recentes" title="Leituras recentes" aria-expanded="${historyMenuOpen}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></button>${historyMenuOpen?renderRecentReadings():''}</div><button class="icon-button reader-live-button" data-action="enter-presentation" aria-label="Modo live (F1)" title="Modo live (F1)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 12h8M8 15h5"/></svg></button><div class="reader-size-control"><button class="icon-button ${scale!==1?'active':''}" data-action="toggle-reader-size-menu" aria-label="Tamanho do texto: ${percentage}%" title="Tamanho do texto" aria-expanded="${readerSizeMenuOpen}">Aa</button>${readerSizeMenuOpen?`<section class="reader-size-popover" role="dialog" aria-label="Tamanho do texto"><header><strong>Tamanho do texto</strong><output id="reader-text-size-value" for="reader-text-size">${percentage}%</output></header><div class="reader-size-adjust"><button data-action="decrease-reader-size" aria-label="Diminuir texto" title="Diminuir">A−</button><input id="reader-text-size" type="range" min="70" max="160" step="10" value="${percentage}" aria-label="Tamanho do texto em porcentagem" /><button data-action="increase-reader-size" aria-label="Aumentar texto" title="Aumentar">A+</button></div><button class="reader-size-reset" data-action="reset-reader-size" ${scale===1?'disabled':''}>Padrão</button></section>`:''}</div>`;
 }
 
 function renderPage(page) {
@@ -1777,6 +1821,14 @@ function armPlanDeletion(button) {
 document.addEventListener('click', e=>{
   if(e.target.matches('[data-comment-backdrop]')){closeCommentComposer();return;}
   if(readerSizeMenuOpen && !e.target.closest('.reader-size-control')){readerSizeMenuOpen=false;updateReaderHeader();}
+  if(historyMenuOpen && !e.target.closest('.reader-history-control')){historyMenuOpen=false;updateReaderHeader();}
+  const recentButton = e.target.closest('[data-recent-index]');
+  if (recentButton) {
+    const readings = (state.recentReadings || []).filter(item => bibleCatalog.some(version => version.id === item.versionId && bibleAvailable(version)));
+    const chosen = readings[Number(recentButton.dataset.recentIndex)];
+    if (chosen) { state.reader = { versionId: chosen.versionId, bookCode: chosen.bookCode, chapter: chosen.chapter, verse: '' }; state.planReading = null; historyMenuOpen = false; persist(); renderPage('reader'); }
+    return;
+  }
   const open=e.target.closest('[data-action="open-login"]');
   if(open){window.deeperAuth?.open('sign-in');return;}
   if(e.target.closest('[data-action="open-signup"]')){window.deeperAuth?.open('sign-up');return;}
@@ -1807,6 +1859,10 @@ document.addEventListener('click', e=>{
   const action=e.target.closest('[data-action]')?.dataset.action;
   if(action==='sign-out'){document.getElementById('account-menu').hidden=true;window.deeperAuth?.signOut();return;}
   if(action==='toggle-reader-size-menu'){readerSizeMenuOpen=!readerSizeMenuOpen;updateReaderHeader();return;}
+  if(action==='toggle-recent-readings'){historyMenuOpen=!historyMenuOpen;readerSizeMenuOpen=false;updateReaderHeader();return;}
+  if(action==='clear-recent-readings'){state.recentReadings=[];persist();updateReaderHeader();return;}
+  if(action==='enter-presentation'){setPresentationMode(true);return;}
+  if(action==='exit-presentation'){setPresentationMode(false);return;}
   if(action==='decrease-reader-size'){setReaderTextScale(readerTextScale()-.1,true);return;}
   if(action==='increase-reader-size'){setReaderTextScale(readerTextScale()+.1,true);return;}
   if(action==='reset-reader-size'){setReaderTextScale(1,true);return;}
@@ -1973,7 +2029,12 @@ window.addEventListener('deeper-auth-change', event=>{
 });
 window.addEventListener('deeper-sync-error', ()=>toast('Não foi possível sincronizar agora. Seus dados continuam salvos neste dispositivo.'));
 
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){window.deeperAuth?.close();document.getElementById('account-menu').hidden=true;document.querySelector('.verse-action-menu')?.remove();searchPanel?.remove();if(readerSizeMenuOpen){readerSizeMenuOpen=false;updateReaderHeader();}if(commentComposerOpen)closeCommentComposer();}});
+document.addEventListener('keydown',e=>{
+  if (e.key === 'F1' && !document.getElementById('app').hidden && ['reader', 'plan-reader'].includes(state.page)) { e.preventDefault(); setPresentationMode(true); return; }
+  if (e.key === 'F2' && !document.getElementById('app').hidden) { e.preventDefault(); setPresentationMode(false); return; }
+  if(e.key==='Escape'){setPresentationMode(false);window.deeperAuth?.close();document.getElementById('account-menu').hidden=true;document.querySelector('.verse-action-menu')?.remove();searchPanel?.remove();if(readerSizeMenuOpen){readerSizeMenuOpen=false;updateReaderHeader();}if(historyMenuOpen){historyMenuOpen=false;updateReaderHeader();}if(commentComposerOpen)closeCommentComposer();}
+});
+document.addEventListener('fullscreenchange', () => { if (presentationMode && !document.fullscreenElement) setPresentationMode(false); });
 
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
 
